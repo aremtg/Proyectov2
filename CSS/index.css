@@ -2,11 +2,11 @@
 
 .container_nav {
     position: fixed;
-    width: 95%;
+    width: 97%;
     transform: translateX(-50%);
     left: 50%;
     height: 70px;
-    margin-top: 1rem;
+
     padding: 0 20px;
     border-radius: 50px;
     background-color: rgb(255, 255, 255);
@@ -81,17 +81,16 @@
     gap: .5rem;
 }
 .nav.active  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
-    position: absolute;
-    right: 0;
-    background-color: #fff;
-    z-index: 1;
-    transition: transform 0.3s ease-in-out;
-    width: 100%;
-    height:calc(100vh - 60px);
-    top: 60px; /* Ajusta según la altura de tu encabezado */
-    gap: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav_a {
@@ -103,11 +102,11 @@
     flex-direction: column;
 }
 .nav.active .nav_a{
-    width: auto;
+    width: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: initial;
-    background-color: rgba(190, 190, 190, 0.678);
+    background-color: rgba(226, 224, 224, 0.678);
     padding: 5px;
 
     height: auto;
@@ -201,7 +200,7 @@ a img,
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
+    margin-top: 104px;
     padding: 10px;
     border-radius: 10px;
     background: var(--fondo-tema);
@@ -582,7 +581,7 @@ a img,
         margin-bottom: 1rem;
     }
     .contenedor_contenido {
-     margin-top: 80px;
+     margin-top: 104px;
     }
     .div-info-perfil .info-foto-perfil .img_user {
         width: 150px;

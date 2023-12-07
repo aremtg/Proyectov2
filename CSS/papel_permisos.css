@@ -1,7 +1,10 @@
 @import "base.css";
-
+.cont_generador{
+    display: flex;
+    flex-wrap: wrap;
+}
 .hoja {
-    width: auto;
+    width: 50%;
     padding: 10px;
     border-radius: 5px;
     border: 2px solid rgb(196, 196, 196);

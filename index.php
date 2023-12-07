@@ -2,33 +2,35 @@
 require_once('./php/conexion.php'); 
 require_once('./php/helper.php'); 
 require_once('./includes/header.php');
-// hay algo aqui que afecta el login, hace que tenga dos head
 
-if(!isset($_GET['vista']) || $_GET['vista'] == ""){
-
-    $_GET['vista']='login';
+// Verifica si la vista no está definida o está vacía, luego establece la vista como 'login'
+if (!isset($_GET['vista']) || $_GET['vista'] == "") {
+    $_GET['vista'] = 'login';
 }
 
-if(is_file('./views/'.$_GET['vista'].'.php') &&  $_GET['vista'] != 'login'){
-    
+// Comprueba si el archivo de la vista existe y si no es la página de login, luego muestra la vista
+if (is_file('./views/'.$_GET['vista'].'.php') && $_GET['vista'] != 'login') {
     require_once('./php/main.php'); 
     include('./views/nav_left.php');
     include('./views/'.$_GET['vista'].'.php');
     include('./includes/script.php');
-}else{
-
-    if($_GET['vista']=='login'){
-        
+} else {
+    if ($_GET['vista'] == 'login') {
         include('views/login.php');
-    }else{
+    } else {
         include('views/404error.php');
     }
 }
-?>
-</div><!--  se cierra contenedor derecha -->
+
+// Muestra el footer solo si la vista no es la página de inicio de sesión
+if ($_GET['vista'] != 'login') {
+    ?>  
+    </div>
 <?php
     include('./includes/footer.php');
 ?>
-    
+<?php
+}
+?>
 </body>
 </html>

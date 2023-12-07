@@ -23,11 +23,12 @@
         <?php endif;  ?>
 
     <div class="box-login">
-        <div class="logos-login">
-        <h1 class="saci">SSACI</h1><span class="separa_logos"></span><img class="logoSena" src="images/logoSena.svg" alt="">
-        </div>
+       
 
         <form action="" method="POST" autocomplete="off" id="form-login">
+            <div class="logos-login">
+        <h1 class="saci">SSACI</h1><span class="separa_logos"></span><img class="logoSena" src="images/logoSena.svg" alt="">
+        </div>
             <div class="control-login">
                 <label for="input-login-usuario"><img src="images/person-icon.svg" alt=""></label>
                 <input class="input-form" id="input-login-usuario" type="text" placeholder="Usuario" name="login_usuario" >

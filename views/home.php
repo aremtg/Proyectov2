@@ -43,14 +43,3 @@
     <a href="./views/aplicacionPermisos.php" target="_blank" class="my-button button-clr-morado">Aplicacion Permisos</a>
     <a href="./views/aplicacion.php" target="_blank" class="my-button button-clr-verde">Aplicacion Ingresos</a>
 </div>
-
-<div class="texto">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur omnis dolores voluptatem culpa vero repellendus aliquid qui aut amet adipisci, deserunt id? Soluta repudiandae eum omnis voluptatem? Veniam, provident alias.
-    Labore corrupti ea incidunt eligendi dolorem iusto voluptatum ex, eos voluptates, possimus omnis quo perspiciatis, repudiandae debitis quidem maiores atque magni odit nisi tempora nihil. Dicta et velit sequi provident.
-    Rem delectus sequi eum possimus consequuntur perspiciatis laborum vitae cumque dolores, fugiat modi ad consequatur. Delectus obcaecati necessitatibus quasi distinctio qui ex id excepturi. Repellat pariatur nostrum veniam corrupti ducimus.
-    </p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur omnis dolores voluptatem culpa vero repellendus aliquid qui aut amet adipisci, deserunt id? Soluta repudiandae eum omnis voluptatem? Veniam, provident alias.
-    Labore corrupti ea incidunt eligendi dolorem iusto voluptatum ex, eos voluptates, possimus omnis quo perspiciatis, repudiandae debitis quidem maiores atque magni odit nisi tempora nihil. Dicta et velit sequi provident.
-    Rem delectus sequi eum possimus consequuntur perspiciatis laborum vitae cumque dolores, fugiat modi ad consequatur. Delectus obcaecati necessitatibus quasi distinctio qui ex id excepturi. Repellat pariatur nostrum veniam corrupti ducimus.
-    </p>
-</div>
