@@ -1,0 +1,39 @@
+@import "base.css";
+body{
+    width: 100%;
+    padding-top: 0;
+    background-image: var(--gradi-verde);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contenedor_contenido {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 104px;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--fondo-tema);
+    box-shadow: var(--sombra-suave);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 1rem;
+}
+.contenedor_imgs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.div_img {
+    width: 20%;
+}
+
+@media screen {
+    
+}

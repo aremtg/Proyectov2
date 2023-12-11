@@ -71,7 +71,8 @@ form .control-login label img{
     width: 25px;
     transform: translateY(9px);
 }
+
 .message{
+    transform: translateY(225px);
     position: absolute;
-    transform: translateY(130px);
 }

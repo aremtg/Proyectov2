@@ -62,7 +62,7 @@ productoTitle.addEventListener('click', () => {
 
 const alerta = document.querySelector(".alerta");
 
-alerta.innerHTML =  `<div class="message">
+alerta.innerHTML =  `<div class="message is-danger">
 <div class="message-header">
     <p>Error al iniciar sesion</p>
 </div>

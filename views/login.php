@@ -12,32 +12,40 @@
 </head>
 <body>
 
-        <?php if(isset($_SESSION['errorPassword'])): ?>
-            <div class='message'>
+       
+
+    <div class="box-login">
+ <?php if(isset($_SESSION['errorPassword'])): ?>
+            <div class='message is-danger'>
                 <?= $_SESSION['errorPassword'];?>
             </div>
         <?php elseif (isset($_SESSION['usuarioNoExiste'])):?>
-            <div class='message'>
+            <div class='message is-danger'>
                 <?= $_SESSION['usuarioNoExiste'];?>
             </div>
         <?php endif;  ?>
-
-    <div class="box-login">
-       
-
         <form action="" method="POST" autocomplete="off" id="form-login">
             <div class="logos-login">
         <h1 class="saci">SSACI</h1><span class="separa_logos"></span><img class="logoSena" src="images/logoSena.svg" alt="">
         </div>
-            <div class="control-login">
-                <label for="input-login-usuario"><img src="images/person-icon.svg" alt=""></label>
-                <input class="input-form" id="input-login-usuario" type="text" placeholder="Usuario" name="login_usuario" >
-            </div>
+        <div class="field">
+    <div class="control has-icons-left">
+        <input class="input" id="input-login-usuario" type="text" placeholder="Usuario" name="login_usuario">
+        <span class="icon is-small is-left">
+            <img src="images/person-icon.svg" alt="">
+        </span>
+    </div>
+</div>
 
-            <div class="control-login">
-                <label for="input-login-contrasena"><img src="images/candado-icon.svg" alt=""></label>
-                <input class="input-form" id="input-login-contrasena" type="password" placeholder="Contraseña" name="login_clave">
-            </div>
+<div class="field">
+    <div class="control has-icons-left">
+        <input class="input" id="input-login-contrasena" type="password" placeholder="Contraseña" name="login_clave">
+        <span class="icon is-small is-left">
+            <img src="images/candado-icon.svg" alt="">
+        </span>
+    </div>
+</div>
+
             <button type="submit" class="my-button btn-ingresar">Ingresar</button>
         </form>
         <?php BorrarErrores(); ?>
