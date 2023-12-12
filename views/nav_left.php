@@ -23,14 +23,14 @@
                 </a>
                 <a class="nav_a" href="index.php?vista=registro_lista">
                     <img src="images/iconos/registro-icon.svg" alt="">
-                    <span class="tiptext">Lista de registro</span>
+                    <span class="tiptext">Registro</span>
                 </a>
                 <a class="nav_a" href="index.php?vista=usuarios_lista">
-                    <img src="images/iconos/registro-icon.svg" alt="">
+                    <img src="images/iconos/usuarios-icon.svg" alt="">
                     <span class="tiptext">Usuarios</span>
                 </a>
                 <a class="nav_a" href="index.php?vista=papel_permisos">
-                    <img src="images/iconos/registro-icon.svg" alt="">
+                    <img src="images/iconos/permisos-icon.svg" alt="">
                     <span class="tiptext">Permisos</span>
                 </a>
             </nav>

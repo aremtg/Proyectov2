@@ -6,8 +6,7 @@ let date = new Date();
 let diaMes = date.getDate();
 let mes = meses[date.getMonth()];
 let año = date.getFullYear();
-let lo = date.getMonth();
-console.log(lo);
+
 let fecha = document.querySelector(".fecha");
 fecha.textContent = diaMes + "/" + mes + "/" + año;
 
@@ -33,6 +32,27 @@ function cambiaAMPM(){
     periodo.textContent= "p.m";
   }
 }
+
+function generarPermiso() {
+ 
+  html2canvas(document.querySelector(".hoja")).then(function (captura) {
+    var permisoGenerado = captura.toDataURL();
+    var inputEnviaPermiso = document.querySelector('.resultado form input');
+  
+    inputEnviaPermiso.name = 'imagen_generada';
+    inputEnviaPermiso.value = permisoGenerado;
+
+  });
+}
+document.getElementById('botonEnviar').addEventListener('click', function() {
+  var inputEnviaPermiso = document.querySelector('.resultado form input');
+
+  if (inputEnviaPermiso.value === '') {
+    alert('Aún no se ha generado el permiso');
+    return; // Detener la ejecución si el campo está vacío
+  }
+});
+
 // function generarPermiso() {
 
 //   var resultado = document.querySelector(".resultado");
@@ -57,52 +77,3 @@ function cambiaAMPM(){
 // resultado.innerHTML = `<h1>Aqui se generara su permiso</h1> `;
 
 // }
-function generarPermiso() {
-  var resultado = document.querySelector(".resultado");
-  var img = resultado.querySelector("img");
-
-  if (img) {
-    resultado.innerHTML = '';
-  }
-
-  html2canvas(document.querySelector(".hoja")).then(function (captura) {
-    // Crear un campo oculto para almacenar la imagen generada
-    var imagenGenerada = captura.toDataURL();
-    var inputOculto = document.createElement('input');
-    inputOculto.type = 'hidden';
-    inputOculto.name = 'imagen_generada';
-    inputOculto.value = imagenGenerada;
-
-    // Crear un formulario
-    var formulario = document.createElement('form');
-    formulario.method = 'POST';
-    formulario.action = './php/cargarImagen.php'; 
-    formulario.enctype = 'multipart/form-data'; // Importante para enviar archivos
-
-    formulario.appendChild(inputOculto);
-
-    // Crear un botón para enviar el formulario
-    var botonEnviar = document.createElement('button');
-    botonEnviar.type = 'submit';
-    botonEnviar.textContent = 'Enviar Imagen';
-
-    formulario.appendChild(botonEnviar);
-
-    // Agregar el formulario a .resultado
-    resultado.innerHTML = '';
-    resultado.appendChild(formulario);
-  });
-}
-
-
-// document.getElementById("instructor").addEventListener("change", function() {
-//   var formEstudiante = document.getElementById("form-estudiante");
-//   var instructorSeleccionado = this.value;
-
-//   // Habilitar o deshabilitar el formulario de estudiantes según la selección del instructor
-//   if (instructorSeleccionado === "") {
-//       formEstudiante.style.display = "none";
-//   } else {
-//       formEstudiante.style.display = "block";
-//   }
-// });

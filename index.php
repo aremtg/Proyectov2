@@ -23,13 +23,15 @@ if (is_file('./views/'.$_GET['vista'].'.php') && $_GET['vista'] != 'login') {
 }
 
 // Muestra el footer solo si la vista no es la página de inicio de sesión
-if ($_GET['vista'] != 'login') {
+if ($_GET['vista'] != 'login' && $_GET['vista'] != '404error' ) {
+    if (is_file('./views/'.$_GET['vista'].'.php')) {
     ?>  
     </div>
 <?php
     include('./includes/footer.php');
 ?>
 <?php
+    }
 }
 ?>
 </body>

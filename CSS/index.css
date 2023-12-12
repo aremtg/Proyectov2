@@ -143,7 +143,7 @@ a img,
     z-index: 300;
     transform: translateY(38px);
     padding: 3px;
-    background-color: rgba(190, 190, 190, 0.678);
+    background-color: rgba(255, 255, 255, 0.678);
     color: #323232;
     font-size: 12px;
     border-radius: 4px;
@@ -443,82 +443,6 @@ a img,
     text-align: center;
 }
 
-/* ---------------------------------------------------------- */
-/* ---------------------esto no se usa por ahora------------------------------------- */
-.listas {
-    color: #dd1919;
-    display: flex;
-}
-
-/*dropdown*/
-.drop_list {
-    border: 1px solid rgb(236, 82, 82);
-    display: none;
-
-}
-
-.drop_list a {
-    color: #fff;
-    display: flex;
-    padding: 10px;
-}
-
-.drop_list a:hover {
-    background: rgba(255, 255, 255, 0.425);
-    color: #fff;
-}
-
-.drop_list.active {
-    display: block;
-}
-
-.drop_arrow {
-    transition: transform .3s;
-}
-
-.drop_arrow--rotate {
-    transform: rotate(180deg);
-}
-
-/*segundo dropdown*/
-.drop_list_product {
-    border: 1px solid rgb(236, 82, 82);
-    display: none;
-}
-
-.drop_list_product a {
-    color: #fff;
-    display: flex;
-    padding: 10px;
-}
-
-.drop_list_product a:hover {
-    background: rgba(255, 255, 255, 0.425);
-    color: #fff;
-}
-
-.drop_list_product.active2 {
-    display: block;
-}
-
-.drop_arrow2 {
-    transition: transform .3s;
-}
-
-.drop_arrow--rotate2 {
-    transform: rotate(180deg);
-}
-
-.info_completa {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px;
-    background: red;
-    border-radius: 5px;
-
-}
-
 .info_empresa {
     display: flex;
     flex-direction: column;
@@ -574,7 +498,7 @@ a img,
     .salir_a {
         display: none;
     }
-
+   
     .container_nav {
         justify-content:space-between;
         margin-top: 0;

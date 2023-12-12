@@ -46,18 +46,22 @@ date_default_timezone_set("America/Bogota");
             <textarea id="motivo" rows="4" cols="50"></textarea>
         </div>
     </div>
-  
-    <div class="resultado">
-        <h1>Aqui se generara su permiso</h1>
+  <div class='is-flex flex-wrap '>
+     <div class="resultado ">
+            <form method="POST" action="./php/cargarImagen.php" enctype="multipart/form-data">
+                <input type="hidden" name="imagen_generada" value='' />
+                <button id="botonEnviar" type="submit" class='my-button button-clr-morado'>Enviar Imagen</button>
+            </form>
     </div>
- <div class="box-button">    
+    <div class="box-button">    
             <a href="index.php?vista=datos_permisos" class="my-button button-clr-morado">
-                <input type="image" src="../imagenes/registro-icon.svg" id="registro-aprendiz" alt="">
                 <label for="registro-aprendiz">Ver datos</label>
             </a>
                 <button class="btn-generar-permiso my-button button-clr-morado" onclick="generarPermiso()">Generar</button>
-                <button class="btn-cancelar-permiso my-button button-clr-morado" onclick="cancelarPermiso()">Cancelar</button>
+                <!-- <button class="btn-cancelar-permiso my-button button-clr-morado" onclick="cancelarPermiso()">Cancelar</button> -->
     </div>
+  </div>
+   
 </div>
     
    
