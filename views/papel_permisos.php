@@ -29,7 +29,7 @@ date_default_timezone_set("America/Bogota");
         <div class="div-ficha-ambiente">
             <div>
                 <label for="ficha">Ficha:</label>
-                <input type="text" id="ficha" name="icha"/>
+                <input type="text" id="ficha" name="ficha"/>
             </div>
             <div>
                 <label for="ambiente">Ambiente:</label>
@@ -46,18 +46,18 @@ date_default_timezone_set("America/Bogota");
             <textarea id="motivo" rows="4" cols="50"></textarea>
         </div>
     </div>
-  <div class='is-flex flex-wrap '>
-     <div class="resultado ">
+  <div class=' is-flex is-flex-direction-column is-justify-content-center p-3'>
+     <div class="resultado py-3">
             <form method="POST" action="./php/cargarImagen.php" enctype="multipart/form-data">
                 <input type="hidden" name="imagen_generada" value='' />
-                <button id="botonEnviar" type="submit" class='my-button button-clr-morado'>Enviar Imagen</button>
+                <button id="botonEnviar" type="submit" class='my-button button-clr-azul'>Enviar Permiso</button>
             </form>
     </div>
     <div class="box-button">    
             <a href="index.php?vista=datos_permisos" class="my-button button-clr-morado">
                 <label for="registro-aprendiz">Ver datos</label>
             </a>
-                <button class="btn-generar-permiso my-button button-clr-morado" onclick="generarPermiso()">Generar</button>
+                <button class="btn-generar-permiso my-button button-clr-verde" onclick="generarPermiso()">Generar</button>
                 <!-- <button class="btn-cancelar-permiso my-button button-clr-morado" onclick="cancelarPermiso()">Cancelar</button> -->
     </div>
   </div>

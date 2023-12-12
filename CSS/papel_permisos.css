@@ -1,6 +1,7 @@
 @import "base.css";
 .cont_generador{
     display: flex;
+    align-self: center;
     justify-content: center;
     flex-wrap: wrap;
 }
