@@ -1,6 +1,6 @@
 
 <article class="panel-heading"> 
-    <h3 class="" >Nuevo Aprendiz</h3>
+    <h3 class="" >NUEVO APRENDIZ</h3>
     <p class="">Completa el formulario para registrar el nuevo aprendiz</p>     
 </article>
 

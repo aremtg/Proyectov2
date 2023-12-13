@@ -44,7 +44,7 @@ $check = mysqli_query($db, $sql_check);
         if($guardar){
 
             $_SESSION['titulada'] = "
-                <div class='message is-success title is-5 m-0'>
+                <div class='message title is-5 m-0'>
                     <div class='message-header'>
                         <p>Registro Exitoso!</p>
                     </div>

@@ -9,14 +9,13 @@ require_once('../php/conexion.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería de Imágenes</title>
-    <!-- Enlaza aquí tus estilos CSS -->
+    <title>Permisos</title>
     <link rel="stylesheet" href="../css/aplicacionPermiso.css">
     <link rel="stylesheet" href="../css/bulma.min.css">
 </head>
 <body>
 <div class="contenedor_contenido">
- <div class="is-flex flex-wrap ">
+ <div class="is-flex is-flex-wrap-wrap ">
         <?php
         $result = $db->query("SELECT imagenes FROM imagenes_tabla");
 
@@ -24,11 +23,11 @@ require_once('../php/conexion.php');
             while ($fila = $result->fetch_assoc()) {
                 $imagen = $fila['imagenes'];
                 echo '<div class="">
-                <img width="auto" class="" src="'.($imagen) . '" />
+                <img width="200px" class="" src="'.($imagen) . '" />
                 </div>';
             }
         } else {
-            echo '<div class="is-flex has-text-primary">
+            echo '<div class="is-flex has-text-primary has-text-centered">
             <h1>No existen imágenes en la base de datos.</h1>
             </div>';
         }

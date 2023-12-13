@@ -1,13 +1,13 @@
 @import "base.css";
-.message.is-success {
-    background-color: var(--verde-sena);
-    width: max-content;
-    align-self: center;
-}
 .message.is-success .message-header {
     background-color: #02ff0c;
     color: #000;
 }
+
+.message-body {
+    max-width: 300px; 
+    word-wrap: break-word;
+  }
 /* Estilos de la tarjeta del modal */
 .modal-card {
     border-radius: 10px;
@@ -46,7 +46,7 @@
 }
 
 @media (max-width: 650px) {
-    title.is-5 {
+    .title.is-5 {
         font-size: 1rem;
     }
     .message-body.is-size-6 {

@@ -1,4 +1,4 @@
-<article class="panel-heading mb-5"> 
+<article class="panel-heading"> 
 
         <h3 class="">
         REGISTROS
@@ -7,7 +7,7 @@
                 Todos los registros!
         </p>     
 </article>
-<div class="scroll-tabla">
+<div >
     <?php if(isset($_SESSION['delete'])): ?>
         <div class='message is-danger'>
             <?= $_SESSION['delete'];?>

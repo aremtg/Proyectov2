@@ -1,10 +1,9 @@
     <article class="panel-heading"> 
-
         <h3 class="">
         APRENDICES
         </h3>
         <p class="">
-            Aprendices Activos!
+        Aprendices Activos!
         </p>     
 
     </article>

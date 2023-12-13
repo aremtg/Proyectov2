@@ -1,6 +1,6 @@
 <article class="panel-heading"> 
     <h3 class="is-size-2">
-        BUSCAR USUARIO
+        Buscar usuario
     </h3>
 
     <p class="is-size-6">

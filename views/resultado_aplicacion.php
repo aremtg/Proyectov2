@@ -42,11 +42,12 @@ if(count($errores)==0){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/bulma.min.css">
         <link rel="stylesheet" href="../css/aplicacion.css">
+        <link rel="stylesheet" href="../css/base.css">
         <title>Aprendiz</title>
     </head>
     <body>
-    <div class="contenido">
-        <div class="ventana_2 box">
+    <div class="contenedor_contenido ">
+        <div class="box">
             <article class="panel-heading mb-3"> 
                 <div class="is-flex">
                     <p class="" >Datos del aprendiz</p>
@@ -112,7 +113,7 @@ if(count($errores)==0){
             </div>
 
             <div class="">
-                <a class="button is-link" href="../php/nuevo_registro.php">Nuevo registro</a>
+                <a class="my-button button-clr-morado is-link" href="../php/nuevo_registro.php">Nuevo registro</a>
             </div>
         </div>
     </div>

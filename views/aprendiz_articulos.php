@@ -19,13 +19,16 @@ $check = mysqli_query($db, $sql);
 if(mysqli_num_rows($check)==1){
     $datos = mysqli_fetch_assoc($check);
 }?>
+<div class='box'>
 
+
+</div>
 <article class="panel-heading"> 
-    <h3 class="" >Datos del aprendiz</h3>
+    <h3 class="" >DATOS DEL APRENDIZ</h3>
     <p class="">Registrado por <?=$datos['nombre usuario'] ?> </p>     
 </article>
 
-<div class="mt-3 is-flex">
+<div class="mt-3 is-flex box">
     <div class="columns p-4">
         <div class="column p-0">
             <h1 class="title is-6 m-0">Tipo de Documento</h1>
@@ -44,7 +47,7 @@ if(mysqli_num_rows($check)==1){
     </div>
 </div>
 
-<div>
+<div class="mt-3 is-flex box">
     <div class="columns p-4">
     <div class="column p-0">
             <h1 class="title is-6 m-0">Apellidos</h1>
@@ -62,7 +65,7 @@ if(mysqli_num_rows($check)==1){
         </div>
     </div>
 </div>
-<div>
+<div class="mt-3 is-flex box">
     <div class="columns p-4">
     <div class="column p-0">
             <h1 class="title is-6 m-0">Titulada</h1>
@@ -88,7 +91,7 @@ if(mysqli_num_rows($check)==1){
         <h3 class="is-size-6 mt-2"></h3>     
 </article>
 
-<d|iv class="mt-3">
+<div class="mt-3">
     <div class="columns p-4">
         <div class="column p-0">
             <h1 class="title is-6 m-0">Articulo 1</h1>
@@ -124,6 +127,5 @@ if(mysqli_num_rows($check)==1){
 </div>
 
 <?php include('./includes/btn_back.php'); ?>
-
 
 

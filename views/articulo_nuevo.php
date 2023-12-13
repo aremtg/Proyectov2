@@ -1,4 +1,4 @@
-<article class="panel-heading mb-5"> 
+<article class="panel-heading"> 
     <h3 class="" >ARTICULOS</h3>
     <p class="">
         Articulos registrados!

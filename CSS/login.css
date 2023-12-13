@@ -45,16 +45,11 @@ body{
     gap: .5rem;
 }
 .logos-login .saci {
-    color: var(--color-logo);
+    color: var(--color-verde);
     font-size: 35px;
     font-weight: 800;
 }
-.logos-login .separa_logos{
-    width: 4px;
-    background-color: rgb(85, 84, 84);
-    height: 50px;
-    border-radius: 5px;
-}
+
 .logos-login img {
     width: 60px;
 }

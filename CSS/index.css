@@ -59,8 +59,7 @@
     font-size: 30px;
     font-weight: 800;
 }
-
-.logos-nav .separa_logos {
+.separa_logos {
     width: 3px;
     background-color: rgb(85, 84, 84);
     height: 50px;
@@ -235,7 +234,6 @@ a img,
 
 /* --------comienza home--------- */
 .panel-heading {
-    background: none;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -252,7 +250,7 @@ a img,
     font-weight: 800;
     margin-top: -10px;
 }
-
+/* ----------------------------- */
 .panel_iconos {
     display: flex;
     align-items: center;
@@ -454,9 +452,6 @@ a img,
 
 /* ---------------------------------------------------------------- */
 
-#contenido {
-    width: 1200px;
-}
 .error {
     color: #ed1f1f;
     font-size: 1rem;
@@ -504,6 +499,9 @@ a img,
         margin-top: 0;
         margin-bottom: 1rem;
     }
+    .logos-nav .saci{
+        font-size: 24px;
+    }
     .contenedor_contenido {
      margin-top: 104px;
     }
@@ -515,4 +513,3 @@ a img,
         width:auto;
     }
 }
-

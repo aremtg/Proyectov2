@@ -26,7 +26,7 @@
             </a>
         </li>
     </ul>
-<div class="scroll-tabla">
+<div>
 <?php 
     if(!isset($_GET['page'])){
         $pagina = 1;

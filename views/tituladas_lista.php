@@ -21,7 +21,7 @@
         <?= $_SESSION['titulada']; ?>
     </div>
 <?php elseif (isset($_SESSION['titulada-error'])) : ?>
-    <div class='message is-danger '>
+    <div class='message is-danger'>
         <?= $_SESSION['titulada-error']; ?>
     </div>
 <?php endif; ?>
@@ -44,7 +44,7 @@
         </a>
     </li>
 </ul>
-<div class="scroll-tabla">
+<div>
     <?php
     if (!isset($_GET['page'])) {
         $pagina = 1;
