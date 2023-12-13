@@ -3,7 +3,8 @@ date_default_timezone_set("America/Bogota");
 ?>
 <article class="panel-heading"> 
     <h3 class="">
-        PERMISOS
+    
+    PERMISOS
     </h3>
     <p class="">
         Aqui podras generar un papel de permiso para salida de Aprendices.
