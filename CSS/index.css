@@ -435,23 +435,6 @@ a img,
     border-bottom: 2px solid var(--verde_sena);
 }
 
-/* ------------------------ */
-.no_hay_registros {
-    width: 100%;
-    text-align: center;
-}
-
-.info_empresa {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding: 10px;
-    margin-left: 20px;
-    width: 350px;
-}
-
-/* ---------------------------------------------------------------- */
-
 .error {
     color: #ed1f1f;
     font-size: 1rem;
@@ -509,7 +492,7 @@ a img,
         width: 150px;
     }
     /* permiso */
-    .hoja, .form-permiso{
+    .hoja{
         width:auto;
     }
 }

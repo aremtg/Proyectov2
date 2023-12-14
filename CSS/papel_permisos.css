@@ -1,22 +1,14 @@
 @import "base.css";
 .cont_generador{
     display: flex;
-    align-self: center;
-    justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 .hoja {
     padding: 10px;
     border-radius: 5px;
     border: 2px solid rgb(196, 196, 196);
-    border-top: none;
-    background-color: white;
-}
-.form-permiso{
-    width: 400px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgb(196, 196, 196);
     border-top: none;
     background-color: white;
 }

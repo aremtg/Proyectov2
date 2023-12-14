@@ -16,21 +16,51 @@ date_default_timezone_set("America/Bogota");
             <div class="fecha"><?php  ?></div>
         </div>
         <div>
-            <label for="instructor-lista">Instructor:</label>
-                <select id="instructor-lista">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+            <?php
+                $sql = "SELECT DISTINCT id_instructor, nombre FROM instructores";
+                $resultado = $db->query($sql);
+
+                if ($resultado->num_rows > 0) {
+                    echo '<label for="instructor">Seleccionar Instructor:</label>';
+                    echo '<select name="instructor" id="instructor">';
+                    while ($fila = $resultado->fetch_assoc()) {
+                        $id_instructor = $fila['id_instructor'];
+                        $nombre_instructor = $fila['nombre'];
+
+                        echo '<option value="' .$id_instructor . '">' . $nombre_instructor . '</option>';
+                        
+                    }
+                    echo '</select>';
+                
+                } else {
+                    echo 'No hay instructores disponibles, ve a agregar un instructor </br>';
+                }
+            ?>
+            </div>
+            <div>
+               <!-- pendiente, no me deja ver los aprendices segun elinstructor que elija -->
+                <?php
+                $sql = "SELECT id_instructor, nombre_aprendiz FROM relacion_instructor_aprendiz";
+                $resultado = $db->query($sql);
+
+                if ($resultado->num_rows > 0) {
+                    echo '<label for="aprendiz-lista">Aprendiz:</label>';
+                    echo '<select name="aprendiz" id="aprendiz-lista">';
+                    while ($fila = $resultado->fetch_assoc()) {
+                         
+                        $nombre_aprendiz = $fila['nombre_aprendiz'];
+
+                        echo '<option value="' .$id_instructor . '">' . $nombre_aprendiz . '</option>';
+                        
+                    }
+                    echo '</select>';
+                
+                } else {
+                    echo 'No hay aprendices asignados a este instructor...</br>';
+                }
+            ?>
                 </select>
-        </div>
-        <div>
-            <label for="aprendiz-lista">Aprendiz:</label>
-                <select id="aprendiz-lista">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
-                </select>
-        </div>
+            </div>
         <div>
             <label for="titulada">Titulada:</label>
             <input type="text" id="titulada" name="name_titulada" />
