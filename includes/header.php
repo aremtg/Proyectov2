@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="./css/index.css"> <!-- Enlaza el archivo de estilo index.css -->
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/jquery_validate.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
-
-    <title>Control de Ingreso</title> <!-- Establece el título de la página web -->
+   <title>Control de Ingreso</title> <!-- Establece el título de la página web -->
 </head>
 <body>
