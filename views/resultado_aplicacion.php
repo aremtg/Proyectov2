@@ -42,7 +42,7 @@ if(count($errores)==0){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/bulma.min.css">
         <link rel="stylesheet" href="../css/aplicacion.css">
-        <link rel="stylesheet" href="../css/base.css">
+        
         <title>Aprendiz</title>
     </head>
     <body>

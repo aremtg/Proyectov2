@@ -16,65 +16,117 @@ date_default_timezone_set("America/Bogota");
             <div class="fecha"><?php  ?></div>
         </div>
         <div>
-            <?php
-                $sql = "SELECT DISTINCT id_instructor, nombre FROM instructores";
-                $resultado = $db->query($sql);
+        <?php
+// Definir la variable $instructorSelected e inicializarla con un valor por defecto
+$instructorSelected = null;
 
-                if ($resultado->num_rows > 0) {
-                    echo '<label for="instructor">Seleccionar Instructor:</label>';
-                    echo '<select name="instructor" id="instructor">';
-                    while ($fila = $resultado->fetch_assoc()) {
-                        $id_instructor = $fila['id_instructor'];
-                        $nombre_instructor = $fila['nombre'];
+// Verificar si el formulario se ha enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener el valor seleccionado del instructor desde $_POST
+    $instructorSelected = isset($_POST['instructor']) ? limpiar_cadena($_POST['instructor']) : null;
 
-                        echo '<option value="' .$id_instructor . '">' . $nombre_instructor . '</option>';
-                        
-                    }
-                    echo '</select>';
-                
-                } else {
-                    echo 'No hay instructores disponibles, ve a agregar un instructor </br>';
-                }
-            ?>
-            </div>
-            <div>
-               <!-- pendiente, no me deja ver los aprendices segun elinstructor que elija -->
-                <?php
-                $sql = "SELECT id_instructor, nombre_aprendiz FROM relacion_instructor_aprendiz";
-                $resultado = $db->query($sql);
+    // Aquí puedes realizar otras acciones con el valor de $instructorSelected si es necesario
+}
+?>
 
-                if ($resultado->num_rows > 0) {
-                    echo '<label for="aprendiz-lista">Aprendiz:</label>';
-                    echo '<select name="aprendiz" id="aprendiz-lista">';
-                    while ($fila = $resultado->fetch_assoc()) {
-                         
-                        $nombre_aprendiz = $fila['nombre_aprendiz'];
+<!-- Formulario -->
+<form action="" method="post">
+    <label for="instructor">Seleccionar Instructor:</label>
+    <select name="instructor" id="instructor">
+    <option value="" disabled selected>Selecciona una opción</option>
+        <?php
+        // Obtener la lista de instructores (como en tu primer bloque de código)
+        $sqlInstructores = "SELECT DISTINCT id_instructor, nombre FROM instructores";
+        $resultadoInstructores = $db->query($sqlInstructores);
 
-                        echo '<option value="' .$id_instructor . '">' . $nombre_aprendiz . '</option>';
-                        
-                    }
-                    echo '</select>';
-                
-                } else {
-                    echo 'No hay aprendices asignados a este instructor...</br>';
-                }
-            ?>
-                </select>
-            </div>
-        <div>
-            <label for="titulada">Titulada:</label>
-            <input type="text" id="titulada" name="name_titulada" />
-        </div>
-        <div class="div-ficha-ambiente">
-            <div>
-                <label for="ficha">Ficha:</label>
-                <input type="text" id="ficha" name="ficha"/>
-            </div>
-            <div>
-                <label for="ambiente">Ambiente:</label>
-                <input type="text" id="ambiente" name="name_ambiente" />
-            </div>
-        </div> 
+        while ($filaInstructores = $resultadoInstructores->fetch_assoc()) {
+            $idInstructor = $filaInstructores['id_instructor'];
+            $nombreInstructor = $filaInstructores['nombre'];
+
+            // Marcamos la opción seleccionada si coincide con el valor en $instructorSelected
+            $selected = ($instructorSelected == $idInstructor) ? 'selected' : '';
+
+            echo '
+            <option value="' . $idInstructor . '" ' . $selected . '>' . $nombreInstructor . '</option>';
+        }
+        ?>
+    </select>
+
+    <button type="submit" name="submit" class="consultar-button">
+    <span>Consultar</span>
+    </button>
+</form>
+<?php
+// Obtener el id_instructor seleccionado del formulario
+$instructorSelected = isset($_POST['instructor']) ? $_POST['instructor'] : null;
+
+// Definir una variable para almacenar los nombres de aprendices relacionados
+$nombresAprendices = array();
+
+// Verificar si se ha seleccionado un instructor
+if (!is_null($instructorSelected)) {
+    // Consulta SQL para obtener los nombres de aprendices relacionados con el id_instructor
+    $sqlAprendices = "SELECT nombre_aprendiz FROM relacion_instructor_aprendiz WHERE id_instructor = $instructorSelected";
+    $resultadoAprendices = $db->query($sqlAprendices);
+
+    // Verificar si hay resultados
+    if ($resultadoAprendices->num_rows > 0) {
+        while ($filaAprendices = $resultadoAprendices->fetch_assoc()) {
+            $nombresAprendices[] = $filaAprendices['nombre_aprendiz'];
+        }
+    }
+}
+?>
+<!-- Mostrar opciones de aprendices relacionados -->
+<?php
+if (!empty($nombresAprendices)) {
+    echo '<select name="aprendiz" id="aprendiz-lista">
+    <option value="" disabled selected>Selecciona una opción</option>';
+    
+    foreach ($nombresAprendices as $nombreAprendiz) {
+        echo '<option value="' . $nombreAprendiz . '">' . $nombreAprendiz . '</option>';
+    }
+    echo '</select>';
+} else {
+    echo '<div class="modal-advertencia">
+    <strong class="has-text-danger">No hay aprendices!</strong></div>';
+}
+?>
+<?php 
+       // Definir variables para almacenar los valores
+$tituladaValue = $fichaValue = $ambienteValue = '';
+
+// Verificar si se ha seleccionado un instructor
+if (!is_null($instructorSelected)) {
+    // Consulta SQL para obtener los datos del instructor seleccionado
+    $sqlInstructorData = "SELECT ntitulada, ficha, ambiente FROM instructores WHERE id_instructor = $instructorSelected";
+    $resultadoInstructorData = $db->query($sqlInstructorData);
+
+    // Verificar si hay resultados
+    if ($resultadoInstructorData->num_rows > 0) {
+        $filaInstructorData = $resultadoInstructorData->fetch_assoc();
+        $tituladaValue = $filaInstructorData['ntitulada'];
+        $fichaValue = $filaInstructorData['ficha'];
+        $ambienteValue = $filaInstructorData['ambiente'];
+    }
+}
+?>
+
+<!-- Mostrar campos de instructores -->
+<div>
+    <label for="titulada">Titulada:</label>
+    <input type="text" id="titulada" name="name_titulada" value="<?php echo $tituladaValue; ?>" />
+</div>
+<div class="div-ficha-ambiente">
+    <div>
+        <label for="ficha">Ficha:</label>
+        <input type="text" id="ficha" name="ficha" value="<?php echo $fichaValue; ?>" />
+    </div>
+    <div>
+        <label for="ambiente">Ambiente:</label>
+        <input type="text" id="ambiente" name="name_ambiente" value="<?php echo $ambienteValue; ?>" />
+    </div>
+</div>
         <div class="div-hora">
             <label for="hora">Hora de salida:</label>
             <div id="hora" class="hora"></div>

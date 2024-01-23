@@ -1,7 +1,7 @@
     <?php ob_start() ?>
     <div class="container_nav"><!--Abrimos un contenedor para la parte del navegador que esta a la izquierda-->
         <div class="logos-nav">
-            <h1 class="saci">SSACI</h1><span class="separa_logos"></span><img class="logoSena" src="images/logoSena.svg" alt="">
+           <img class="logoSena" src="images/logoSena.svg" alt=""> <span class="separa_logos"></span><h1 class="saci">SSACI</h1>
         </div>
         
             <nav class="nav"  id="nav-menu">

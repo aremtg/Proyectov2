@@ -12,32 +12,32 @@
             $totalRegistro = obtenerRegistros($db,'registro','id_registro',null);
         ?>
 
-<div class="panel_iconos"><!--Abrimos un contenedor para los botones de navegacion-->
-    <a href="index.php?vista=usuarios_lista" class="iconos">
+<div class="panel_targetas"><!--Abrimos un contenedor para las targetas del home-->
+    <a href="index.php?vista=usuarios_lista" class="targetas">
         <h2 class="">USUARIOS</h2>
-        <p class=""><?= $totalUsuarios; ?> Registrados</p>
+        <p class=""><span><?= $totalUsuarios; ?></span> Registrados</p>
     </a>
-    <a href="index.php?vista=aprendices_lista" class="iconos">
+    <a href="index.php?vista=aprendices_lista" class="targetas">
         <h2 class="titulo_productos">APRENDICES</h2>
-        <p class=""><?= $totalAprendiz; ?> Registrados</p>
+        <p class=""><span><?= $totalAprendiz; ?></span> Registrados</p>
     </a>
 
-    <a href="index.php?vista=tituladas_lista" class="iconos">
+    <a href="index.php?vista=tituladas_lista" class="targetas">
         <h2 class="titulo_productos">TITULADAS</h2>
-        <p class=""><?= $totaltitulada; ?> Registrados</p>
+        <p class=""><span><?= $totaltitulada; ?></span> Registrados</p>
     </a>
 
-    <a href="index.php?vista=articulos" class="iconos">
+    <a href="index.php?vista=articulos" class="targetas">
         <h2 class="titulo_productos">ARTICULOS</h2>
-        <p class=""><?= $totalarticulo; ?> Registrados</p>
+        <p class=""><span><?= $totalarticulo; ?></span> Registrados</p>
     </a>
 
-    <a href="index.php?vista=articulos" class="iconos">
+    <a href="index.php?vista=articulos" class="targetas">
         <h2 class="titulo_productos">REGISTROS</h2>
-        <p class=""><?= $totalRegistro; ?> Registrados</p>
+        <p class=""><span><?= $totalRegistro; ?></span> Registrados</p>
     </a>
     
-</div><!--cerramos contenedor para los botones de navegacion-->
+</div><!--cerramos contenedor para las targetas del home-->
 
 <div class="box-button">
     <a href="./views/aplicacionPermisos.php" target="_blank" class="my-button button-clr-morado">Aplicacion Permisos</a>

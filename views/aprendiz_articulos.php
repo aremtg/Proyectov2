@@ -19,13 +19,9 @@ $check = mysqli_query($db, $sql);
 if(mysqli_num_rows($check)==1){
     $datos = mysqli_fetch_assoc($check);
 }?>
-<div class='box'>
-
-
-</div>
 <article class="panel-heading"> 
     <h3 class="" >DATOS DEL APRENDIZ</h3>
-    <p class="">Registrado por <?=$datos['nombre usuario'] ?> </p>     
+    <p class="">Registrado por  <h1><?=$datos['nombre usuario'] ?></h1> </p>     
 </article>
 
 <div class="mt-3 is-flex box">

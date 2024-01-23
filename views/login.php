@@ -26,7 +26,7 @@
         <?php endif;  ?>
         <form action="" method="POST" autocomplete="off" id="form-login">
             <div class="logos-login">
-        <h1 class="saci">SSACI</h1><span class="separa_logos"></span><img class="logoSena" src="images/logoSena.svg" alt="">
+        <img class="logoSena" src="images/logoSena.svg" alt=""><span class="separa_logos"></span><h1 class="saci">SSACI</h1>
         </div>
         <div class="field">
     <div class="control has-icons-left">

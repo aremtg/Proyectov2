@@ -168,7 +168,7 @@
     </div>
 
         <div class="box-button">
-            <button class="my-button button-clr-azul" type="submit" value="Registrar"><img src="./images/save.png" alt="" class="mr-2">Registrar</button>
+            <button class="my-button button-clr-verde" type="submit" value="Registrar"><img src="./images/save.png" alt="" class="mr-2">Registrar</button>
         </div>
 
 </form>    

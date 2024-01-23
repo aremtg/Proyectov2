@@ -172,9 +172,8 @@ if (!empty($datos_user)) :
                                     <input class="input" type="password" name="clave_new" pattern="[0-9a-zA-ZáéíóúÁÉÍÓÚñÑ ]{6,80}" id="clave_cambiada" disabled>
                                 </div>
                             </div>
-                            
-                            
-                            <div class="column is-flex">
+                           
+                            <div class="column">
                                 <label for="rol" class="label">Rol</label>
                                 <div class="control select ">
                                     <select name="tiporol">
@@ -182,16 +181,11 @@ if (!empty($datos_user)) :
                                         <option value="Administrador">Administrador</option>
                                         <option value="Celador">Celador</option>
                                     </select>
-                                </div>
-                                <div class="control is-flex">
-                                    <label class="label">Imagen de perfil</label>
-                                    <input type="file" name="imagen_de_perfil" accept="image/*">
-                                </div>
+                                </div> 
                             </div>
-                            <div class="box-button">
-                                <button type="submit" class="my-button button-clr-azul"><img src="./images/save.png" class="mr-1"> Guardar Cambios</button>
-                            </div>
-                        </div>
+                        </div> <footer class="box-button">
+                               <button type="submit" class="my-button button-clr-azul"><img src="./images/save.png" class="mr-1"> Guardar Cambios</button>
+                            </footer>
                     </form>
                 </section>
             </div>

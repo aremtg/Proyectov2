@@ -1,17 +1,51 @@
 
 <div>
 <h1 class='panel-heading'>Agregar instructor</h1>
-    <form action="./php/guardarDatosPermisos.php" class="box" method="POST">
-        <label for="nombreInstructor">Nombre del Instructor:</label>
-        <input type="text" id="nombreInstructor" name="nombre_instructor" required><br><br>
+<form action="./php/guardarDatosPermisos.php" class="box" method="POST">
 
-        <label for="contacto">contacto:</label>
-        <input type="text" id="contacto" class="input-form" name="contacto" placeholder="contacto" required><br><br>
+<div class="field">
+    <label class="label" for="nombreInstructor">Nombre del Instructor:</label>
+    <div class="control">
+        <input class="input" type="text" id="nombreInstructor" name="nombre_instructor" required>
+    </div>
+</div>
 
-        <div class="box-button">
-            <input type="submit" class="my-button button-clr-azul" value="Guardar">
-        </div>
-    </form>
+<div class="field">
+    <label class="label" for="contacto">Contacto:</label>
+    <div class="control">
+        <input class="input" type="text" id="contacto" name="contacto" placeholder="Contacto" required>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label" for="ntitulada">Titulada:</label>
+    <div class="control">
+        <input class="input" type="text" id="ntitulada" name="ntitulada" placeholder="Titulada" required>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label" for="ficha">Ficha:</label>
+    <div class="control">
+        <input class="input" type="number" id="ficha" name="ficha" placeholder="Ficha" required>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label" for="ambiente">Ambiente:</label>
+    <div class="control">
+        <input class="input" type="text" id="ambiente" name="ambiente" placeholder="Ambiente" required>
+    </div>
+</div>
+
+<div class="field">
+    <div class="box-button">
+    <input type="submit" class="my-button button-clr-azul" value="Guardar">
+    </div>
+</div>
+
+</form>
+
 </div>
 <div>
  <h1 class='panel-heading'>Agregar aprendiz a un instructor</h1>
@@ -36,5 +70,5 @@
     <div class="box-button">
         <input type="submit" value="Agregar Aprendiz" class='my-button button-clr-azul'>
     </div>
-</form>   
+</form>  
 </div>

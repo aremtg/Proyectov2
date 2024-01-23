@@ -9,12 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingresos</title>
     <link rel="stylesheet" href="../css/aplicacion.css">
+    <link rel="stylesheet" href="../css/bulma.min.css">
 </head>
 <body>
         <form action="./resultado_aplicacion.php" method="POST" autocomplete="off" >
-            <label for="input-doc" class="label">Ingrese el documento del aprendiz</label>
-                    <input class="input" id="input-doc" type="text" placeholder="# Documento" name="consulta" >
-                <button type="submit" class="btn-ingresar">Ingresar</button>
+            
+        <article class="panel-heading mb-3"> 
+            <label for="input-doc" class="label is-flex">Ingrese el documento del aprendiz</label>
+        </article>
+        <input class="input" id="input-doc" type="text" placeholder="# Documento" name="consulta" >
+
+        <button type="submit" class="my-button btn-ingresar is-flex">Ingresar</button>      
+               
 
             <?php echo isset($_SESSION['errores']) ? mostrarAlerta($_SESSION['errores'],'documento'):"" ?>
         </form>

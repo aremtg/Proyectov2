@@ -1,23 +1,4 @@
 
-:root {
-    --fondo-tema:rgb(255, 255, 255);
-    --fondo-nav: #7209b7ff;
-    --modo-noche:#0b0014ff;
-    --login-registro: rgba(255, 255, 255, 0.61);
-    /* este es el color de el logo ssaci y otras*/
-    --color-logo: #7209b7ff;
-
-    --fondo-bl: rgb(255, 255, 255);
-    --color-fecha: rgb(44, 119, 94);
-    --color-hoja: #ffffff9a;
-    --color-inputs:  rgb(255, 255, 255);
-
-    --sombra: -2px 3px 4px 0px #dadada85;
-    --sombra-cajas: -2px 3px 4px 0px rgba(0, 0, 0, 0.301);
-    --sombra-dentro: inset 4px 4px 9px #bebebe;
-
-    --fondo-footer:rgba(153, 153, 153, 0.76);
-}
 footer{
     display: flex;
     justify-content: center;

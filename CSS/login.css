@@ -26,8 +26,8 @@ body{
     width: 340px;
     height: max-content;
     padding: 15px;
-    border-radius: 50px;
-    background: var(--login-registro);
+    border-radius: 1.5rem;
+    background: var(--bg-transparente);
     box-shadow: var(--sombra-cajas);
     display: flex;
     flex-direction: column;
@@ -55,18 +55,11 @@ body{
 }
 /* -------------------- */
 .btn-ingresar {
-    align-self: center;
-    width: 200px;
+    width: 100%;
     background-color: #7209b7;
 }
 
-/* los estilos de los inpust campos estan en base.css */
-form .control-login label img{
-    width: 25px;
-    transform: translateY(9px);
-}
-
 .message{
-    transform: translateY(225px);
+    transform: translateY(-200px);
     position: absolute;
 }
