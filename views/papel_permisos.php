@@ -149,16 +149,16 @@ date_default_timezone_set("America/Bogota");
     <div class=" is-flex is-flex-direction-column is-justify-content-center p-3">
      <div class="resultado py-3">
         <form method="POST" action="./php/cargarImagen.php" enctype="multipart/form-data">
-            <input type="hidden" name="imagen_generada" value="">
+            <input type="hidden" id='permisoGenerado' name="permisoGenerado" value="">
             <button id="botonEnviar" type="submit" class="my-button button-clr-azul">Enviar Permiso</button>
+            <!-- aun no se deja de intentar guardar solo.. -->
         </form>
     </div>
     <div class="box-button">    
             <a href="index.php?vista=datos_permisos" class="my-button button-clr-morado">
-                <label for="registro-aprendiz">Ver datos</label>
+                <span for="registro-aprendiz">Ver datos</span>
             </a>
-                <button class="btn-generar-permiso my-button button-clr-verde" onclick="convertirPermisooAPDF()">Generar</button>
-                 <!-- <button class="btn-cancelar-permiso my-button button-clr-morado" onclick="cancelarPermiso()">Cancelar</button> -->
+                <button class="btn-generar-permiso my-button button-clr-verde" onclick="convertirPermisoAPDF()">Generar</button>
     </div>
   </div>
 </div>

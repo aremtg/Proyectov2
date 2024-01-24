@@ -38,37 +38,35 @@ function cambiaAMPM() {
 cambiaAMPM()
 
 }, 1000);
+document.getElementById('botonEnviar').style.display = 'none';
 
-// ----------------------------------------------------------
-function convertirPermisooAPDF() {
-  // Obtener el formulario que deseas convertir
-  const formulario = document.getElementById('hoja');
+function convertirPermisoAPDF() {
+  // Obtener el permiso que deseas convertir
+  const permiso = document.getElementById('hoja');
 
   // Opciones para la conversión a PDF
   const opciones = {
-    margin: 10,
-    filename: 'formulario.pdf',
+    margin: 1,
+    filename: 'permiso.pdf',
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: { scale: 2 },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
   };
 
-  // Utilizar html2pdf para convertir el formulario a PDF
-  html2pdf(formulario, opciones)
+  // Utilizar html2pdf para convertir el permiso a PDF
+  html2pdf(permiso, opciones)
     .then((pdfOutput) => {
-      // Crear un enlace de descarga
-      const enlaceDescarga = document.createElement('a');
-      enlaceDescarga.href = pdfOutput.output('bloburl');
-      enlaceDescarga.download = 'formulario.pdf';
+      // Obtener la cadena de datos URI del PDF
+      const pdfDataUri = pdfOutput.output('datauristring');
 
-      // Agregar el enlace al cuerpo del documento
-      document.body.appendChild(enlaceDescarga);
+      // Almacenar la cadena de datos URI en el campo oculto
+      document.getElementById('permisoGenerado').value = pdfDataUri;
 
-      // Simular un clic en el enlace para iniciar la descarga
-      enlaceDescarga.click();
+      // Mostrar el botón de enviar
+      document.getElementById('botonEnviar').style.display = 'block';
 
-      // Eliminar el enlace del cuerpo del documento
-      document.body.removeChild(enlaceDescarga);
+      // Enviar el formulario automáticamente
+      document.forms[0].submit();  // Esto enviará el primer formulario en la página (ajusta según tu estructura HTML)
     })
     .catch((error) => {
       console.error('Error al convertir a PDF:', error);

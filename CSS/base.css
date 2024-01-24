@@ -28,7 +28,8 @@ body {
     background-image: var(--gradi-verde);
     display: flex;
     flex-wrap: wrap;
-
+    user-select: auto;
+    
     &::-webkit-scrollbar {
         width: 10px;
     }
