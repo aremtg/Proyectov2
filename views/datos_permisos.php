@@ -54,8 +54,8 @@
         $sql = "SELECT id_instructor, nombre FROM instructores";
         $resultado = $db->query($sql);
         if ($resultado->num_rows > 0) {
-            echo '<label for="instructor">Seleccionar Instructor:</label>';
-            echo '<select name="instructor" id="instructor">';
+            echo '<label for="instructor" class="label" >Seleccionar Instructor:</label>';
+            echo '<select name="instructor" id="instructor" class="my-select">';
             while ($fila = $resultado->fetch_assoc()) {
                 echo '<option value="' . $fila['id_instructor'] . '">' . $fila['nombre'] . '</option>';
             }
@@ -64,7 +64,7 @@
             echo 'No hay instructores disponibles, ve a agregar un instructor </br>';
         }
     ?>
-  <label for="aprendices">Agregar Aprendiz:</label>
+  <label for="aprendices" class="label" >Agregar Aprendiz:</label>
   <input type="text" class="input-form" name="aprendiz" placeholder="Nombre del Aprendiz">
     <br><br>
     <div class="box-button">

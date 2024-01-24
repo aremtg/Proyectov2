@@ -5,9 +5,16 @@
     align-items: center;
     justify-content: center;
 }
-.ejem{
+.my-flex-center{
+    gap: .5rem;
     display: flex;
     align-items: center;
+}
+.my-flex-center .button-icon{
+    border: none;
+    background-color: var(--clr-gris);
+    border-radius: 10px;
+    cursor: pointer;
 }
 .hoja {
     padding: 10px;
@@ -15,6 +22,10 @@
     border: 2px solid rgb(196, 196, 196);
     border-top: none;
     background-color: white;
+}
+.hoja input[type="text"], #motivo, #instructor{
+    font-weight: 700;
+    font-size: 15px;
 }
 .div-fecha {
     text-align: right;
@@ -24,19 +35,6 @@
     font-weight: bold;
     font-size: 20px;
     color: var(--color-logo);
-}
-.hoja label {
-    display: block;
-    font-weight: bold;
-    color: #333;
-} 
-.hoja input[type="text"],
-select{
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    outline: none;
 }
 .div-ficha-ambiente{
     display: flex;
@@ -64,14 +62,10 @@ select{
     cursor: pointer;
     font-weight: bold;
 }
-.periodo:hover {
-    background-color:white;
-    color: blueviolet;
-    border:  2px solid blueviolet;
-} 
 #motivo {
     width: 100%;
-    padding: 8px;
+    padding: 9px 0px 9px 0px;
+    text-indent: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -79,17 +73,4 @@ select{
     outline: none;
 }
 /* ------------------- */
-/* Estilos para el contenedor principal */
-.resultado {
-    display: flex;
-    justify-content: center;
 
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Estilos para el encabezado dentro del contenedor */
-.resultado h1 {
-    font-size: 24px;
-    color: #333; /* Cambia el color a tu preferencia */
-}

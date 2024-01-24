@@ -2,11 +2,11 @@
 require_once('conexion.php');
 require_once('main.php');
 
-if(isset($_POST['imagen_generada'])) {
-    $imgContenido = $_POST['imagen_generada'];
+if(isset($_POST['permisoGenerado'])) {
+    $permiso_generado = $_POST['permisoGenerado'];
     
     //Insertar imagen en la base de datos
-    $insertar = $db->query("INSERT into imagenes_tabla (imagenes, creado) VALUES ('$imgContenido', now())");
+    $insertar = $db->query("INSERT into archivoPermiso (archivo_permiso, creado) VALUES ('$permiso_generado', now())");
     // COndicional para verificar la subida del fichero
     if($insertar){
         echo "Archivo Subido Correctamente.";

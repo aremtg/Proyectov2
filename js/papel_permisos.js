@@ -23,28 +23,22 @@ setInterval(() => {
     boxHora.textContent = hora + ":" + minutos + ":" + segundos;
   }
   // ----------------------------------------------------------
-function cambiaAMPM() {
-  var periodo = document.querySelector(".periodo");
-
-  // Comprobar si la hora actual es menor o igual a 12
-  if (hora < 12) {
-    // Si es verdadero, establecer el contenido del elemento como "a.m"
-    periodo.textContent = "a.m";
-  } else {
-    // Si es falso, establecer el contenido del elemento como "p.m"
-    periodo.textContent = "p.m";
+  function cambiaAMPM() {
+    var periodo = document.querySelector(".periodo");
+    // Comprobar si la hora actual es menor o igual a 12, para controlar el am y pm
+    if (hora < 12) {
+      periodo.textContent = "a.m";
+    } else {
+      periodo.textContent = "p.m";
+    }
   }
-}
-cambiaAMPM()
+  cambiaAMPM()
 
 }, 1000);
-document.getElementById('botonEnviar').style.display = 'none';
 
 function convertirPermisoAPDF() {
-  // Obtener el permiso que deseas convertir
   const permiso = document.getElementById('hoja');
-
-  // Opciones para la conversión a PDF
+  // configuracines, personalizadas para convertir a pdf
   const opciones = {
     margin: 1,
     filename: 'permiso.pdf',
@@ -52,24 +46,18 @@ function convertirPermisoAPDF() {
     html2canvas: { scale: 2 },
     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
   };
+  // Utiliza html2pdf().from() para configurar y generar el PDF
+  html2pdf().from(permiso).set(opciones).outputPdf().then(function(pdfOutput) {
+    // pdfOutput es el objeto PDF generado
+    console.log('PDF generado:', pdfOutput);
 
-  // Utilizar html2pdf para convertir el permiso a PDF
-  html2pdf(permiso, opciones)
-    .then((pdfOutput) => {
-      // Obtener la cadena de datos URI del PDF
-      const pdfDataUri = pdfOutput.output('datauristring');
+    // mostrar una vista previa antes de guardar o imprimir
+    // const blob = new Blob([pdfOutput], { type: 'application/pdf' });
+    // const url = URL.createObjectURL(blob);
+    // window.open(url, '_blank');
+    // Si decides guardar automáticamente:
+     pdfOutput.save();
 
-      // Almacenar la cadena de datos URI en el campo oculto
-      document.getElementById('permisoGenerado').value = pdfDataUri;
-
-      // Mostrar el botón de enviar
-      document.getElementById('botonEnviar').style.display = 'block';
-
-      // Enviar el formulario automáticamente
-      document.forms[0].submit();  // Esto enviará el primer formulario en la página (ajusta según tu estructura HTML)
-    })
-    .catch((error) => {
-      console.error('Error al convertir a PDF:', error);
-    });
+  });
 }
-
+  // html2pdf().from(permiso).set(personalizado).save();
