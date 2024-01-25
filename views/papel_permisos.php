@@ -135,7 +135,7 @@ date_default_timezone_set("America/Bogota");
         </div>
             <div class="div-hora">
                 <label for="hora" class="label" >Hora de salida:</label>
-                    <div id="hora" class="hora"></div><div class="periodo"></div>
+                    <div id="hora" class="hora">00</div><div class="periodo"></div>
             </div>
             <div class="div-motivo">
                 <label for="motivo" class="label" >Motiivo de la salida:</label>
@@ -161,8 +161,13 @@ date_default_timezone_set("America/Bogota");
     </div>
   </div>
 </div>
-<!-- termina el contenedor de generador -->
+<!-- Contenedor para la vista previa del PDF -->
+<div id="pdfViewer"></div>
 
- 
+<!-- termina el contenedor de generador -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="./js/papel_permisos.js"></script>
+
    
 
