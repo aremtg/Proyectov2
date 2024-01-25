@@ -9,7 +9,11 @@
 
 // let fecha = document.querySelector(".fecha");
 // fecha.textContent = diaMes + "/" + mes + "/" + año;
+import jsPDF from 'jspdf';
+import html2pdf from 'html2pdf.js';
+
 document.addEventListener('DOMContentLoaded', function() {
+  
   setInterval(() => {
     let boxHora = document.querySelector(".hora");
     let fechaActual = new Date();
@@ -38,12 +42,34 @@ document.addEventListener('DOMContentLoaded', function() {
   
 });
 
+// function convertirPermisoAPDF() {
+//   const permiso = document.getElementById('hoja');
+//   const opciones = {
+//     margin: 1,
+//     filename: 'permiso.pdf',
+//     image: { type: 'webp', quality: 0.98 },
+//     html2canvas: {
+//       scale: 2
+//     },
+//     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+//   };
+
+//   html2pdf(permiso, opciones)
+//     .then((pdfOutput) => {
+//      console.log(pdfOutput);
+//     })
+//     .catch((error) => {
+//       console.error('Error al convertir a PDF:', error);
+     
+//     });
+// }
+
 function convertirPermisoAPDF() {
   const permiso = document.getElementById('hoja');
 
   // configuracines, personalizadas para convertir a pdf
   const opciones = {
-    margin: 1,
+    margin: 2,
     filename: 'permiso.pdf',
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: { scale: 2 },
@@ -51,7 +77,7 @@ function convertirPermisoAPDF() {
   };
   html2pdf(permiso, opciones)
   .then((pdfOutput) => {
-    mostrarVistaPrevia(pdfOutput);
+    console.log(pdfOutput);
   })
   .catch((error) => {
     console.error('Error al convertir a PDF:', error);
@@ -60,22 +86,130 @@ function convertirPermisoAPDF() {
     alert('Hubo un error al generar el PDF');
   });
 
+window.onload = function() {
+  convertirPermisoAPDF();
+};
 
 }
-// se guarda solo--- este es un problema
-// pero se genera y se ve completo
-// no sirve la vista previa
 
-function mostrarVistaPrevia(pdfOutput) {
-  // Crea una URL de objeto para el PDF generado
-  var pdfDataUri = 'data:application/pdf;base64,' + btoa(pdfOutput);
-  
-  // Carga el PDF en el visor de PDF.js utilizando los métodos open y write
-  var viewerContainer = document.getElementById('pdfViewer');
-  var iframe = document.createElement('iframe');
-  iframe.src = pdfDataUri;
-  iframe.width = '800px';
-  iframe.height = '600px';
-  viewerContainer.innerHTML = '';
-  viewerContainer.appendChild(iframe);
-}
+
+// queda perfecto para pc
+// function convertirPermisoAPDF() {
+//   const permiso = document.getElementById('hoja');
+
+//   // configuracines, personalizadas para convertir a pdf
+//   const opciones = {
+//     margin: 2,
+//     filename: 'permiso.pdf',
+//     image: { type: 'png', quality: 0.98 },
+//     html2canvas: { scale: 2 },
+//     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+//   };
+//   html2pdf(permiso, opciones)
+//   .then((pdfOutput) => {
+//     console.log(pdfOutput);
+//   })
+//   .catch((error) => {
+//     console.error('Error al convertir a PDF:', error);
+
+//     // Mostrar alerta si hubo un error
+//     alert('Hubo un error al generar el PDF');
+//   });
+
+
+// }
+
+
+//  sirve
+// function convertirPermisoAPDF() {
+//   const permiso = document.getElementById('hoja');
+//   const opciones = {
+//     margin: 1,
+//     filename: 'permiso.pdf',
+//     image: { type: 'webp', quality: 0.98 },
+//     html2canvas: { 
+//       scale: 2
+//     },
+//     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+//   };
+//   html2pdf(permiso, opciones)
+//   .then((pdfOutput) => {
+//     console.log(pdfOutput);
+//   })
+//   .catch((error) => {
+//     console.error('Error al convertir a PDF:', error);
+
+//     // Mostrar alerta si hubo un error
+//     alert('Hubo un error al generar el PDF');
+//   });
+
+
+// }
+
+
+
+// casi perfecto, se muestra bien en pc con pantalla grande, y en movil se corta una parte pequeña pero se ve bien
+// function convertirPermisoAPDF() {
+//   const permiso = document.getElementById('hoja');
+
+//   // configuracines, personalizadas para convertir a pdf
+//   const opciones = {
+//     margin: 2,
+//     filename: 'permiso.pdf',
+//     image: { type: 'jpeg', quality: 0.98 },
+//     html2canvas: { scale: 2 },
+//     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+//   };
+//   html2pdf(permiso, opciones)
+//   .then((pdfOutput) => {
+//     console.log(pdfOutput);
+//   })
+//   .catch((error) => {
+//     console.error('Error al convertir a PDF:', error);
+
+//     // Mostrar alerta si hubo un error
+//     alert('Hubo un error al generar el PDF');
+//   });
+
+
+// }
+
+// function convertirPermisoAPDF() {
+//   const permiso = document.getElementById('hoja');
+
+//   // configuracines, personalizadas para convertir a pdf
+//   const opciones = {
+//     margin: [0.5, 2],
+//     filename: 'permiso.pdf',
+//     image: { type: 'jpeg', quality: 1.98 },
+//     html2canvas: { scale: 2 },
+//     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+//   };
+//   html2pdf(permiso, opciones)
+//   .then((pdfOutput) => {
+//     console.log(pdfOutput);
+//   })
+//   .catch((error) => {
+//     console.error('Error al convertir a PDF:', error);
+
+//     // Mostrar alerta si hubo un error
+//     alert('Hubo un error al generar el PDF');
+//   });
+
+// window.onload = function() {
+//   convertirPermisoAPDF();
+// };
+
+// }
+
+
+
+
+
+
+
+
+
+
+// npm i jspdf
+// npm i html2pdf.js@0.9.0

@@ -20,7 +20,6 @@
     padding: 10px;
     border-radius: 5px;
     border: 2px solid rgb(196, 196, 196);
-    border-top: none;
     background-color: white;
 }
 .hoja input[type="text"], #motivo, #instructor{
