@@ -1,5 +1,11 @@
 <?php 
 date_default_timezone_set("America/Bogota");
+$instructorSeleccionado = null;
+// Verificar si el formulario se ha enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // si esta definida limpiar la acadena si no, sera null
+    $instructorSeleccionado = isset($_POST['instructor']) ? limpiar_cadena($_POST['instructor']) : null;
+}
 ?>
 
     <article class="panel-heading"> 
@@ -12,96 +18,106 @@ date_default_timezone_set("America/Bogota");
         </p>     
     </article>
     <div class="cont_generador">
-        <div class="hoja" id='hoja'>
-            <div class="fecha-hora">
-            <div class="is-flex">
-                    <div id="hora" class="hora">00</div>
-                    <div class="periodo"></div>
-            </div>
-                <div class="fecha">
-                    <?php echo date('Y-m-d'); ?>
+        <form action="" method="post">
+            <label for="instructor" class="label" >Instructor:</label>
+            <div class='my-flex-center'  width='100%' >
+                <select name="instructor" class='my-select' id="instructor" width='100%'>
+                    <option value="" disabled selected>Selecciona un instructor</option>
+                        <?php
+                            // Obtener la lista de instructores (como en tu primer bloque de código)
+                            $sqlInstructores = "SELECT DISTINCT id_instructor, nombre FROM instructores";
+                            $resultadoInstructores = $db->query($sqlInstructores);
+
+                            while ($filaInstructores = $resultadoInstructores->fetch_assoc()) {
+                                $idInstructor = $filaInstructores['id_instructor'];
+                                $nombreInstructor = $filaInstructores['nombre'];
+
+                                // se marca la opción seleccionada si coincide con el valor en $instructorSeleccionado
+                                $selected = ($instructorSeleccionado == $idInstructor) ? 'selected' : '';
+
+                                echo '
+                                <option value="' . $idInstructor . '" ' . $selected . '>' . $nombreInstructor . '</option>';
+                            }
+                        ?>
+                        
+                </select>
+                <div class="box-button">   
+                    <button type="submit" name="submit" class='button-icon'>
+                        <img src="images/iconos/flecha.svg"  class='icon' alt="">
+                    </button>
                 </div>
             </div>
-                <?php
-                // Definir la variable $instructorSeleccionado e inicializarla con un valor por defecto
-                $instructorSeleccionado = null;
-                // Verificar si el formulario se ha enviado
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    // Obtener el valor seleccionado del instructor desde $_POST, el cual se emvia en el bloque siguiente
-                    $instructorSeleccionado = isset($_POST['instructor']) ? limpiar_cadena($_POST['instructor']) : null;
+        </form>
+        <?php
+            // Obtener el id_instructor seleccionado del formulario
+            $instructorSeleccionado = isset($_POST['instructor']) ? limpiar_cadena($_POST['instructor']) : null;
+            //var para almacenar los nombres de aprendices relacionados
+            $nombresAprendices = array();
+            // Verificar si se ha seleccionado un instructor
+            if (!is_null($instructorSeleccionado)) {
+                // Consulta SQL para obtener los nombres de aprendices relacionados con el id_instructor
+                $sqlAprendices = "SELECT nombre_aprendiz FROM relacion_instructor_aprendiz WHERE id_instructor = $instructorSeleccionado";
+                $resultadoAprendices = $db->query($sqlAprendices);
+
+                // Verificar si hay resultados
+                if ($resultadoAprendices->num_rows > 0) {
+                    while ($filaAprendices = $resultadoAprendices->fetch_assoc()) {
+                        $nombresAprendices[] = $filaAprendices['nombre_aprendiz'];
+                    }
                 }
-                ?>
-                <!-- Formulario de permiso-->
-                <form action="" method="post" >
-                    <label for="instructor" class="label" >Instructor:</label>
-                    <div class='my-flex-center '>
-                        <select name="instructor" class='my-select' id="instructor">
-                            <option value="" disabled selected>Selecciona una opción</option>
-                                <?php
-                                    // Obtener la lista de instructores (como en tu primer bloque de código)
-                                    $sqlInstructores = "SELECT DISTINCT id_instructor, nombre FROM instructores";
-                                    $resultadoInstructores = $db->query($sqlInstructores);
-
-                                    while ($filaInstructores = $resultadoInstructores->fetch_assoc()) {
-                                        $idInstructor = $filaInstructores['id_instructor'];
-                                        $nombreInstructor = $filaInstructores['nombre'];
-
-                                        // Marcamos la opción seleccionada si coincide con el valor en $instructorSeleccionado
-                                        $selected = ($instructorSeleccionado == $idInstructor) ? 'selected' : '';
-
-                                        echo '
-                                        <option value="' . $idInstructor . '" ' . $selected . '>' . $nombreInstructor . '</option>';
-                                    }
-                                ?>
-                        </select>
-
-                        <div class="box-button">   
-                            <button type="submit" name="submit" class='button-icon'>
-                                <img src="images/iconos/flecha.svg"  class='icon' alt="">
-                            </button>
-                        </div>
+            }
+        ?>
+        <br>
+        <div class="hoja" id='hoja'>
+                <div class="fecha-hora px-2">
+                    <div class="is-flex ">
+                    <input type="time" class="hora" readonly disabled name="hora" />
                     </div>
-                </form>
-        
-                <br>
+                    <div class="fecha">
+                        <?php echo date('Y-m-d'); ?>
+                    </div>
+                </div>
                 <?php
-                    // Obtener el id_instructor seleccionado del formulario
-                    $instructorSeleccionado = isset($_POST['instructor']) ? $_POST['instructor'] : null;
-                    //var para almacenar los nombres de aprendices relacionados
-                    $nombresAprendices = array();
-                    // Verificar si se ha seleccionado un instructor
-                    if (!is_null($instructorSeleccionado)) {
-                        // Consulta SQL para obtener los nombres de aprendices relacionados con el id_instructor
-                        $sqlAprendices = "SELECT nombre_aprendiz FROM relacion_instructor_aprendiz WHERE id_instructor = $instructorSeleccionado";
-                        $resultadoAprendices = $db->query($sqlAprendices);
+                    $nombreInstructor = '';
+                    if (isset($_POST['submit'])) {
+                        $sqlNombreInstructor = "SELECT nombre FROM instructores WHERE id_instructor = $instructorSeleccionado";
+                        $resultadoNombreInstructor = $db->query($sqlNombreInstructor);
 
-                        // Verificar si hay resultados
-                        if ($resultadoAprendices->num_rows > 0) {
-                            while ($filaAprendices = $resultadoAprendices->fetch_assoc()) {
-                                $nombresAprendices[] = $filaAprendices['nombre_aprendiz'];
-                            }
+                        // Verifica si se obtuvo el nombre del instructor correctamente
+                        if ($resultadoNombreInstructor && $filaNombreInstructor = $resultadoNombreInstructor->fetch_assoc()) {
+                            $nombreInstructor = $filaNombreInstructor['nombre'];
                         }
                     }
                 ?>
-                <!-- Mostrar opciones de aprendices relacionados -->
+     
+                <?php
+                if (!empty($nombreInstructor)) {
+                    echo '
+                    <label for="nombreInstructorPermiso" class="label" >Instructor:</label>
+                    <input type="text"  id="nombreInstructorPermiso" value="' . $nombreInstructor . '" readonly name="nombre_instructor_permiso"><br>';
+                } else {
+                    echo '<div class="modal-advertencia has-text-centered ">
+                    <strong class="has-text-danger ">No se ha selecionado instructor!</strong></div> <br>';
+                }
+                ?>
+        
                 <?php
                     if (!empty($nombresAprendices)) {
                         echo '
                         <label for="aprendiz-lista" class="label" >Aprendiz:</label>
-                        <select name="aprendiz" id="aprendiz-lista" class="my-select">
-                        <option value="" disabled selected>Selecciona una opción</option>';
+                        <select  id="aprendiz-lista" class="my-select" name="nombre_aprendiz_permiso">
+                        <option value="" disabled selected>Selecciona un aprendiz</option>';
                         
                         foreach ($nombresAprendices as $nombreAprendiz) {
                             echo '<option value="' . $nombreAprendiz . '">' . $nombreAprendiz . '</option>';
                         }
                         echo '</select>';
                     } else {
-                        echo '<div class="modal-advertencia has-text-centered ">
+                        echo '<div class="modal-advertencia has-text-centered mt-3">
                         <strong class="has-text-danger ">No hay aprendices!</strong></div>';
                     }
                 ?>
                 <?php 
-                    // Definir variables para almacenar los valores
                     $tituladaValue = $fichaValue = $ambienteValue = '';
 
                     // Verificar si se ha seleccionado un instructor
@@ -118,42 +134,37 @@ date_default_timezone_set("America/Bogota");
                             $ambienteValue = $filaInstructorData['ambiente'];
                         }
                     }
-                ?>     
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf_viewer.min.css" integrity="sha512-v7RQDI7qsfFNaXRzzylpsVV7ncQBdyozLze5YNgox/0z4Mc3Ellt2dBd0CbmufeD7IIh5TCJQ8ORAF/KvzVITg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-                <script src="./js/papel_permisos.js"></script>
+                ?>
             <!-- Mostrar campos de titulada, icha y ambiente a su cargo -->
             <div>
                 <label for="titulada" class="label" >Titulada:</label>
-                <input type="text" id="titulada" name="name_titulada" require readonly value= "<?php echo $tituladaValue; ?>" />
+                <input type="text" id="titulada" name="titulada_permiso" require readonly value= "<?php echo $tituladaValue; ?>" />
             </div>
 
             <div class="div-ficha-ambiente">
                 <div>
                     <label for="ficha" class="label" >Ficha:</label>
-                    <input type="text" id="ficha" name="ficha" require readonly value="<?php echo $fichaValue; ?>" />
+                    <input type="text" id="ficha" name="ficha_permiso" require readonly value="<?php echo $fichaValue; ?>" />
                 </div>
                 <div>
                     <label for="ambiente" class="label" >Ambiente:</label>
-                    <input type="text" id="ambiente" name="name_ambiente" require readonly value="<?php echo $ambienteValue; ?>" />
+                    <input type="text" id="ambiente" name="ambiente_permiso" require readonly value="<?php echo $ambienteValue; ?>" />
                 </div>
             </div>
-            
-            
                 <label for="motivo" class="label" >Motiivo de la salida:</label>
-                <textarea id="motivo" rows="4" cols="8" placeholder="" maxlength="40"></textarea>
+                <textarea id="motivo" rows="4" cols="8" placeholder="" maxlength="40" name="motivo_permiso"></textarea>
         
         </div>
         <!-- termna hoja -->
-        <!-- <div class=" is-flex is-flex-direction-column is-justify-content-center p-3">
+        <div class=" is-flex is-flex-direction-column is-justify-content-center p-3">
             <div class="resultado py-3">
                 <form method="POST" action="./php/cargarPermiso.php" enctype="multipart/form-data">
-                    <input type="hidden" id='permisoGenerado' name="permisoGenerado" value="">
+                <input type="hidden" name="permisoGenerado" id="permisoGenerado" value="">
                     <button id="botonEnviar" type="submit" class="my-button button-clr-azul">Enviar Permiso</button>
                    
                 </form>
             </div>
-        </div> -->
+        </div>
         <div class="box-button">    
             <a href="index.php?vista=datos_permisos" class="my-button button-clr-morado">
                 <span for="registro-aprendiz">Ver datos</span>
@@ -161,10 +172,7 @@ date_default_timezone_set("America/Bogota");
             <button class="btn-generar-permiso my-button button-clr-verde" onclick="convertirPermisoAPDF()">Generar</button>
         </div>
     </div>
-<!-- Contenedor para la vista previa del PDF -->
-<!-- <div id="pdfViewer"></div> -->
 
-<!-- termina el contenedor de generador -->
 
 
    

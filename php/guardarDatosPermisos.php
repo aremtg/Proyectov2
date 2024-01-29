@@ -2,39 +2,51 @@
 require_once('conexion.php');
 require_once('main.php');
 
-// Verifica si se recibieron datos del formulario
-if (isset($_POST['datosFormulario'])) {
-    // Decodifica los datos JSON
-    $datosFormulario = json_decode($_POST['datosFormulario'], true);
+if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_POST['ntitulada']) && isset($_POST['ficha']) && isset($_POST['ambiente'])) {
+    $nombreInstructor = limpiar_cadena($_POST['nombre_instructor']);
+    $contactoInstructor = limpiar_cadena($_POST['contacto']);
+    $titulada = limpiar_cadena($_POST['ntitulada']);
+    $ficha = limpiar_cadena($_POST['ficha']);
+    $ambiente = limpiar_cadena($_POST['ambiente']);
 
-    // Obtén la fecha de creación actual
-    $fechaCreacion = date('Y-m-d H:i:s');
+    // Verificar que los datos no estén vacíos
+    if (!empty($nombreInstructor) && !empty($contactoInstructor) && !empty($titulada) && !empty($ficha) && !empty($ambiente)) {
+        // Realizar la inserción del instructor en la tabla de instructores
+        $sqlInsertInstructor = "INSERT INTO instructores (nombre, contacto, ntitulada, ficha, ambiente) VALUES ('$nombreInstructor', '$contactoInstructor', '$titulada', '$ficha', '$ambiente')";
 
-    // Obtén el nombre de quien envió el formulario
-    $nombreUsuario = $_SESSION['usuario']['usuario_usuario'];
-
-    // Escapa los datos para prevenir inyección de SQL
-    $instructor = $db->limpiar_cadena($datosFormulario['instructor']);
-    $aprendiz = $db->limpiar_cadena($datosFormulario['aprendiz']);
-    $titulada = $db->limpiar_cadena($datosFormulario['titulada']);
-    $ficha = $db->limpiar_cadena($datosFormulario['ficha']);
-    $ambiente = $db->limpiar_cadena($datosFormulario['ambiente']);
-    $hora = $db->limpiar_cadena($datosFormulario['hora']);
-    $motivo = $db->limpiar_cadena($datosFormulario['motivo']);
-    $usuario = $db->limpiar_cadena($datosFormulario['usuario']);
-
-    // Inserta los datos en la tabla 'dataPermiso'
-    $sqlInsert = "INSERT INTO dataPermiso (fecha_creacion, instructor, aprendiz, titulada, ficha, ambiente, hora, motivo, usuario)
-                  VALUES ('$fechaCreacion', '$instructor', '$aprendiz', '$titulada', '$ficha', '$ambiente', '$hora', '$motivo', '$usuario')";
-
-    if ($db->query($sqlInsert) === TRUE) {
-        echo "Datos insertados con éxito";
-    } else {
-        echo "Error al insertar datos: " . $db->error;
+        // Ejecutar la consulta
+        if (mysqli_query($db, $sqlInsertInstructor)) {
+            echo "Instructor agregado con éxito.";
+        } else {
+            echo "Error al agregar el instructor: " . mysqli_error($db);
+        } } else {
+            echo "Por favor, completa todos los campos del formulario de nuevo instructor.";
+        }
     }
-} else {
-    echo "No se recibieron datos del formulario";
-}
+    if (isset($_POST['instructor']) && isset($_POST['aprendiz']) && $_POST['aprendiz'] !== '') {
+        $idInstructor = limpiar_cadena($_POST['instructor']);
+        $aprendizNombre = limpiar_cadena($_POST['aprendiz']);
+    
+        // Verificar que los datos no estén vacíos
+        if (!empty($idInstructor) && !empty($aprendizNombre)) {
+            // Realizar la inserción en la tabla de relación Instructor-Aprendiz
+            $sqlInsertAprendiz = "INSERT INTO relacion_instructor_aprendiz (id_instructor, nombre_aprendiz, ntitulada, ficha, ambiente) 
+                                 SELECT id_instructor, '$aprendizNombre', ntitulada, ficha, ambiente
+                                 FROM instructores 
+                                 WHERE id_instructor = '$idInstructor'";
+    
+            // Ejecutar la consulta
+            if (mysqli_query($db, $sqlInsertAprendiz)) {
+                echo "Aprendiz agregado con éxito.";
+            } else {
+                echo "Error al agregar el aprendiz: " . mysqli_error($db);
+            }
+        } else {        
+        }
+    } else {
+        echo "El campo de aprendiz está vacío o no se proporcionó ningún nombre.";
+    }
+ 
 mysqli_close($db);
 header('location:../index.php?vista=datos_permisos');
 ?>

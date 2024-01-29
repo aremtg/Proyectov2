@@ -11,34 +11,26 @@
 // fecha.textContent = diaMes + "/" + mes + "/" + año;
 
 document.addEventListener('DOMContentLoaded', function() {
-  
   setInterval(() => {
     let boxHora = document.querySelector(".hora");
     let fechaActual = new Date();
+    
     let hora = fechaActual.getHours();
     let minutos = fechaActual.getMinutes();
     let segundos = fechaActual.getSeconds();
-    if (minutos <= 9) {
-      boxHora.textContent = hora + ":0" + minutos + ":" + segundos;
-  
-    }else{
-      boxHora.textContent = hora + ":" + minutos + ":" + segundos;
-    }
-    // ----------------------------------------------------------
-    function cambiaAMPM() {
-      var periodo = document.querySelector(".periodo");
-      // Comprobar si la hora actual es menor o igual a 12, para controlar el am y pm
-      if (hora < 12) {
-        periodo.textContent = "a.m";
-      } else {
-        periodo.textContent = "p.m";
-      }
-    }
-    cambiaAMPM()
-  
+    
+    // Agrega un cero delante de los minutos y segundos si son menores a 10
+    minutos = minutos < 10 ? '0' + minutos : minutos;
+    segundos = segundos < 10 ? '0' + segundos : segundos;
+
+    // Formatea la hora en formato "HH:mm"
+    let horaFormateada = hora + ":" + minutos + ":" + segundos;
+    
+    // Actualiza el valor del campo de entrada
+    boxHora.value = horaFormateada;
   }, 1000);
-  
 });
+
 
 // function convertirPermisoAPDF() {
 //   const permiso = document.getElementById('hoja');
@@ -61,32 +53,52 @@ document.addEventListener('DOMContentLoaded', function() {
      
 //     });
 // }
+// function convertirPermisoAPDF() {
+//   const permiso = document.getElementById('hoja');
 
-function convertirPermisoAPDF() {
-  const permiso = document.getElementById('hoja');
+//   // Configuraciones
+//   const opciones = {
+//     margin: 2,
+//     filename: 'permiso.pdf',
+//     image: { type: 'jpeg', quality: 0.98 },
+//     html2canvas: { scale: 2 },
+//     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+//     output: 'datauristring' // Genera la cadena Base64 sin abrir el diálogo
+//   };
 
-  // configuracines
-  const opciones = {
-    margin: 2,
-    filename: 'permiso.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-  };
-  html2pdf(permiso, opciones)
-  .then((pdfOutput) => {
-    console.log(pdfOutput);
-  })
-  .catch((error) => {
-    console.error('Error al convertir a PDF:', error);
-  });
+//   html2pdf(permiso, opciones)
+//     .then((output) => {
+//       console.log(output);
+//       mostrarVistaPrevia(output);
+//     })
+//     .catch((error) => {
+//       console.error('Error al convertir a PDF:', error);
+//     });
+//     function mostrarVistaPrevia(output) {
+//   // Crea una URL de objeto para el PDF generado
+//   if (output) {
+//     // Verifica si la cadena comienza con "data:application/pdf;base64,"
+//     if (output.startsWith('data:application/pdf;base64,')) {
+//       // Carga el PDF en el visor de PDF utilizando los métodos open y write
+//       var viewerContainer = document.getElementById('pdfViewer');
+//       var iframe = document.createElement('iframe');
+//       iframe.src = output;
+//       iframe.width = '100%';
+//       iframe.height = '600px';
+//       viewerContainer.innerHTML = '';
+//       viewerContainer.appendChild(iframe);
+//     } else {
+//       console.error('La cadena Base64 no tiene el formato esperado.');
+//     }
+//   } else {
+//     console.error('La cadena Base64 es undefined.');
+//   }
+// }
 
-window.onload = function() {
-  convertirPermisoAPDF();
-};
+// }
 
-}
-
+  // También puedes abrir la vista previa en una nueva ventana
+  // window.open(pdfDataUri, '_blank');
 
 // queda perfecto para pc
 // function convertirPermisoAPDF() {
@@ -196,15 +208,6 @@ window.onload = function() {
 // };
 
 // }
-
-
-
-
-
-
-
-
-
 
 // npm i jspdf
 // npm i html2pdf.js@0.9.0

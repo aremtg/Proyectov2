@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-01-2024 a las 17:47:14
+-- Tiempo de generación: 29-01-2024 a las 17:35:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -64,8 +64,8 @@ INSERT INTO `aprendices` (`id_aprendiz`, `id_usuario`, `id_titulada`, `tipoDoc_a
 
 CREATE TABLE `archivopermiso` (
   `id` int(11) NOT NULL,
-  `archivo_permiso` varchar(255) NOT NULL,
-  `creado` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `archivo_permiso` blob NOT NULL,
+  `creado` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -73,8 +73,12 @@ CREATE TABLE `archivopermiso` (
 --
 
 INSERT INTO `archivopermiso` (`id`, `archivo_permiso`, `creado`) VALUES
-(0, '', '2024-01-24 16:17:51'),
-(0, '', '2024-01-24 16:17:53');
+(1, '', '2024-01-29 12:16:42'),
+(2, '', '2024-01-29 12:17:09'),
+(3, '', '2024-01-29 12:18:11'),
+(4, '', '2024-01-29 12:20:17'),
+(5, '', '2024-01-29 12:23:53'),
+(6, '', '2024-01-29 12:43:25');
 
 -- --------------------------------------------------------
 
@@ -117,27 +121,10 @@ CREATE TABLE `instructores` (
 
 INSERT INTO `instructores` (`id_instructor`, `nombre`, `contacto`, `ntitulada`, `ficha`, `ambiente`) VALUES
 (6, 'Hector Mauricio Camargo', 2147483647, 'analisis y desarrollo de software', 2557736, 'E105'),
-(7, 'Angela Bibiana Ortegon Fuentes', 2147483647, 'transversal', 2557736, 'E105');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `permisospdf`
---
-
-CREATE TABLE `permisospdf` (
-  `id` int(11) NOT NULL,
-  `nombre_archivo` varchar(255) DEFAULT NULL,
-  `archivo` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `permisospdf`
---
-
-INSERT INTO `permisospdf` (`id`, `nombre_archivo`, `archivo`) VALUES
-(1, 'permiso_1705971624.pdf', ''),
-(2, 'permiso_1705971749.pdf', '');
+(7, 'Angela Bibiana Ortegon Fuentes', 2147483647, 'transversal', 2557736, 'E105'),
+(8, 'Cristian Adel de Armas Iturriago', 45454545, 'transversal', 320299, 'E108'),
+(9, 'Jonathan profe', 2147483647, 'cocina', 555677, 'E109'),
+(10, 'liliana fierro', 232323232, 'socilaes', 434343, 'e102');
 
 -- --------------------------------------------------------
 
@@ -203,7 +190,10 @@ CREATE TABLE `relacion_instructor_aprendiz` (
 
 INSERT INTO `relacion_instructor_aprendiz` (`id_relacion`, `id_instructor`, `nombre_aprendiz`, `ntitulada`, `ficha`, `ambiente`) VALUES
 (1, 6, 'Tatiana Andrea Guzman Galindo', 'analisis y desarrollo de software', 2557736, 'E105'),
-(2, 7, 'Jonathan Caro Espinosa', 'transversal', 2557736, 'E105');
+(2, 7, 'Jonathan Caro Espinosa', 'transversal', 2557736, 'E105'),
+(3, 7, 'Zahira salome cachay guzman', 'transversal', 2557736, 'E105'),
+(4, 8, 'Demian Fabian Gutierrez Roa', 'transversal', 320299, 'E108'),
+(5, 9, 'leonel guzman', 'cocina', 555677, 'E109');
 
 -- --------------------------------------------------------
 
@@ -292,6 +282,12 @@ ALTER TABLE `aprendices`
   ADD KEY `fk_aprendiz_articulo` (`id_articulo`);
 
 --
+-- Indices de la tabla `archivopermiso`
+--
+ALTER TABLE `archivopermiso`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `articulos`
 --
 ALTER TABLE `articulos`
@@ -302,12 +298,6 @@ ALTER TABLE `articulos`
 --
 ALTER TABLE `instructores`
   ADD PRIMARY KEY (`id_instructor`);
-
---
--- Indices de la tabla `permisospdf`
---
-ALTER TABLE `permisospdf`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `registro`
@@ -346,6 +336,12 @@ ALTER TABLE `aprendices`
   MODIFY `id_aprendiz` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `archivopermiso`
+--
+ALTER TABLE `archivopermiso`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
@@ -355,13 +351,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `instructores`
 --
 ALTER TABLE `instructores`
-  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `permisospdf`
---
-ALTER TABLE `permisospdf`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
@@ -373,7 +363,7 @@ ALTER TABLE `registro`
 -- AUTO_INCREMENT de la tabla `relacion_instructor_aprendiz`
 --
 ALTER TABLE `relacion_instructor_aprendiz`
-  MODIFY `id_relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tituladas`
