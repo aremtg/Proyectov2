@@ -14,14 +14,14 @@ if (isset($_POST['datosFormulario'])) {
     $nombreUsuario = $_SESSION['usuario']['usuario_usuario'];
 
     // Escapa los datos para prevenir inyección de SQL
-    $instructor = $db->real_escape_string($datosFormulario['instructor']);
-    $aprendiz = $db->real_escape_string($datosFormulario['aprendiz']);
-    $titulada = $db->real_escape_string($datosFormulario['titulada']);
-    $ficha = $db->real_escape_string($datosFormulario['ficha']);
-    $ambiente = $db->real_escape_string($datosFormulario['ambiente']);
-    $hora = $db->real_escape_string($datosFormulario['hora']);
-    $motivo = $db->real_escape_string($datosFormulario['motivo']);
-    $usuario = $db->real_escape_string($datosFormulario['usuario']);
+    $instructor = $db->limpiar_cadena($datosFormulario['instructor']);
+    $aprendiz = $db->limpiar_cadena($datosFormulario['aprendiz']);
+    $titulada = $db->limpiar_cadena($datosFormulario['titulada']);
+    $ficha = $db->limpiar_cadena($datosFormulario['ficha']);
+    $ambiente = $db->limpiar_cadena($datosFormulario['ambiente']);
+    $hora = $db->limpiar_cadena($datosFormulario['hora']);
+    $motivo = $db->limpiar_cadena($datosFormulario['motivo']);
+    $usuario = $db->limpiar_cadena($datosFormulario['usuario']);
 
     // Inserta los datos en la tabla 'dataPermiso'
     $sqlInsert = "INSERT INTO dataPermiso (fecha_creacion, instructor, aprendiz, titulada, ficha, ambiente, hora, motivo, usuario)
