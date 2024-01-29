@@ -13,7 +13,11 @@ date_default_timezone_set("America/Bogota");
     </article>
     <div class="cont_generador">
         <div class="hoja" id='hoja'>
-            <div class="div-fecha">
+            <div class="fecha-hora">
+            <div class="is-flex">
+                    <div id="hora" class="hora">00</div>
+                    <div class="periodo"></div>
+            </div>
                 <div class="fecha">
                     <?php echo date('Y-m-d'); ?>
                 </div>
@@ -134,13 +138,7 @@ date_default_timezone_set("America/Bogota");
                     <input type="text" id="ambiente" name="name_ambiente" require readonly value="<?php echo $ambienteValue; ?>" />
                 </div>
             </div>
-            <div class="div-hora">
-                <label for="hora" class="label" >
-                    Hora de salida:
-                </label>
-                    <div id="hora" class="hora">00</div>
-                    <div class="periodo"></div>
-            </div>
+            
             
                 <label for="motivo" class="label" >Motiivo de la salida:</label>
                 <textarea id="motivo" rows="4" cols="8" placeholder="" maxlength="40"></textarea>

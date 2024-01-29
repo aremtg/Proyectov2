@@ -2,58 +2,39 @@
 require_once('conexion.php');
 require_once('main.php');
 
-// Si se envía el formulario para agregar un nuevo instructor
-if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_POST['ntitulada']) && isset($_POST['ficha']) && isset($_POST['ambiente'])) {
-    $nombreInstructor = limpiar_cadena($_POST['nombre_instructor']);
-    $contactoInstructor = limpiar_cadena($_POST['contacto']);
-    $titulada = limpiar_cadena($_POST['ntitulada']);
-    $ficha = limpiar_cadena($_POST['ficha']);
-    $ambiente = limpiar_cadena($_POST['ambiente']);
+// Verifica si se recibieron datos del formulario
+if (isset($_POST['datosFormulario'])) {
+    // Decodifica los datos JSON
+    $datosFormulario = json_decode($_POST['datosFormulario'], true);
 
-    // Verificar que los datos no estén vacíos
-    if (!empty($nombreInstructor) && !empty($contactoInstructor) && !empty($titulada) && !empty($ficha) && !empty($ambiente)) {
-        // Realizar la inserción del instructor en la tabla de instructores
-        $sqlInsertInstructor = "INSERT INTO instructores (nombre, contacto, ntitulada, ficha, ambiente) VALUES ('$nombreInstructor', '$contactoInstructor', '$titulada', '$ficha', '$ambiente')";
+    // Obtén la fecha de creación actual
+    $fechaCreacion = date('Y-m-d H:i:s');
 
-        // Ejecutar la consulta
-        if (mysqli_query($db, $sqlInsertInstructor)) {
-            echo "Instructor agregado con éxito.";
-        } else {
-            echo "Error al agregar el instructor: " . mysqli_error($db);
-        }
+    // Obtén el nombre de quien envió el formulario
+    $nombreUsuario = $_SESSION['usuario']['usuario_usuario'];
+
+    // Escapa los datos para prevenir inyección de SQL
+    $instructor = $db->real_escape_string($datosFormulario['instructor']);
+    $aprendiz = $db->real_escape_string($datosFormulario['aprendiz']);
+    $titulada = $db->real_escape_string($datosFormulario['titulada']);
+    $ficha = $db->real_escape_string($datosFormulario['ficha']);
+    $ambiente = $db->real_escape_string($datosFormulario['ambiente']);
+    $hora = $db->real_escape_string($datosFormulario['hora']);
+    $motivo = $db->real_escape_string($datosFormulario['motivo']);
+    $usuario = $db->real_escape_string($datosFormulario['usuario']);
+
+    // Inserta los datos en la tabla 'dataPermiso'
+    $sqlInsert = "INSERT INTO dataPermiso (fecha_creacion, instructor, aprendiz, titulada, ficha, ambiente, hora, motivo, usuario)
+                  VALUES ('$fechaCreacion', '$instructor', '$aprendiz', '$titulada', '$ficha', '$ambiente', '$hora', '$motivo', '$usuario')";
+
+    if ($db->query($sqlInsert) === TRUE) {
+        echo "Datos insertados con éxito";
     } else {
-        echo "Por favor, completa todos los campos del formulario de nuevo instructor.";
-    }
-}
-
-// Resto del código para la relación Instructor-Aprendiz sigue igual...
-
-
-if (isset($_POST['instructor']) && isset($_POST['aprendiz']) && $_POST['aprendiz'] !== '') {
-    $idInstructor = limpiar_cadena($_POST['instructor']);
-    $aprendizNombre = limpiar_cadena($_POST['aprendiz']);
-
-    // Verificar que los datos no estén vacíos
-    if (!empty($idInstructor) && !empty($aprendizNombre)) {
-        // Realizar la inserción en la tabla de relación Instructor-Aprendiz
-        $sqlInsertAprendiz = "INSERT INTO relacion_instructor_aprendiz (id_instructor, nombre_aprendiz, ntitulada, ficha, ambiente) 
-                             SELECT id_instructor, '$aprendizNombre', ntitulada, ficha, ambiente
-                             FROM instructores 
-                             WHERE id_instructor = '$idInstructor'";
-
-        // Ejecutar la consulta
-        if (mysqli_query($db, $sqlInsertAprendiz)) {
-            echo "Aprendiz agregado con éxito.";
-        } else {
-            echo "Error al agregar el aprendiz: " . mysqli_error($db);
-        }
-    } else {
-        echo "Por favor, selecciona un instructor y proporciona el nombre del aprendiz.";
+        echo "Error al insertar datos: " . $db->error;
     }
 } else {
-    echo "El campo de aprendiz está vacío o no se proporcionó ningún nombre.";
+    echo "No se recibieron datos del formulario";
 }
-
 mysqli_close($db);
 header('location:../index.php?vista=datos_permisos');
 ?>

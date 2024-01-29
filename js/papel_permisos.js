@@ -9,8 +9,6 @@
 
 // let fecha = document.querySelector(".fecha");
 // fecha.textContent = diaMes + "/" + mes + "/" + año;
-import jsPDF from 'jspdf';
-import html2pdf from 'html2pdf.js';
 
 document.addEventListener('DOMContentLoaded', function() {
   
@@ -67,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function convertirPermisoAPDF() {
   const permiso = document.getElementById('hoja');
 
-  // configuracines, personalizadas para convertir a pdf
+  // configuracines
   const opciones = {
     margin: 2,
     filename: 'permiso.pdf',
@@ -81,9 +79,6 @@ function convertirPermisoAPDF() {
   })
   .catch((error) => {
     console.error('Error al convertir a PDF:', error);
-
-    // Mostrar alerta si hubo un error
-    alert('Hubo un error al generar el PDF');
   });
 
 window.onload = function() {

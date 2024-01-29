@@ -26,9 +26,21 @@
     font-weight: 700;
     font-size: 15px;
 }
-.div-fecha {
-    text-align: right;
-    margin-bottom: 0px;
+.fecha-hora {
+   display: flex;
+   justify-content: space-between;
+}
+.hora {
+    font-size: 20px;
+    font-weight: bold;
+}
+.hoja .periodo {
+    border:  2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    text-indent: 5px;
 }
 .fecha {
     font-weight: bold;
@@ -43,24 +55,7 @@
 .div-ficha-ambiente div input{
     width: 100px;
 }
-.hoja .div-hora {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.div-hora .hora {
-    font-size: 20px;
-    font-weight: bold;
-}
-.hoja .periodo {
-    background-color:var(--verde_sena);
-    color: rgb(255, 255, 255);
-    border:  2px solid transparent;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
+
 #motivo {
     width: 100%;
     padding: 9px 0px 9px 0px;
