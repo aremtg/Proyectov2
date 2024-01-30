@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Agrega un cero delante de los minutos y segundos si son menores a 10
     minutos = minutos < 10 ? '0' + minutos : minutos;
     segundos = segundos < 10 ? '0' + segundos : segundos;
-
+    hora = hora < 10 ? '0' + hora : hora;
     // Formatea la hora en formato "HH:mm"
-    let horaFormateada = hora + ":" + minutos + ":" + segundos;
+    let horaFormateada = hora + ":" + minutos + ":" + segundos;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
     
     // Actualiza el valor del campo de entrada
     boxHora.value = horaFormateada;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2024 a las 17:35:27
+-- Tiempo de generación: 30-01-2024 a las 17:46:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -59,30 +59,6 @@ INSERT INTO `aprendices` (`id_aprendiz`, `id_usuario`, `id_titulada`, `tipoDoc_a
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `archivopermiso`
---
-
-CREATE TABLE `archivopermiso` (
-  `id` int(11) NOT NULL,
-  `archivo_permiso` blob NOT NULL,
-  `creado` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `archivopermiso`
---
-
-INSERT INTO `archivopermiso` (`id`, `archivo_permiso`, `creado`) VALUES
-(1, '', '2024-01-29 12:16:42'),
-(2, '', '2024-01-29 12:17:09'),
-(3, '', '2024-01-29 12:18:11'),
-(4, '', '2024-01-29 12:20:17'),
-(5, '', '2024-01-29 12:23:53'),
-(6, '', '2024-01-29 12:43:25');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `articulos`
 --
 
@@ -124,7 +100,27 @@ INSERT INTO `instructores` (`id_instructor`, `nombre`, `contacto`, `ntitulada`, 
 (7, 'Angela Bibiana Ortegon Fuentes', 2147483647, 'transversal', 2557736, 'E105'),
 (8, 'Cristian Adel de Armas Iturriago', 45454545, 'transversal', 320299, 'E108'),
 (9, 'Jonathan profe', 2147483647, 'cocina', 555677, 'E109'),
-(10, 'liliana fierro', 232323232, 'socilaes', 434343, 'e102');
+(10, 'liliana fierro', 232323232, 'socilaes', 434343, 'e102'),
+(11, 'Jesus David Cardenas', 2147483647, 'Maquinaria pesada', 2588736, 'E111');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permisosdata`
+--
+
+CREATE TABLE `permisosdata` (
+  `id` int(11) NOT NULL,
+  `hora_permiso` time NOT NULL,
+  `fecha_permiso` date NOT NULL,
+  `nombre_instructor_permiso` varchar(255) NOT NULL,
+  `nombre_aprendiz_permiso` varchar(255) NOT NULL,
+  `titulada_permiso` varchar(255) NOT NULL,
+  `ficha_permiso` int(11) NOT NULL,
+  `ambiente_permiso` varchar(255) NOT NULL,
+  `motivo_permiso` varchar(255) NOT NULL,
+  `creado` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -193,7 +189,8 @@ INSERT INTO `relacion_instructor_aprendiz` (`id_relacion`, `id_instructor`, `nom
 (2, 7, 'Jonathan Caro Espinosa', 'transversal', 2557736, 'E105'),
 (3, 7, 'Zahira salome cachay guzman', 'transversal', 2557736, 'E105'),
 (4, 8, 'Demian Fabian Gutierrez Roa', 'transversal', 320299, 'E108'),
-(5, 9, 'leonel guzman', 'cocina', 555677, 'E109');
+(5, 9, 'leonel guzman', 'cocina', 555677, 'E109'),
+(6, 11, 'Andrea Galindo', 'Maquinaria pesada', 2588736, 'E111');
 
 -- --------------------------------------------------------
 
@@ -282,12 +279,6 @@ ALTER TABLE `aprendices`
   ADD KEY `fk_aprendiz_articulo` (`id_articulo`);
 
 --
--- Indices de la tabla `archivopermiso`
---
-ALTER TABLE `archivopermiso`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `articulos`
 --
 ALTER TABLE `articulos`
@@ -298,6 +289,12 @@ ALTER TABLE `articulos`
 --
 ALTER TABLE `instructores`
   ADD PRIMARY KEY (`id_instructor`);
+
+--
+-- Indices de la tabla `permisosdata`
+--
+ALTER TABLE `permisosdata`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `registro`
@@ -336,12 +333,6 @@ ALTER TABLE `aprendices`
   MODIFY `id_aprendiz` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `archivopermiso`
---
-ALTER TABLE `archivopermiso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
@@ -351,7 +342,13 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `instructores`
 --
 ALTER TABLE `instructores`
-  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `permisosdata`
+--
+ALTER TABLE `permisosdata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
@@ -363,7 +360,7 @@ ALTER TABLE `registro`
 -- AUTO_INCREMENT de la tabla `relacion_instructor_aprendiz`
 --
 ALTER TABLE `relacion_instructor_aprendiz`
-  MODIFY `id_relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tituladas`

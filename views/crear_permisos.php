@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </article>
     <div class="cont_generador">
         <form action="" method="post">
-            <label for="instructor" class="label" >Instructor:</label>
+            <label for="instructor" class="label is-flex is-justify-content-center" >Lista de instructores:</label>
             <div class='my-flex-center'  width='100%' >
                 <select name="instructor" class='my-select' id="instructor" width='100%'>
                     <option value="" disabled selected>Selecciona un instructor</option>
@@ -68,13 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         ?>
         <br>
-        <div class="hoja" id='hoja'>
+        <form method="POST" action="./php/cargar_permiso.php" class="hoja" id='hoja'>
                 <div class="fecha-hora px-2">
                     <div class="is-flex ">
-                    <input type="time" class="hora" readonly disabled name="hora" />
+                        <input type="time" class="hora" readonly disabled name="hora_permiso" />
                     </div>
                     <div class="fecha">
                         <?php echo date('Y-m-d'); ?>
+                        <input type="hidden" name="fecha_permiso" value="<?php echo date('Y-m-d'); ?>" />
                     </div>
                 </div>
                 <?php
@@ -96,8 +97,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="nombreInstructorPermiso" class="label" >Instructor:</label>
                     <input type="text"  id="nombreInstructorPermiso" value="' . $nombreInstructor . '" readonly name="nombre_instructor_permiso"><br>';
                 } else {
-                    echo '<div class="modal-advertencia has-text-centered ">
-                    <strong class="has-text-danger ">No se ha selecionado instructor!</strong></div> <br>';
+                    echo '
+                    <br>
+                    <div class="modal-advertencia has-text-centered ">
+                        <strong class="has-text-danger ">No se ha selecionado instructor!</strong>
+                    </div>';
                 }
                 ?>
         
@@ -113,8 +117,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
                         echo '</select>';
                     } else {
-                        echo '<div class="modal-advertencia has-text-centered mt-3">
-                        <strong class="has-text-danger ">No hay aprendices!</strong></div>';
+                        echo '
+                        <br>
+                        <div class="modal-advertencia has-text-centered mt-3">
+                            <strong class="has-text-danger ">!No hay aprendices!</strong>
+                        </div>';
                     }
                 ?>
                 <?php 
@@ -140,7 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="titulada" class="label" >Titulada:</label>
                 <input type="text" id="titulada" name="titulada_permiso" require readonly value= "<?php echo $tituladaValue; ?>" />
             </div>
-
             <div class="div-ficha-ambiente">
                 <div>
                     <label for="ficha" class="label" >Ficha:</label>
@@ -151,26 +157,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" id="ambiente" name="ambiente_permiso" require readonly value="<?php echo $ambienteValue; ?>" />
                 </div>
             </div>
-                <label for="motivo" class="label" >Motiivo de la salida:</label>
-                <textarea id="motivo" rows="4" cols="8" placeholder="" maxlength="40" name="motivo_permiso"></textarea>
-        
-        </div>
-        <!-- termna hoja -->
-        <div class=" is-flex is-flex-direction-column is-justify-content-center p-3">
-            <div class="resultado py-3">
-                <form method="POST" action="./php/cargarPermiso.php" enctype="multipart/form-data">
-                <input type="hidden" name="permisoGenerado" id="permisoGenerado" value="">
+                <label for="motivo" class="label" >Motivo de la salida:</label>
+                <textarea id="motivo" rows="3" cols="8" placeholder="" maxlength="40" name="motivo_permiso"></textarea>
+
+            <div class="is-flex is-justify-content-center p-3">
+                <div class="py-3">
                     <button id="botonEnviar" type="submit" class="my-button button-clr-azul">Enviar Permiso</button>
-                   
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
+        <!-- termna hoja -->
+        <article class="panel-heading"> 
+        <h3 class="">
+        DATOS PARA PERMISOS
+        </h3>
+        <p class="">
+            Aqui podras agregar aprendices a la lista para poder generar su permiso.
+        </p>
+        <br>
         <div class="box-button">    
-            <a href="index.php?vista=datos_permisos" class="my-button button-clr-morado">
-                <span for="registro-aprendiz">Ver datos</span>
+            <a href="index.php?vista=datos_instructores_aprendices" class="my-button button-clr-morado">
+                <span for="">Ver datos</span>
             </a>
-            <button class="btn-generar-permiso my-button button-clr-verde" onclick="convertirPermisoAPDF()">Generar</button>
-        </div>
+        </div>    
+    </article>
+        
     </div>
 
 

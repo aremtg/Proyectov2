@@ -12,10 +12,10 @@ if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_P
     // Verificar que los datos no estén vacíos
     if (!empty($nombreInstructor) && !empty($contactoInstructor) && !empty($titulada) && !empty($ficha) && !empty($ambiente)) {
         // Realizar la inserción del instructor en la tabla de instructores
-        $sqlInsertInstructor = "INSERT INTO instructores (nombre, contacto, ntitulada, ficha, ambiente) VALUES ('$nombreInstructor', '$contactoInstructor', '$titulada', '$ficha', '$ambiente')";
-
+        $sql = "INSERT INTO instructores (nombre, contacto, ntitulada, ficha, ambiente) VALUES ('$nombreInstructor', '$contactoInstructor', '$titulada', '$ficha', '$ambiente')";
+        $guardar = mysqli_query($db, $sql);
         // Ejecutar la consulta
-        if (mysqli_query($db, $sqlInsertInstructor)) {
+        if ($guardar) {
             echo "Instructor agregado con éxito.";
         } else {
             echo "Error al agregar el instructor: " . mysqli_error($db);
@@ -30,13 +30,13 @@ if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_P
         // Verificar que los datos no estén vacíos
         if (!empty($idInstructor) && !empty($aprendizNombre)) {
             // Realizar la inserción en la tabla de relación Instructor-Aprendiz
-            $sqlInsertAprendiz = "INSERT INTO relacion_instructor_aprendiz (id_instructor, nombre_aprendiz, ntitulada, ficha, ambiente) 
+            $sql = "INSERT INTO relacion_instructor_aprendiz (id_instructor, nombre_aprendiz, ntitulada, ficha, ambiente) 
                                  SELECT id_instructor, '$aprendizNombre', ntitulada, ficha, ambiente
                                  FROM instructores 
                                  WHERE id_instructor = '$idInstructor'";
-    
+            $guardar = mysqli_query($db, $sql);
             // Ejecutar la consulta
-            if (mysqli_query($db, $sqlInsertAprendiz)) {
+            if ( $guardar) {
                 echo "Aprendiz agregado con éxito.";
             } else {
                 echo "Error al agregar el aprendiz: " . mysqli_error($db);
@@ -48,5 +48,5 @@ if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_P
     }
  
 mysqli_close($db);
-header('location:../index.php?vista=datos_permisos');
+header('location:../index.php?vista=datos_instructores_aprendices');
 ?>

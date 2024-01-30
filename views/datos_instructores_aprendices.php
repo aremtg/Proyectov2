@@ -1,7 +1,7 @@
 
 <div>
 <h1 class='panel-heading'>Agregar instructor</h1>
-<form action="./php/guardarDatosPermisos.php" class="box" method="POST">
+<form action="./php/guardar_datos_instructores_aprendices.php" class="box" method="POST">
 
 <div class="field">
     <label class="label" for="nombreInstructor">Nombre del Instructor:</label>
@@ -49,7 +49,7 @@
 </div>
 <div>
  <h1 class='panel-heading'>Agregar aprendiz a un instructor</h1>
-<form action="./php/guardarDatosPermisos.php" method="POST" class='box'>
+<form action="./php/guardar_datos_instructores_aprendices.php" method="POST" class='box'>
     <?php
         $sql = "SELECT id_instructor, nombre FROM instructores";
         $resultado = $db->query($sql);

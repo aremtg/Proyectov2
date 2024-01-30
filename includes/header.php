@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/bulma.min.css"> <!-- Enlaza el archivo de estilo bulma.min.css -->
     <link rel="stylesheet" href="./css/mens_modales.css">
     <link rel="stylesheet" href="./css/404.css" >
-    <link rel="stylesheet" href="./css/papel_permisos.css">
+    <link rel="stylesheet" href="./css/crear_permisos.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/index.css"> <!-- Enlaza el archivo de estilo index.css -->
     <script src="js/jquery-3.2.1.js"></script>

@@ -29,7 +29,7 @@
                     <img src="images/iconos/usuarios-icon.svg" alt="">
                     <span class="tiptext">Usuarios</span>
                 </a>
-                <a class="nav_a" href="index.php?vista=papel_permisos">
+                <a class="nav_a" href="index.php?vista=crear_permisos">
                     <img src="images/iconos/permisos-icon.svg" alt="">
                     <span class="tiptext">Permisos</span>
                 </a>
