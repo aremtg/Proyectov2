@@ -71,8 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" action="./php/cargar_permiso.php" class="hoja" id='hoja'>
                 <div class="fecha-hora px-2">
                     <div class="is-flex ">
-                        <input type="time" class="hora" readonly disabled name="hora_permiso" />
-                    </div>
+                        <input type="time" class="hora" name="hora_permiso" readonly  />
+                    </div>          
+               
                     <div class="fecha">
                         <?php echo date('Y-m-d'); ?>
                         <input type="hidden" name="fecha_permiso" value="<?php echo date('Y-m-d'); ?>" />
@@ -125,19 +126,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
                 ?>
                 <?php 
-                    $tituladaValue = $fichaValue = $ambienteValue = '';
+                    $tituladaValue = $ambienteValue = '';
 
                     // Verificar si se ha seleccionado un instructor
                     if (!is_null($instructorSeleccionado)) {
                         // Consulta SQL para obtener los datos del instructor seleccionado
-                        $sqlInstructorData = "SELECT ntitulada, ficha, ambiente FROM instructores WHERE id_instructor = $instructorSeleccionado";
+                        $sqlInstructorData = "SELECT titulada, ambiente FROM instructores WHERE id_instructor = $instructorSeleccionado";
                         $resultadoInstructorData = $db->query($sqlInstructorData);
 
                         // Verificar si hay resultados
                         if ($resultadoInstructorData->num_rows > 0) {
                             $filaInstructorData = $resultadoInstructorData->fetch_assoc();
-                            $tituladaValue = $filaInstructorData['ntitulada'];
-                            $fichaValue = $filaInstructorData['ficha'];
+                            $tituladaValue = $filaInstructorData['titulada'];
                             $ambienteValue = $filaInstructorData['ambiente'];
                         }
                     }
@@ -148,10 +148,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" id="titulada" name="titulada_permiso" require readonly value= "<?php echo $tituladaValue; ?>" />
             </div>
             <div class="div-ficha-ambiente">
-                <div>
+                <!-- <div>
                     <label for="ficha" class="label" >Ficha:</label>
-                    <input type="text" id="ficha" name="ficha_permiso" require readonly value="<?php echo $fichaValue; ?>" />
-                </div>
+                    <input type="text" min="5" max="11" id="ficha" name="ficha_permiso" require readonly value="" />
+                </div> -->
                 <div>
                     <label for="ambiente" class="label" >Ambiente:</label>
                     <input type="text" id="ambiente" name="ambiente_permiso" require readonly value="<?php echo $ambienteValue; ?>" />
@@ -167,7 +167,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
         <!-- termna hoja -->
-        <article class="panel-heading"> 
+    </div>
+
+ <article class="panel-heading"> 
         <h3 class="">
         DATOS PARA PERMISOS
         </h3>
@@ -181,10 +183,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </a>
         </div>    
     </article>
-        
-    </div>
-
-
 
    
 

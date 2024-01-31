@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2024 a las 17:46:20
+-- Tiempo de generación: 31-01-2024 a las 17:29:00
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -86,8 +86,7 @@ CREATE TABLE `instructores` (
   `id_instructor` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `contacto` int(13) NOT NULL,
-  `ntitulada` varchar(255) DEFAULT NULL,
-  `ficha` int(11) DEFAULT NULL,
+  `titulada` varchar(255) DEFAULT NULL,
   `ambiente` varchar(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -95,13 +94,8 @@ CREATE TABLE `instructores` (
 -- Volcado de datos para la tabla `instructores`
 --
 
-INSERT INTO `instructores` (`id_instructor`, `nombre`, `contacto`, `ntitulada`, `ficha`, `ambiente`) VALUES
-(6, 'Hector Mauricio Camargo', 2147483647, 'analisis y desarrollo de software', 2557736, 'E105'),
-(7, 'Angela Bibiana Ortegon Fuentes', 2147483647, 'transversal', 2557736, 'E105'),
-(8, 'Cristian Adel de Armas Iturriago', 45454545, 'transversal', 320299, 'E108'),
-(9, 'Jonathan profe', 2147483647, 'cocina', 555677, 'E109'),
-(10, 'liliana fierro', 232323232, 'socilaes', 434343, 'e102'),
-(11, 'Jesus David Cardenas', 2147483647, 'Maquinaria pesada', 2588736, 'E111');
+INSERT INTO `instructores` (`id_instructor`, `nombre`, `contacto`, `titulada`, `ambiente`) VALUES
+(12, 'Hector Mauricio Camargo', 2147483647, '1', 'E105');
 
 -- --------------------------------------------------------
 
@@ -116,7 +110,6 @@ CREATE TABLE `permisosdata` (
   `nombre_instructor_permiso` varchar(255) NOT NULL,
   `nombre_aprendiz_permiso` varchar(255) NOT NULL,
   `titulada_permiso` varchar(255) NOT NULL,
-  `ficha_permiso` int(11) NOT NULL,
   `ambiente_permiso` varchar(255) NOT NULL,
   `motivo_permiso` varchar(255) NOT NULL,
   `creado` timestamp NOT NULL DEFAULT current_timestamp()
@@ -175,8 +168,7 @@ CREATE TABLE `relacion_instructor_aprendiz` (
   `id_relacion` int(11) NOT NULL,
   `id_instructor` int(11) NOT NULL,
   `nombre_aprendiz` varchar(255) NOT NULL,
-  `ntitulada` varchar(255) DEFAULT NULL,
-  `ficha` int(11) DEFAULT NULL,
+  `titulada` varchar(255) DEFAULT NULL,
   `ambiente` varchar(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -184,13 +176,8 @@ CREATE TABLE `relacion_instructor_aprendiz` (
 -- Volcado de datos para la tabla `relacion_instructor_aprendiz`
 --
 
-INSERT INTO `relacion_instructor_aprendiz` (`id_relacion`, `id_instructor`, `nombre_aprendiz`, `ntitulada`, `ficha`, `ambiente`) VALUES
-(1, 6, 'Tatiana Andrea Guzman Galindo', 'analisis y desarrollo de software', 2557736, 'E105'),
-(2, 7, 'Jonathan Caro Espinosa', 'transversal', 2557736, 'E105'),
-(3, 7, 'Zahira salome cachay guzman', 'transversal', 2557736, 'E105'),
-(4, 8, 'Demian Fabian Gutierrez Roa', 'transversal', 320299, 'E108'),
-(5, 9, 'leonel guzman', 'cocina', 555677, 'E109'),
-(6, 11, 'Andrea Galindo', 'Maquinaria pesada', 2588736, 'E111');
+INSERT INTO `relacion_instructor_aprendiz` (`id_relacion`, `id_instructor`, `nombre_aprendiz`, `titulada`, `ambiente`) VALUES
+(1, 12, 'Tatiana Andrea Guzman Galindo', '1', 'E105');
 
 -- --------------------------------------------------------
 
@@ -342,7 +329,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `instructores`
 --
 ALTER TABLE `instructores`
-  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `permisosdata`
@@ -360,7 +347,7 @@ ALTER TABLE `registro`
 -- AUTO_INCREMENT de la tabla `relacion_instructor_aprendiz`
 --
 ALTER TABLE `relacion_instructor_aprendiz`
-  MODIFY `id_relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tituladas`

@@ -23,7 +23,7 @@
     border: 2px solid rgb(196, 196, 196);
     background-color: white;
 }
-.hoja input[type="text"], #motivo, #instructor{
+.hoja input[type="text"], input[type="number"], #motivo, #instructor{
     font-weight: 700;
     font-size: 14px;
 }
