@@ -10,7 +10,7 @@ $guardar = mysqli_query($db, $sql);
 
 $datos = mysqli_fetch_all($guardar, MYSQLI_ASSOC);
     foreach($datos as $dato){
-        echo' <input class="input" type="text" value="'.$dato['nombre_titulada'].'" disabled>
+        echo' <input class="input" name="nombre_titulada" type="text" value="'.$dato['nombre_titulada'].'" >
         <input type="hidden" name="titulada" value="'.$dato['id_titulada'].'">
     </div>';
     echo isset($_SESSION['errores']) ? mostrarAlerta($_SESSION['errores'],'titulada'):"";

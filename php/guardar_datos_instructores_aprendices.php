@@ -2,10 +2,10 @@
 require_once('conexion.php');
 require_once('main.php');
 
-if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_POST['titulada']) && isset($_POST['ambiente'])) {
+if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_POST['nombre_titulada']) && isset($_POST['ambiente'])) {
     $nombreInstructor = limpiar_cadena($_POST['nombre_instructor']);
     $contactoInstructor = limpiar_cadena($_POST['contacto']);
-    $titulada = limpiar_cadena($_POST['titulada']);
+    $titulada = limpiar_cadena($_POST['nombre_titulada']);
     // $ficha = limpiar_cadena($_POST['ficha']);
     $ambiente = limpiar_cadena($_POST['ambiente']);
 

@@ -10,7 +10,7 @@
                         include('./php/mostrar_titulada.php');
                         }else{
                                 echo'
-                                <input class="input" type="text" value="" disabled>
+                                <input class="input" name="nombre_titulada" type="text" value="" >
                                 <input type="hidden" name="titulada"  >
                 </div>
             </div>
