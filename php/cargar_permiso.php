@@ -8,44 +8,48 @@ require_once('main.php');
     $nombre_instructor_permiso = limpiar_cadena($_POST['nombre_instructor_permiso']);
     $nombre_aprendiz_permiso = limpiar_cadena($_POST['nombre_aprendiz_permiso']);
     $titulada_permiso = limpiar_cadena($_POST['titulada_permiso']);
-    // $ficha_permiso = limpiar_cadena($_POST['ficha_permiso']); 
+    $ficha_permiso = limpiar_cadena($_POST['ficha_permiso']); 
     $ambiente_permiso = limpiar_cadena($_POST['ambiente_permiso']);
     $motivo_permiso = limpiar_cadena($_POST['motivo_permiso']);
-
-    var_dump($_POST['hora_permiso']);
-    // Insertar en la base de datos
-    $sql = "INSERT INTO permisosdata (
-        id,
-        hora_permiso,
-        fecha_permiso,
-        nombre_instructor_permiso, 
-        nombre_aprendiz_permiso,
-        titulada_permiso,
-        ambiente_permiso,
-        motivo_permiso,
-        creado
-    ) VALUES (
-        null,
-        '$hora_permiso',
-        '$fecha_permiso',
-        '$nombre_instructor_permiso',
-        '$nombre_aprendiz_permiso',
-        '$titulada_permiso',
-        '$ambiente_permiso',
-        '$motivo_permiso',
-        now()
-    )";
-
-    $guardar = mysqli_query($db, $sql);
-
-    if($guardar){
-        echo "Archivo Subido Correctamente";
+    if (empty($hora_permiso) || empty($fecha_permiso) || empty($nombre_instructor_permiso) || empty($nombre_aprendiz_permiso) || empty($titulada_permiso) || empty($ficha_permiso) || empty($ambiente_permiso) || empty($motivo_permiso)) {
+        
+           
     } else {
-        echo "Ha fallado la subida. Detalles del error: " . mysqli_error($db);
-    } 
+            // Insertar en la base de datos
+            $sql = "INSERT INTO permisosdata (
+                id,
+                hora_permiso,
+                fecha_permiso,
+                nombre_instructor_permiso, 
+                nombre_aprendiz_permiso,
+                titulada_permiso,
+                ficha_permiso,
+                ambiente_permiso,
+                motivo_permiso,
+                creado
+            ) VALUES (
+                null,
+                '$hora_permiso',
+                '$fecha_permiso',
+                '$nombre_instructor_permiso',
+                '$nombre_aprendiz_permiso',
+                '$titulada_permiso',
+                '$ficha_permiso',
+                '$ambiente_permiso',
+                '$motivo_permiso',
+                now()
+            )";
 
-    mysqli_close($db);
-    header('location:../index.php?vista=crear_permisos');
+            $guardar = mysqli_query($db, $sql);
 
+            if($guardar){
+                echo "Archivo Subido Correctamente";
+            } else {
+                echo "Ha fallado la subida. Detalles del error: " . mysqli_error($db);
+            } 
+
+            mysqli_close($db);
+            header('location:../index.php?vista=crear_permisos');
+        }
 
 ?>

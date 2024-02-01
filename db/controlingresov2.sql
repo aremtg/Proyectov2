@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-01-2024 a las 17:29:00
+-- Tiempo de generación: 01-02-2024 a las 16:01:24
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -54,7 +54,8 @@ INSERT INTO `aprendices` (`id_aprendiz`, `id_usuario`, `id_titulada`, `tipoDoc_a
 (2, 1, 1, 'Cedula de Ciudadania', '1223445678', 'Jorge Eliecer', 'Morales Hugo', 'hugomj@gmail.com', '3242556676', '850001', 'Rojo', '850007', 'Beige', '2023-12-13', 2),
 (3, 1, 1, 'Cedula de Ciudadania', '123443255', 'Julian Camilo', 'Rojas Castañeda', 'castaneda@gmail.com', '322464465', '3456', 'No', '3455', 'No', '2023-12-13', 1),
 (4, 1, 1, 'Cedula de Ciudadania', '133112345', 'Edwin Santiago', 'Acevedo', 'acvd@gmail.com', '3231466456', '53356', 'No', '45668', 'No', '2023-12-13', 1),
-(5, 1, 1, '', '123455678', 'Demian', 'Monrroy Guzmán', 'monrroy@gmail.com', '3245641537', '7272', 'No', '2233', 'No', '2023-12-13', 1);
+(5, 1, 1, '', '123455678', 'Demian', 'Monrroy Guzmán', 'monrroy@gmail.com', '3245641537', '7272', 'No', '2233', 'No', '2023-12-13', 1),
+(6, 1, 1, 'Cedula de Ciudadania', '93341778', 'Leo', 'Guzman Viviesca', 'leo123@gmail.com', '3107567278', '4545', 'Roja gris', '444', 'Verde', '2024-02-01', 1);
 
 -- --------------------------------------------------------
 
@@ -84,18 +85,19 @@ INSERT INTO `articulos` (`id_articulo`, `nombre_articulo`, `nombre_articulo_2`) 
 
 CREATE TABLE `instructores` (
   `id_instructor` int(11) NOT NULL,
-  `nombre` varchar(150) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
   `contacto` int(13) NOT NULL,
-  `titulada` varchar(255) DEFAULT NULL,
-  `ambiente` varchar(7) DEFAULT NULL
+  `titulada` varchar(255) NOT NULL,
+  `ficha` varchar(11) NOT NULL,
+  `ambiente` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `instructores`
 --
 
-INSERT INTO `instructores` (`id_instructor`, `nombre`, `contacto`, `titulada`, `ambiente`) VALUES
-(12, 'Hector Mauricio Camargo', 2147483647, '1', 'E105');
+INSERT INTO `instructores` (`id_instructor`, `nombre`, `contacto`, `titulada`, `ficha`, `ambiente`) VALUES
+(17, 'Hector Mauricio Camargo Gamba', 2147483647, 'Adso', '2557736', 'E105');
 
 -- --------------------------------------------------------
 
@@ -110,10 +112,21 @@ CREATE TABLE `permisosdata` (
   `nombre_instructor_permiso` varchar(255) NOT NULL,
   `nombre_aprendiz_permiso` varchar(255) NOT NULL,
   `titulada_permiso` varchar(255) NOT NULL,
-  `ambiente_permiso` varchar(255) NOT NULL,
+  `ficha_permiso` varchar(11) NOT NULL,
+  `ambiente_permiso` varchar(7) NOT NULL,
   `motivo_permiso` varchar(255) NOT NULL,
   `creado` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `permisosdata`
+--
+
+INSERT INTO `permisosdata` (`id`, `hora_permiso`, `fecha_permiso`, `nombre_instructor_permiso`, `nombre_aprendiz_permiso`, `titulada_permiso`, `ficha_permiso`, `ambiente_permiso`, `motivo_permiso`, `creado`) VALUES
+(1, '08:44:41', '2024-02-01', 'Hector Mauricio Camargo Gamba', 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105', 'Dolor de cabeza', '2024-02-01 13:44:41'),
+(2, '09:16:28', '2024-02-01', 'Hector Mauricio Camargo Gamba', 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105', 'cita medica', '2024-02-01 14:16:28'),
+(3, '09:46:18', '2024-02-01', 'Hector Mauricio Camargo Gamba', 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105', 'emergencia familiar', '2024-02-01 14:46:18'),
+(4, '09:48:37', '2024-02-01', 'Hector Mauricio Camargo Gamba', 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105', 'lololo', '2024-02-01 14:48:37');
 
 -- --------------------------------------------------------
 
@@ -168,16 +181,17 @@ CREATE TABLE `relacion_instructor_aprendiz` (
   `id_relacion` int(11) NOT NULL,
   `id_instructor` int(11) NOT NULL,
   `nombre_aprendiz` varchar(255) NOT NULL,
-  `titulada` varchar(255) DEFAULT NULL,
-  `ambiente` varchar(7) DEFAULT NULL
+  `titulada` varchar(255) NOT NULL,
+  `ficha` varchar(11) NOT NULL,
+  `ambiente` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `relacion_instructor_aprendiz`
 --
 
-INSERT INTO `relacion_instructor_aprendiz` (`id_relacion`, `id_instructor`, `nombre_aprendiz`, `titulada`, `ambiente`) VALUES
-(1, 12, 'Tatiana Andrea Guzman Galindo', '1', 'E105');
+INSERT INTO `relacion_instructor_aprendiz` (`id_relacion`, `id_instructor`, `nombre_aprendiz`, `titulada`, `ficha`, `ambiente`) VALUES
+(1, 17, 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105');
 
 -- --------------------------------------------------------
 
@@ -250,7 +264,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `tipoDoc_usuario`, `documento_usuario`, `nombre_usuario`, `apellido_usuario`, `correo_usuario`, `usuario_usuario`, `clave_usuario`, `rol_usuario`) VALUES
-(1, 'Cedula de Ciudadania', '1124989349', 'Tatianad', 'Galindo', 'tgz57031@gmail.com', 'tguzman', '$2y$10$gO0Yrx3HOxHGCzD0e6OAx.kj3YqHS7H/N4RbcCzHNeIri18QH5dd.', 'Administrador');
+(1, 'Cedula de Ciudadania', '1124989349', 'Tatianad', 'Galindo', 'tgz57031@gmail.com', 'tguzman', '$2y$10$gO0Yrx3HOxHGCzD0e6OAx.kj3YqHS7H/N4RbcCzHNeIri18QH5dd.', 'Administrador'),
+(2, 'Cedula de Ciudadania', '1125455', 'Angie Daniela', 'Guzman', 'angi@gmail.com', 'agiguz', '$2y$10$jieTvyQGBFARyBAiq0NB/.dhg/sI3VM7NCwBm2Hc0pzam.j8cZyri', 'Administrador');
 
 --
 -- Índices para tablas volcadas
@@ -317,7 +332,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `aprendices`
 --
 ALTER TABLE `aprendices`
-  MODIFY `id_aprendiz` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_aprendiz` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `articulos`
@@ -329,13 +344,13 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `instructores`
 --
 ALTER TABLE `instructores`
-  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `permisosdata`
 --
 ALTER TABLE `permisosdata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
@@ -359,7 +374,7 @@ ALTER TABLE `tituladas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

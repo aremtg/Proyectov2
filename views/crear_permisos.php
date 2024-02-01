@@ -57,7 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!is_null($instructorSeleccionado)) {
                 // Consulta SQL para obtener los nombres de aprendices relacionados con el id_instructor
                 $sqlAprendices = "SELECT nombre_aprendiz FROM relacion_instructor_aprendiz WHERE id_instructor = $instructorSeleccionado";
-                $resultadoAprendices = $db->query($sqlAprendices);
+                $resultadoAprendices = mysqli_query($db, $sqlAprendices);
+
 
                 // Verificar si hay resultados
                 if ($resultadoAprendices->num_rows > 0) {
@@ -81,31 +82,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <?php
                     $nombreInstructor = '';
-                    if (isset($_POST['submit'])) {
-                        $sqlNombreInstructor = "SELECT nombre FROM instructores WHERE id_instructor = $instructorSeleccionado";
-                        $resultadoNombreInstructor = $db->query($sqlNombreInstructor);
 
-                        // Verifica si se obtuvo el nombre del instructor correctamente
+                    if (!empty($instructorSeleccionado)) {
+                        $sqlNombreInstructor = "SELECT nombre FROM instructores WHERE id_instructor = $instructorSeleccionado";
+                        $resultadoNombreInstructor = mysqli_query($db, $sqlNombreInstructor);
+
                         if ($resultadoNombreInstructor && $filaNombreInstructor = $resultadoNombreInstructor->fetch_assoc()) {
                             $nombreInstructor = $filaNombreInstructor['nombre'];
+
+                            if (!empty($nombreInstructor)) {
+                                echo '
+                                <label for="nombreInstructorPermiso" class="label" >Instructor:</label>
+                                <input type="text"  id="nombreInstructorPermiso" value="' . $nombreInstructor . '" readonly name="nombre_instructor_permiso"><br>';
+                            } else {
+                                echo '
+                                <br>
+                                <div class="modal-advertencia has-text-centered ">
+                                    <strong class="has-text-danger ">Este instructor no existe!</strong>
+                                </div>';
+                            }
+                        } else {
+                            echo '
+                            <br>
+                            <div class="modal-advertencia has-text-centered ">
+                                <strong class="has-text-danger ">Este instructor no existe!</strong>
+                            </div>';
                         }
+                    } else {
+                        echo '
+                        <br>
+                        <div class="modal-advertencia has-text-centered ">
+                            <strong class="has-text-danger ">No se ha seleccionado un instructor!</strong>
+                        </div>';
                     }
-                ?>
-     
-                <?php
-                if (!empty($nombreInstructor)) {
-                    echo '
-                    <label for="nombreInstructorPermiso" class="label" >Instructor:</label>
-                    <input type="text"  id="nombreInstructorPermiso" value="' . $nombreInstructor . '" readonly name="nombre_instructor_permiso"><br>';
-                } else {
-                    echo '
-                    <br>
-                    <div class="modal-advertencia has-text-centered ">
-                        <strong class="has-text-danger ">No se ha selecionado instructor!</strong>
-                    </div>';
-                }
-                ?>
-        
+                    ?>
+
                 <?php
                     if (!empty($nombresAprendices)) {
                         echo '
@@ -125,33 +136,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>';
                     }
                 ?>
-                <?php 
-                    $tituladaValue = $ambienteValue = '';
+                <?php
+                    $tituladaValue = $fichaValue = $ambienteValue = '';
 
                     // Verificar si se ha seleccionado un instructor
                     if (!is_null($instructorSeleccionado)) {
                         // Consulta SQL para obtener los datos del instructor seleccionado
-                        $sqlInstructorData = "SELECT titulada, ambiente FROM instructores WHERE id_instructor = $instructorSeleccionado";
+                        $sqlInstructorData = "SELECT titulada, ficha, ambiente FROM instructores WHERE id_instructor = $instructorSeleccionado";
                         $resultadoInstructorData = $db->query($sqlInstructorData);
 
-                        // Verificar si hay resultados
-                        if ($resultadoInstructorData->num_rows > 0) {
-                            $filaInstructorData = $resultadoInstructorData->fetch_assoc();
-                            $tituladaValue = $filaInstructorData['titulada'];
-                            $ambienteValue = $filaInstructorData['ambiente'];
+                        // Verificar si la consulta fue exitosa
+                        if ($resultadoInstructorData) {
+                            // Verificar si hay resultados
+                            if ($resultadoInstructorData->num_rows > 0) {
+                                $filaInstructorData = $resultadoInstructorData->fetch_assoc();
+                                $tituladaValue = $filaInstructorData['titulada'];
+                                $fichaValue = $filaInstructorData['ficha'];
+                                $ambienteValue = $filaInstructorData['ambiente'];
+                            }
+                        } else { 
+                            // Manejar el error de la consulta, puedes imprimir un mensaje o registrar el error
+                            echo "Error en la consulta: " . $db->error;
                         }
                     }
                 ?>
-            <!-- Mostrar campos de titulada, icha y ambiente a su cargo -->
+                                <!-- Mostrar campos de titulada, icha y ambiente a su cargo -->
             <div>
                 <label for="titulada" class="label" >Titulada:</label>
-                <input type="text" id="titulada" name="titulada_permiso" require readonly value= "<?php echo $tituladaValue; ?>" />
+                <input type="text" id="titulada" name="titulada_permiso" require readonly value="<?php echo $tituladaValue; ?>" />
             </div>
             <div class="div-ficha-ambiente">
-                <!-- <div>
+                <div>
                     <label for="ficha" class="label" >Ficha:</label>
-                    <input type="text" min="5" max="11" id="ficha" name="ficha_permiso" require readonly value="" />
-                </div> -->
+                    <input type="text" min="5" max="11" id="ficha" name="ficha_permiso" require readonly value="<?php echo $fichaValue; ?>" />
+                </div>
                 <div>
                     <label for="ambiente" class="label" >Ambiente:</label>
                     <input type="text" id="ambiente" name="ambiente_permiso" require readonly value="<?php echo $ambienteValue; ?>" />
