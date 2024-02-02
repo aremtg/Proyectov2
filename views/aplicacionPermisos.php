@@ -10,12 +10,23 @@ require_once('../php/conexion.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permisos</title>
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/aplicacionPermiso.css">
     <link rel="stylesheet" href="../css/crear_permisos.css">
     <link rel="stylesheet" href="../css/bulma.min.css">
 </head>
 <body>
 <div class="contenedor_contenido">
+<article class="panel-heading"> 
+        <h3 class="">
+        Permisos concedidos
+        </h3>
+        <p class="">
+            Se esta reflejando los permisos que dados por cada instructor
+        </p>     
+
+    </article>
+
  <div class="is-flex is-flex-wrap-wrap columns is-centered is-vcentered ">
         <?php
         $result = $db->query("SELECT 
