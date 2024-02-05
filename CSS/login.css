@@ -13,7 +13,6 @@ body{
 }
 .alerta{
     width: 400px;
-    background-color: var(--color-logo);
 }
 .box-login{
     width: 100%;

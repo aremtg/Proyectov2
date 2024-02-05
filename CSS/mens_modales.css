@@ -40,7 +40,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: var(--verde_sena);
+        background-color: var(--verde-sena);
         border-radius: 180px;
     }
 }

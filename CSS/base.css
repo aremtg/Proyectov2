@@ -1,14 +1,12 @@
 :root {
-    --verde_sena: #59a900;
-
+    --verde-sena: #59a900;
+    --morado-ssaci: #7209b7;
     --fondo-tema: rgb(255, 255, 255);
     --gradi-violeta: linear-gradient(to bottom, #ffffff, #d4c9f4, #af93e5, #8f5ad0, #7209b7);
     --gradi-verde: linear-gradient(to top, #39a900, #4db520, #5fc234, #70ce45, #81db56, #90e269, #9fea7a, #aef18c, #bef4a3, #cef7b9, #defacf, #edfde5);
     --modo-noche: rgb(0, 2, 20);
     --bg-transparente: rgba(255, 255, 255, 0.61);
 
-    --color-logo: #7209b7ff;
-    
     --sombra-cajas: -2px 3px 4px 0px rgba(0, 0, 0, 0.301);
     --sombra-suave: -2px 3px 4px 0px #dadada85;
     --sombra-suave-cajas: -2px 3px 4px 0px rgba(0, 0, 0, 0.301);
@@ -40,7 +38,7 @@ body {
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: var(--verde_sena);
+        background-color: var(--verde-sena);
         border-radius: 180px;
     }
 }
@@ -50,7 +48,7 @@ body {
     font-size: 16px;
     border: none;
     outline: none;
-    border-radius: 7px;
+    border-radius: 5px;
     padding: 6px 7px;
     background-color: white;
 }
@@ -103,7 +101,7 @@ body {
     background-color: #39a900;
 }
 .button-clr-morado{
-    background-color: blueviolet;
+    background-color: var(--morado-ssaci);
 }
 a:hover{
     color: rgb(255, 255, 255);

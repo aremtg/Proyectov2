@@ -20,10 +20,11 @@
 .hoja {
     padding: 10px;
     border-radius: 5px;
-    border: 2px solid rgb(196, 196, 196);
+    
     background-color: white;
+    box-shadow: var(--sombra-suave-cajas);
 }
-.hoja input[type="text"], input[type="number"], #motivo, #instructor{
+.hoja input[type="text"], input[type="number"], #motivo, #instructor, .my-select{
     font-weight: 700;
     font-size: 14px;
 }
@@ -32,18 +33,19 @@
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
+    align-items: center;
 }
 .hora {
     border: none;
     font-size: 20px;
     font-weight: bold;
     background: transparent;
-    color: var(--color-logo);
+    color:rgb(255, 123, 0);
 }
 .fecha {
     font-weight: bold;
-    font-size: 20px;
-    color: var(--color-logo);
+    font-size: 15px;
+    color: var(--morado-ssaci);
 }
 .div-ficha-ambiente{
     display: flex;
@@ -59,7 +61,7 @@
     padding: 9px 0px 9px 0px;
     text-indent: 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     box-sizing: border-box;
     resize: vertical;
     outline: none;

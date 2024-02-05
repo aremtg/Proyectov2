@@ -1,5 +1,10 @@
 <?php 
 date_default_timezone_set("America/Bogota");
+setlocale(LC_TIME, 'ES');
+$mes = date('n'); // Obtener el número del mes (sin ceros a la izquierda)
+
+$nombre_mes = strftime('%B', mktime(0, 0, 0, $mes, 1, date('Y')));
+$nombre_mes = utf8_encode(ucfirst($nombre_mes));
 $instructorSeleccionado = null;
 // Verificar si el formulario se ha enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <select name="instructor" class='my-select' id="instructor" width='100%'>
                     <option value="" disabled selected>Selecciona un instructor</option>
                         <?php
-                            // Obtener la lista de instructores (como en tu primer bloque de código)
+                            // Obtener la lista de instructores
                             $sqlInstructores = "SELECT DISTINCT id_instructor, nombre FROM instructores";
                             $resultadoInstructores = $db->query($sqlInstructores);
 
@@ -59,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $sqlAprendices = "SELECT nombre_aprendiz FROM relacion_instructor_aprendiz WHERE id_instructor = $instructorSeleccionado";
                 $resultadoAprendices = mysqli_query($db, $sqlAprendices);
 
-
                 // Verificar si hay resultados
                 if ($resultadoAprendices->num_rows > 0) {
                     while ($filaAprendices = $resultadoAprendices->fetch_assoc()) {
@@ -76,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>          
                
                     <div class="fecha">
-                        <?php echo date('Y-m-d'); ?>
+                        <?php echo date('Y-') . ($nombre_mes) . date('-d'); ?>
                         <input type="hidden" name="fecha_permiso" value="<?php echo date('Y-m-d'); ?>" />
                     </div>
                 </div>
@@ -138,7 +142,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
                 <?php
                     $tituladaValue = $fichaValue = $ambienteValue = '';
-
                     // Verificar si se ha seleccionado un instructor
                     if (!is_null($instructorSeleccionado)) {
                         // Consulta SQL para obtener los datos del instructor seleccionado
@@ -155,12 +158,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 $ambienteValue = $filaInstructorData['ambiente'];
                             }
                         } else { 
-                            // Manejar el error de la consulta, puedes imprimir un mensaje o registrar el error
+                            // Manejar el error de la consulta- pendiente
                             echo "Error en la consulta: " . $db->error;
                         }
                     }
                 ?>
-                                <!-- Mostrar campos de titulada, icha y ambiente a su cargo -->
             <div>
                 <label for="titulada" class="label" >Titulada:</label>
                 <input type="text" id="titulada" name="titulada_permiso" require readonly value="<?php echo $tituladaValue; ?>" />
@@ -185,9 +187,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
         <!-- termna hoja -->
+ 
     </div>
-
- <article class="panel-heading"> 
+    <article class="panel-heading"> 
         <h3 class="">
         DATOS PARA PERMISOS
         </h3>
@@ -201,6 +203,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </a>
         </div>    
     </article>
-
-   
-
