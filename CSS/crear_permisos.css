@@ -24,7 +24,7 @@
     background-color: white;
     box-shadow: var(--sombra-suave-cajas);
 }
-.hoja input[type="text"], input[type="number"], #motivo, #instructor, .my-select{
+.hoja input[type="text"], input[type="number"], #motivo,.my-select{
     font-weight: 700;
     font-size: 14px;
 }
