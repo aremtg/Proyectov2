@@ -22,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Aqui podras generar un papel de permiso para salida de Aprendices.
         </p>     
     </article>
-    <div class="cont_generador">
+    <div class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap">
+       <div class="cont_generador">
         <form action="" method="post">
             <label for="instructor" class="label is-flex is-justify-content-center" >Lista de instructores:</label>
             <div class='my-flex-center'  width='100%' >
@@ -74,6 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ?>
         <br>
         <form method="POST" action="./php/cargar_permiso.php" class="hoja" id='hoja'>
+                <div class="control">
+                    <input type="hidden" name="usuario" value="<?= $_SESSION['usuario']['usuario_usuario']?>">
+                    <input type="hidden" name="nombreUsuario" value="<?= $_SESSION['usuario']['nombre_usuario']?>">
+                    <input type="hidden" name="apellidoUsuario" value="<?= $_SESSION['usuario']['apellido_usuario']?>">
+                </div>
                 <div class="fecha-hora px-2">
                     <div class="is-flex ">
                         <input type="time" class="hora" name="hora_permiso" readonly  />
@@ -163,6 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
                     }
                 ?>
+                
             <div>
                 <label for="titulada" class="label" >Titulada:</label>
                 <input type="text" id="titulada" name="titulada_permiso" require readonly value="<?php echo $tituladaValue; ?>" />
@@ -194,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         DATOS PARA PERMISOS
         </h3>
         <p class="">
-            Aqui podras agregar aprendices a la lista para poder generar su permiso.
+            para agregar datos.
         </p>
         <br>
         <div class="box-button">    
@@ -202,4 +209,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <span for="">Ver datos</span>
             </a>
         </div>    
-    </article>
+    </article> 
+    </div>
+    

@@ -35,6 +35,14 @@ body{
     font-size: 20px;
     color:  white;
 }
+.hoja input[type="time"]{
+    outline: none;
+}
+#motivo {
+    border: none;
+    outline: none;
+    background-color: #fcff95ad;
+}
 @media screen {
     
 }
