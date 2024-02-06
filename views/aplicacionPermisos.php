@@ -14,6 +14,8 @@ require_once('../php/conexion.php');
     <link rel="stylesheet" href="../css/aplicacionPermiso.css">
     <link rel="stylesheet" href="../css/crear_permisos.css">
     <link rel="stylesheet" href="../css/bulma.min.css">
+    <link rel="stylesheet" href="../css/mens_modales.css">
+
 </head>
 <body>
 <div class="contenedor_contenido">
@@ -85,37 +87,67 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
 
-            <label for="nombreInstructorPermiso" class="label">Instructor:</label>
-            <input type="text" id="nombreInstructorPermiso" value="' . $nombreInstructor . '" readonly name="nombre_instructor_permiso"><br>
+            <label class="label">Instructor:</label>
+            <input type="text" value="' . $nombreInstructor . '" readonly name="nombre_instructor_permiso"><br>
             
             <label class="label">Aprendiz:</label>
                 <input type="text" id="titulada" name="titulada_permiso" require readonly value="'. $nombreAprendiz . '" />
 
         <div>
-            <label for="titulada" class="label">Titulada:</label>
+            <label class="label">Titulada:</label>
             <input type="text" id="titulada" name="titulada_permiso" require readonly value="' . $titulada . '" />
         </div>
         <div class="div-ficha-ambiente">
             <div>
-                <label for="ficha" class="label">Ficha:</label>
+                <label class="label">Ficha:</label>
                 <input type="text" min="5" max="11" id="ficha" name="ficha_permiso" require readonly value="' . $ficha . '" />
             </div>
             <div>
-                <label for="ambiente" class="label">Ambiente:</label>
+                <label class="label">Ambiente:</label>
                 <input type="text" id="ambiente" name="ambiente_permiso" require readonly value="' . $ambiente . '" />
             </div>
         </div>
-        <label for="motivo" class="label">Motivo de la salida:</label>
+        <label class="label">Motivo de la salida:</label>
         <textarea id="motivo" rows="3" cols="8" placeholder="" maxlength="40" name="motivo_permiso" disabled style="resize: none;">' . $motivo . '</textarea>
 
         <div class="is-flex is-justify-content-center p-3">
             <div class="py-3">
-                <button id="botonEnviar" type="submit" class="my-button button-clr-azul">ver detalles</button>
+                <button id="botonEnviar" type="submit" class="my-button button-clr-azul js-modal-trigger" data-target="modal_prueba">ver detalles</button>
             </div>
         </div>
-    </div>';
+    </div>
+    
+            <!-- ### SECCION PARA VER DETALLLES DEL PERMISO ### -->
+            <div class="modal" id="modal_prueba">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Detalles del permiso</p>
+                        <button class="delete" aria-label="close"></button>
+                    </header>
+                <section class="modal-card-body">
+                    <!-- contenido del modal -->
+
+                    <div class="is-flex is-flex-direction-column">
+                        <label for="buscar_titulada" class="label mr-4">Fecha y hora de envio del perimo 
+                        (esta puede ser diferente ala hora que aparece en e permiso ya que es el momento 
+                        en el que los datos entra a la base de datos):</label>
+                    <div class="">
+                '.$fechaCreado.' 
+                    </div>
+                    </div>
+
+                    <div id="resultado-busqueda" class="mb-3"></div> 
+                
+                    </section>
+                </div>
+            </div>
+            <!-- SE ACABA LA SECCION DEL MODAL -->
+    ';
         }
 ?>
+
+<script src="../js/modal.js"></script>
         </div>
 <?php
     }
@@ -132,6 +164,6 @@ $db->close();
     
 
 </div>
-   
+
 </body>
 </html>

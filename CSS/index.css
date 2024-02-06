@@ -197,19 +197,15 @@ a img,
 /* termina navegador*/
 .contenedor_contenido {
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 104px;
+    margin: 90px auto 0;
+    margin-bottom: 20px;
     padding: 10px;
     border-radius: 10px;
     background: var(--fondo-tema);
     box-shadow: var(--sombra-suave);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    gap: 1rem;
 }
-
 .a_iniciar_aplicacion {
     display: flex;
     align-items: center;

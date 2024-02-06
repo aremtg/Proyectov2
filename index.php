@@ -11,7 +11,7 @@ if (!isset($_GET['vista']) || $_GET['vista'] == "") {
 // Comprueba si el archivo de la vista existe y si no es la página de login, luego muestra la vista
 if (is_file('./views/'.$_GET['vista'].'.php') && $_GET['vista'] != 'login') {
     require_once('./php/main.php'); 
-    include('./views/nav_left.php');
+    include('./views/navbar.php');
     include('./views/'.$_GET['vista'].'.php');
     include('./includes/script.php');
 } else {
