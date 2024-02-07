@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2024 a las 17:37:15
+-- Tiempo de generación: 07-02-2024 a las 17:35:17
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -99,7 +99,9 @@ CREATE TABLE `instructores` (
 
 INSERT INTO `instructores` (`id_instructor`, `nombre`, `contacto`, `titulada`, `ficha`, `ambiente`) VALUES
 (17, 'Hector Mauricio Camargo Gamba', 2147483647, 'Adso', '2557736', 'E105'),
-(18, 'Cristian Adel de Armas Iturriago', 2147483647, 'Cocina', '112233', 'E108');
+(18, 'Cristian Adel de Armas Iturriago', 2147483647, 'Cocina', '112233', 'E108'),
+(19, 'Juan Fernando Ruiz Diaz', 323455778, 'Asssdfgg Hjikkhhh Hhkhvjk Jjghkk Hjki', '77789', 'E103'),
+(20, 'Leonardo perez echeverría', 2147483647, 'Maquinaria Pesada', '767688', 'B98');
 
 -- --------------------------------------------------------
 
@@ -146,7 +148,12 @@ INSERT INTO `permisosdata` (`id`, `usuario`, `nombreUsuario`, `apellidoUsuario`,
 (17, 'tguzman', 'Tatiana', 'Guzman', '10:35:07', '2024-02-06', 'Hector Mauricio Camargo Gamba', 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105', 'prueba', '2024-02-06 15:35:07'),
 (18, 'tguzman', 'Tatiana', 'Guzman', '10:35:58', '2024-02-06', 'Hector Mauricio Camargo Gamba', 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105', 'lolo', '2024-02-06 15:35:59'),
 (19, 'agiguz', 'Angie Daniela', 'Guzman', '10:40:19', '2024-02-06', 'Cristian Adel de Armas Iturriago', 'Demian Fabian Gutierrez Roa', 'Cocina', '112233', 'E108', 'fiebre', '2024-02-06 15:40:20'),
-(20, 'tguzman', 'Tatiana Andrea', 'Guzman', '10:41:38', '2024-02-06', 'Cristian Adel de Armas Iturriago', 'Demian Fabian Gutierrez Roa', 'Cocina', '112233', 'E108', 'emegencia', '2024-02-06 15:41:39');
+(20, 'tguzman', 'Tatiana Andrea', 'Guzman', '10:41:38', '2024-02-06', 'Cristian Adel de Armas Iturriago', 'Demian Fabian Gutierrez Roa', 'Cocina', '112233', 'E108', 'emegencia', '2024-02-06 15:41:39'),
+(21, 'tguzman', 'Tatiana Andrea', 'Guzman', '07:54:17', '2024-02-07', 'Hector Mauricio Camargo Gamba', 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105', 'Problemas de salud', '2024-02-07 12:54:14'),
+(22, 'tguzman', 'Tatiana Andrea', 'Guzman', '09:26:40', '2024-02-07', 'Cristian Adel de Armas Iturriago', 'Demian Fabian Gutierrez Roa', 'Cocina', '112233', 'E108', 'Sanción...', '2024-02-07 14:26:37'),
+(23, 'tguzman', 'Tatiana Andrea', 'Guzman', '09:28:32', '2024-02-07', 'Hector Mauricio Camargo Gamba', 'Jonathan Caro Espinosa', 'Adso', '2557736', 'E105', 'Jum', '2024-02-07 14:28:30'),
+(24, '<br />\r\n<b>Warning</', '<br />\r\n<b>Warning</', '<br />\r\n<b>Warning</', '10:58:37', '2024-02-07', 'Cristian Adel de Armas Iturriago', 'Demian Fabian Gutierrez Roa', 'Cocina', '112233', 'E108', 'Y8gvhb', '2024-02-07 15:58:34'),
+(25, 'tguzman', 'Tatiana Andrea', 'Guzman', '11:02:52', '2024-02-07', 'Leonardo perez echeverría', 'Jairo Jose monroy rio', 'Maquinaria Pesada', '767688', 'B98', 'Emergencia', '2024-02-07 16:02:49');
 
 -- --------------------------------------------------------
 
@@ -189,7 +196,8 @@ INSERT INTO `registro` (`id_registro`, `id_aprendiz`, `fecha_registro`, `hora_re
 (27, 1, '2024-01-13', '16:11:51'),
 (29, 1, '2024-01-13', '16:13:51'),
 (30, 1, '2024-01-13', '16:16:20'),
-(31, 1, '2024-01-13', '17:11:41');
+(31, 1, '2024-01-13', '17:11:41'),
+(32, 1, '2024-02-07', '11:30:25');
 
 -- --------------------------------------------------------
 
@@ -212,7 +220,9 @@ CREATE TABLE `relacion_instructor_aprendiz` (
 
 INSERT INTO `relacion_instructor_aprendiz` (`id_relacion`, `id_instructor`, `nombre_aprendiz`, `titulada`, `ficha`, `ambiente`) VALUES
 (1, 17, 'Tatiana Andrea Guzman Galindo', 'Adso', '2557736', 'E105'),
-(2, 18, 'Demian Fabian Gutierrez Roa', 'Cocina', '112233', 'E108');
+(2, 18, 'Demian Fabian Gutierrez Roa', 'Cocina', '112233', 'E108'),
+(3, 17, 'Jonathan Caro Espinosa', 'Adso', '2557736', 'E105'),
+(4, 20, 'Jairo Jose monroy rio', 'Maquinaria Pesada', '767688', 'B98');
 
 -- --------------------------------------------------------
 
@@ -260,7 +270,8 @@ INSERT INTO `tituladas` (`id_titulada`, `nombre_titulada`, `ficha_titulada`, `jo
 (26, 'Rcchkku', 667, 'Mañana'),
 (27, 'Fjkvcb', 678, 'Mañana'),
 (28, 'Ftgtgyjij', 46767, 'Mañana'),
-(29, 'Ugucouc', 879, 'Mañana');
+(29, 'Ugucouc', 879, 'Mañana'),
+(30, 'Maquinaria Pesada', 767688, 'Mañana');
 
 -- --------------------------------------------------------
 
@@ -365,31 +376,31 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `instructores`
 --
 ALTER TABLE `instructores`
-  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `permisosdata`
 --
 ALTER TABLE `permisosdata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `id_registro` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_registro` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `relacion_instructor_aprendiz`
 --
 ALTER TABLE `relacion_instructor_aprendiz`
-  MODIFY `id_relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_relacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tituladas`
 --
 ALTER TABLE `tituladas`
-  MODIFY `id_titulada` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_titulada` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
