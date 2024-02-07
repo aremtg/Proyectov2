@@ -54,7 +54,7 @@
     justify-content: center;
 }
 
-.logos-nav .saci {
+.logos-nav .ssaci {
     color: var(--verde-sena);
     font-size: 30px;
     font-weight: 800;
@@ -283,10 +283,6 @@ a img,
     line-height: 134.49%;
     color: rgba(255, 136, 0, 0.904);
 }
-.targetas:hover h2 {
-
-}
-
 /* termina home*/
 /* comienza articulos */
 .box_buscador {
@@ -474,7 +470,6 @@ a img,
     }
     .nav{
         display: none;
-        background-color: red;
     }
    
     .container_nav {
@@ -482,7 +477,7 @@ a img,
         margin-top: 0;
         margin-bottom: 1rem;
     }
-    .logos-nav .saci{
+    .logos-nav .ssaci{
         font-size: 22px;
     }
     .contenedor_contenido {

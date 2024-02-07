@@ -71,7 +71,7 @@
                     }
                 ?>
             <label for="aprendices" class="label" >Agregar Aprendiz:</label>
-            <input type="text" class="input-form" name="aprendiz" placeholder="Nombre del Aprendiz">
+            <input type="text" class="input" name="aprendiz" placeholder="Nombre del Aprendiz">
                 <br><br>
                 <div class="box-button">
                     <input type="submit" value="Agregar Aprendiz" class='my-button button-clr-azul'>

@@ -36,15 +36,16 @@
     align-items: center;
 }
 .hora {
-    border: none;
     font-size: 20px;
     font-weight: bold;
     background: transparent;
     color:rgb(255, 123, 0);
+    outline: none;
+    border: none;
 }
 .fecha {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     color: var(--morado-ssaci);
 }
 .div-ficha-ambiente{
@@ -67,4 +68,12 @@
     outline: none;
 }
 /* ------------------- */
+@media (max-width: 729px) {
+    .hora{
+        font-size: 15px;
+    }
+    .fecha{
+        font-size: 13px;
+    }
 
+}

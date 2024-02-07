@@ -120,7 +120,10 @@ require_once('../php/conexion.php');
 
                                 <div class="is-flex is-justify-content-center p-3">
                                     <div class="py-3">
-                                        <button id="botonEnviar" type="submit" class="my-button button-clr-azul js-modal-trigger" data-target="modal_' . $permisoId. '">ver detalles</button>
+                                        <button id="botonEnviar" type="submit" class="my-button button-clr-azul js-modal-trigger" data-target="modal_' . $permisoId. '">Ver detalles</button>
+                                    </div>
+                                    <div class="py-3">
+                                        <button id="botonEnviar" type="submit" class="my-button button-clr-naranja js-modal-trigger" data-target="modal_archivar' . $permisoId. '">Archivar</button>
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +151,29 @@ require_once('../php/conexion.php');
                                     </section>
                                 </div>
                             </div>
+                            <!-- FIN SECCION DEL MODAL -->
+                            <!-- SECCION PARA ELIMINAR EL PERMISO -->
+                            <div class="modal" id="modal_archivar' . $permisoId. '"> <!-- Utiliza un identificador único para cada modal -->
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Archivar</p>
+                                        <button class="delete" aria-label="close"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                                        <!-- Contenido del modal -->
+                                        <div class="is-flex is-flex-direction-column">
+                                            <label for="buscar_titulada" class="label mr-4">¿DESEA MOVER ESTE PERMISO A LA PAPELERA?</label>
+                                            <div class="">' . $fechaCreado . '</div>
+                                            <button id="botonEnviar" type="submit" class="my-button button-clr-azul js-modal-trigger">SI</button>
+
+                                        </div>
+                                        <div id="resultado-busqueda" class="mb-3"></div> 
+                                    </section>
+                                </div>
+                            </div>
                             <!-- FIN SECCION DEL MODAL -->';
+                            
                     }
                 ?>
               

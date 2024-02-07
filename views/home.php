@@ -4,6 +4,7 @@
                 Sistema de Seguimiento Acceso y Control de Ingreso...
             </p>     
     </article>
+    <br>
         <?php
             $totalAprendiz = obtenerRegistros($db,'aprendices','id_aprendiz',null);
             $totalUsuarios = obtenerRegistros($db,'usuarios','id_usuario',$_SESSION['usuario']['id_usuario']);
@@ -38,8 +39,12 @@
     </a>
     
 </div><!--cerramos contenedor para las targetas del home-->
-
+<br>
 <div class="box-button">
-    <a href="./views/aplicacionPermisos.php" target="_blank" class="my-button button-clr-morado">Aplicacion Permisos</a>
-    <a href="./views/aplicacion.php" target="_blank" class="my-button button-clr-verde">Aplicacion Ingresos</a>
+    <a href="./views/aplicacionPermisos.php" target="_blank" class="my-button button-clr-morado">
+    <img src="images/iconos/permisos-icon-b.svg" alt="">  
+    Aplicacion Permisos</a>
+    <a href="./views/aplicacion.php" target="_blank" class="my-button button-clr-verde">
+        
+    Aplicacion Ingresos</a>
 </div>

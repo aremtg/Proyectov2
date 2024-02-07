@@ -92,13 +92,16 @@ body {
     background-color: rgb(241, 60, 60);
 }
 .button-clr-azul {
-    background-color: blue;
+    background-color: rgba(0, 153, 255, 0.904);
 }
 .button-clr-verde{
     background-color: #39a900;
 }
 .button-clr-morado{
     background-color: var(--morado-ssaci);
+}
+.button-clr-naranja{
+    background-color: rgb(255, 123, 0);
 }
 a:hover{
     color: rgb(255, 255, 255);

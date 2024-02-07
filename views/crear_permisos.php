@@ -24,10 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </article>
     <div class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap">
        <div class="cont_generador">
-        <form action="" method="post">
+        <form action="" method="post" width='100%'>
             <label for="instructor" class="label is-flex is-justify-content-center" >Lista de instructores:</label>
             <div class='my-flex-center'  width='100%' >
-                <select name="instructor" class='my-select' id="instructor" width='100%'>
+                <select name="instructor" class='my-select' required id="instructor" width='100%'>
                     <option value="" disabled selected>Selecciona un instructor</option>
                         <?php
                             // Obtener la lista de instructores
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         echo '
                         <br>
                         <div class="modal-advertencia has-text-centered ">
-                            <strong class="has-text-danger ">No se ha seleccionado un instructor!</strong>
+                            <strong for="instructor" class="has-text-danger ">No se ha seleccionado un instructor!</strong>
                         </div>';
                     }
                     ?>
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if (!empty($nombresAprendices)) {
                         echo '
                         <label for="aprendiz-lista" class="label" >Aprendiz:</label>
-                        <select  id="aprendiz-lista" class="my-select" name="nombre_aprendiz_permiso">
+                        <select  id="aprendiz-lista" class="my-select" required name="nombre_aprendiz_permiso">
                         <option value="" disabled selected>Selecciona un aprendiz</option>';
                         
                         foreach ($nombresAprendices as $nombreAprendiz) {
@@ -172,31 +172,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
             <div>
                 <label for="titulada" class="label" >Titulada:</label>
-                <input type="text" id="titulada" name="titulada_permiso" require readonly value="<?php echo $tituladaValue; ?>" />
+                <input type="text" id="titulada" required placeholder="Selecciona un instructor."  name="titulada_permiso" require readonly value="<?php echo $tituladaValue; ?>" />
             </div>
             <div class="div-ficha-ambiente">
                 <div>
                     <label for="ficha" class="label" >Ficha:</label>
-                    <input type="text" min="5" max="11" id="ficha" name="ficha_permiso" require readonly value="<?php echo $fichaValue; ?>" />
+                    <input type="text" min="5" max="11" id="ficha" required placeholder="Selecciona un instructor." name="ficha_permiso" require readonly value="<?php echo $fichaValue; ?>" />
                 </div>
                 <div>
                     <label for="ambiente" class="label" >Ambiente:</label>
-                    <input type="text" id="ambiente" name="ambiente_permiso" require readonly value="<?php echo $ambienteValue; ?>" />
+                    <input type="text" id="ambiente" required placeholder="Selecciona un instructor." name="ambiente_permiso" require readonly value="<?php echo $ambienteValue; ?>" />
                 </div>
             </div>
                 <label for="motivo" class="label" >Motivo de la salida:</label>
-                <textarea id="motivo" rows="3" cols="8" placeholder="" maxlength="40" name="motivo_permiso"></textarea>
+                <textarea id="motivo" rows="3" cols="8" placeholder="" maxlength="40" name="motivo_permiso" required></textarea>
 
             <div class="is-flex is-justify-content-center p-3">
                 <div class="py-3">
-                    <button id="botonEnviar" type="submit" class="my-button button-clr-azul">Enviar Permiso</button>
+                    <button id="botonEnviar" type="submit" class="my-button button-clr-verde">Enviar Permiso</button>
                 </div>
             </div>
         </form>
         <!-- termna hoja -->
  
     </div>
-    <article class="panel-heading"> 
+    <article class="box" width="100%"> 
         <h3 class="">
         DATOS PARA PERMISOS
         </h3>
@@ -205,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </p>
         <br>
         <div class="box-button">    
-            <a href="index.php?vista=datos_instructores_aprendices" class="my-button button-clr-morado">
+            <a href="index.php?vista=datos_instructores_aprendices" class="my-button button-clr-azul">
                 <span for="">Ver datos</span>
             </a>
         </div>    
