@@ -37,12 +37,12 @@
                     <span class="tiptext">Permisos</span>
                 </a>
             </nav>
-            <div class="py-6 cont_user"><!--se abre un contenedor para agregar una imagen y unos titulos-->
+            <div class="py-6 cont_user"> <a class="user_a" href="index.php?vista=perfil"><!--se abre un contenedor para agregar una imagen y unos titulos-->
                 <div class="nombre_rol">
                     <h3 class="user-nombre"> <?= $_SESSION['usuario']['usuario_usuario'];?> </h3>
                     <h4 class="user-rol"><?= $_SESSION['usuario']['rol_usuario']; ?></h4>
                 </div>
-                <a class="user_a" href="index.php?vista=perfil">
+               
                     <img class="img_user" src="./images/user.png" alt="Foto de perfil">
                     <span class="tiptext">Perfil</span>
                 </a>

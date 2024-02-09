@@ -1,5 +1,5 @@
 :root {
-    --verde-sena: #59a900;
+    --verde-sena: #39a900;
     --morado-ssaci: #7209b7;
     --fondo-tema: rgb(255, 255, 255);
     --gradi-verde: linear-gradient(to top, #39a900, #4db520, #5fc234, #70ce45, #81db56, #90e269, #9fea7a, #aef18c, #bef4a3, #cef7b9, #defacf, #edfde5);
@@ -49,7 +49,7 @@ body {
     padding: 6px 7px;
     background-color: white;
 }
-.box-button {
+.my-center-gap {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +59,7 @@ body {
 .my-button {
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 18px;
     border-radius: 30px;
     cursor: pointer;
     font-weight: bold;
@@ -88,22 +88,22 @@ body {
     border-radius: 10px;
     outline: none;
 }
-.button-clr-rojo {
+.button-clr-rojo, .rojo{
     background-color: rgb(241, 60, 60);
 }
-.button-clr-azul {
+.button-clr-azul, .azul{
     background-color: rgba(0, 153, 255, 0.904);
 }
-.button-clr-verde{
-    background-color: #39a900;
+.button-clr-verde, .verde{
+    background-color: var(--verde-sena);
 }
-.button-clr-morado{
+.button-clr-morado, .morado{
     background-color: var(--morado-ssaci);
 }
-.button-clr-naranja{
+.button-clr-naranja, .naranja{
     background-color: rgb(255, 123, 0);
 }
-a:hover{
+a:hover, .texto-blanco{
     color: rgb(255, 255, 255);
 }
 

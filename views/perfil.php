@@ -88,11 +88,11 @@ if (!empty($datos_user)) :
                         </div>
                     </div>
                 </div>
-                <div class="box-button">
+                <div class="my-center-gap">
                     <button type="submit" class="my-button button-clr-verde js-modal-trigger" data-target="modal_update_perfil">
-                        <img src="./images/iconos/editar-icon.svg" class="icon">Editar Perfil</button>
+                        <img src="./images/iconos/editar-icon-b.svg" class="icon">Editar</button>
                     <button type="submit" class="my-button button-clr-rojo js-modal-trigger" data-target="modal_del_perfil">
-                        <img src="./images/iconos/basura-icon.svg" class="icon">Eliminar</button>
+                        <img src="./images/iconos/basura-icon-b.svg" class="icon">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -102,7 +102,8 @@ if (!empty($datos_user)) :
             <div class="modal-background"></div>
             <div class="modal-card" id="modal-card">
                 <header class="modal-card-head">
-                    <h3 class="modal-card-title">Editar Perfil</h3>
+                    <h3 class="modal-card-title my-center-gap">
+                    <img src="./images/iconos/editar-icon.svg" class="icon">Editar Perfil</h3>
                     <button class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
@@ -183,8 +184,8 @@ if (!empty($datos_user)) :
                                     </select>
                                 </div> 
                             </div>
-                        </div> <footer class="box-button">
-                               <button type="submit" class="my-button button-clr-azul"><img src="./images/save.png" class="mr-1"> Guardar Cambios</button>
+                        </div> <footer class="my-center-gap">
+                               <button type="submit" class="my-button button-clr-azul"><img src="./images/iconos/save-icon-b.svg" class="icon">Guardar Cambios</button>
                             </footer>
                     </form>
                 </section>
@@ -201,7 +202,8 @@ if (!empty($datos_user)) :
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <h3 class="modal-card-title">Eliminar Usuario</h3>
+                    <h3 class="modal-card-title my-center-gap">
+                    <img src="./images/iconos/basura-icon.svg" class="icon">Eliminar Usuario</h3>
                     <button class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
@@ -226,8 +228,8 @@ if (!empty($datos_user)) :
                             <input type="checkbox" name="delete" id="check_confirm">
                             <label for="delete" class="has-text-danger">Al eliminar la cuenta se borraran los aprendices registrados!</label>
                         </div>
-                        <footer class="box-button">
-                            <button type="submit" class="my-button button-clr-rojo"><img src="./images/delete.png" class="mr-1">Eliminar</button>
+                        <footer class="my-center-gap">
+                            <button type="submit" class="my-button button-clr-rojo"><img src="./images/iconos/basura-icon-b.svg" class="icon">Eliminar</button>
                         </footer>
                     </form>
                     <!-- se acaba el contenido del modal -->

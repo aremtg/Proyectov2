@@ -70,7 +70,8 @@
                 <td>'.$rows['fecha_registro'].'</td>
                 <td>'.$rows['hora_registro'].'</td>
                 <td>
-                    <a href="./php/delete.php?id='.$rows['id_registro'].'" class="button is-danger is-rounded is-small">Eliminar</a>
+                    <a href="./php/delete.php?id='.$rows['id_registro'].'" class="my-button button is-danger is-rounded is-small">
+                    <img src="./images/iconos/basura-icon-b.svg" class="icon">Eliminar</a>
                 </td>
                 </tr>
             ';

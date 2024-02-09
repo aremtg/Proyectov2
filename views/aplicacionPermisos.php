@@ -10,11 +10,12 @@ require_once('../php/conexion.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permisos</title>
-    <link rel="stylesheet" href="../css/index.css">
+     <link rel="stylesheet" href="../css/mens_modales.css">
+     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/bulma.min.css">
     <link rel="stylesheet" href="../css/crear_permisos.css">
     <link rel="stylesheet" href="../css/aplicacionPermiso.css">
-    <link rel="stylesheet" href="../css/mens_modales.css">
+  
 
 </head>
 <body>
@@ -118,12 +119,18 @@ require_once('../php/conexion.php');
                                 <label class="label">Motivo de la salida:</label>
                                 <textarea id="motivo" rows="3" cols="8" placeholder="" maxlength="40" name="motivo_permiso" disabled style="resize: none;">' . $motivo . '</textarea>
 
-                                <div class="is-flex is-justify-content-center p-3">
+                                <div class="my-center-gap p-3">
                                     <div class="py-3">
-                                        <button id="botonEnviar" type="submit" class="my-button button-clr-azul js-modal-trigger" data-target="modal_' . $permisoId. '">Ver detalles</button>
+                                        <button id="botonEnviar" type="submit" class="my-button button-clr-azul js-modal-trigger" data-target="modal_' . $permisoId. '">
+                                        <img src="../images/iconos/info-icon-b.svg" class="icon" alt="">
+                                        Detalles
+                                        </button>
                                     </div>
                                     <div class="py-3">
-                                        <button id="botonEnviar" type="submit" class="my-button button-clr-naranja js-modal-trigger" data-target="modal_archivar' . $permisoId. '">Archivar</button>
+                                        <button id="botonEnviar" type="submit" class="my-button button-clr-naranja js-modal-trigger" data-target="modal_archivar' . $permisoId. '">
+                                        <img src="../images/iconos/archivar-icon-b.svg" class="icon" alt="">
+                                        Archivar
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -132,8 +139,9 @@ require_once('../php/conexion.php');
                             <div class="modal" id="modal_' . $permisoId. '"> <!-- Utiliza un identificador único para cada modal -->
                                 <div class="modal-background"></div>
                                 <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">Detalles del permiso</p>
+                                    <header class="modal-card-head azul">
+                                        <h3 class="modal-card-title texto-blanco my-center-gap">
+                                        <img src="../images/iconos/info-icon-b.svg" class="icon" alt="">Detalles del permiso</h3>
                                         <button class="delete" aria-label="close"></button>
                                     </header>
                                     <section class="modal-card-body">
@@ -156,8 +164,9 @@ require_once('../php/conexion.php');
                             <div class="modal" id="modal_archivar' . $permisoId. '"> <!-- Utiliza un identificador único para cada modal -->
                                 <div class="modal-background"></div>
                                 <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">Archivar</p>
+                                    <header class="modal-card-head naranja">
+                                        <h3 class="modal-card-title texto-blanco my-center-gap" >
+                                        <img src="../images/iconos/archivar-icon-b.svg" class="icon" alt="">Archivar</h3>
                                         <button class="delete" aria-label="close"></button>
                                     </header>
                                     <section class="modal-card-body">
@@ -165,7 +174,7 @@ require_once('../php/conexion.php');
                                         <div class="is-flex is-flex-direction-column">
                                             <label for="buscar_titulada" class="label mr-4">¿DESEA MOVER ESTE PERMISO A LA PAPELERA?</label>
                                             <div class="">' . $fechaCreado . '</div>
-                                            <button id="botonEnviar" type="submit" class="my-button button-clr-azul js-modal-trigger">SI</button>
+                                            <button id="botonEnviar" type="submit" class="my-button button-clr-verde js-modal-trigger">SI</button>
 
                                         </div>
                                         <div id="resultado-busqueda" class="mb-3"></div> 

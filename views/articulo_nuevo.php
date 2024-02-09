@@ -51,8 +51,8 @@
             <?php echo isset($_SESSION['errores']) ? mostrarAlerta($_SESSION['errores'],'nombres'):"" ?>
         </div>
     </div>
-        <footer class="box-button">
-            <button class="my-button button-clr-verde" type="submit" value="Registrar"><img src="./images/save.png" alt="" class="mr-2">Registrar</button>
+        <footer class="my-center-gap">
+            <button class="my-button button-clr-verde" type="submit" value="Registrar"><img src="./images/iconos/save-icon-b.svg" class="icon">Registrar</button>
         </footer>
 
 </form>    

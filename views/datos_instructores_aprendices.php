@@ -48,8 +48,9 @@
             </div>
     
             <div class="field">
-                <div class="box-button">
-                    <input type="submit" class="my-button button-clr-azul" value="Guardar">
+                <div class="my-center-gap">
+                    <button id="botonEnviar" type="submit" class="my-button button-clr-verde">
+                    <img src="images/iconos/save-icon-b.svg" class="icon" alt="">Agregar instructor</button>
                 </div>
             </div>
         </form>
@@ -73,8 +74,9 @@
             <label for="aprendices" class="label" >Agregar Aprendiz:</label>
             <input type="text" class="input" name="aprendiz" placeholder="Nombre del Aprendiz">
                 <br><br>
-                <div class="box-button">
-                    <input type="submit" value="Agregar Aprendiz" class='my-button button-clr-azul'>
+                <div class="my-center-gap">
+                <button id="botonEnviar" type="submit" class="my-button button-clr-verde">
+                    <img src="images/iconos/save-icon-b.svg"  class="icon" alt="">Agregar aprendiz</button>
                 </div>
             </form> 
 </div>
@@ -87,7 +89,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Buscar titulada</p>
+            <h3 class="modal-card-title my-center-gap">Buscar titulada</h3>
             <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">

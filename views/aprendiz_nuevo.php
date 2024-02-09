@@ -167,8 +167,8 @@
         </div>
     </div>
 
-        <div class="box-button">
-            <button class="my-button button-clr-verde" type="submit" value="Registrar"><img src="./images/save.png" alt="" class="mr-2">Registrar</button>
+        <div class="my-center-gap">
+            <button class="my-button button-clr-verde" type="submit" value="Registrar"><img src="./images/iconos/save-icon-b.svg" class="icon">Registrar</button>
         </div>
 
 </form>    
@@ -179,7 +179,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Buscar titulada</p>
+            <h3 class="modal-card-title my-center-gap">Buscar titulada</h3>
             <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">

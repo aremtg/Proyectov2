@@ -60,7 +60,7 @@
     font-weight: 800;
 }
 .separa_logos {
-    width: 3px;
+    min-width: 2.5px;
     background-color: rgb(85, 84, 84);
     height: 50px;
     border-radius: 5px;
@@ -184,6 +184,7 @@ a img,
 }
 
 .user-nombre {
+    text-align: center;
     font-size: 16px;
     font-weight: 700;
     color: var(--verde-sena);
@@ -481,7 +482,7 @@ a img,
         font-size: 22px;
     }
     .contenedor_contenido {
-     margin-top: 104px;
+     margin-top: 90px;
     }
     .div-info-perfil .info-foto-perfil .img_user {
         width: 150px;
@@ -492,6 +493,7 @@ a img,
     .logos-nav img {
         width: 40px;
     }
+   
     /* permiso */
     .hoja{
         width:auto;

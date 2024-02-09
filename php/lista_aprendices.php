@@ -84,7 +84,8 @@
                 <td>'.$rows['nombre_titulada'].'</td>
                 <td>'.$rows['ficha_titulada'].'</td>
                 <td>
-                    <a href="index.php?vista=aprendiz_articulos&aprendiz_id='.$rows['id_aprendiz'].'" class="button is-link is-rounded is-small">Ver todo</a>
+                    <a href="index.php?vista=aprendiz_articulos&aprendiz_id='.$rows['id_aprendiz'].'" class="my-button button is-link is-rounded is-small">
+                    <img src="images/iconos/ojo-icon-b.svg"  class="icon" alt="">Ver</a>
                 </td>
                 </tr>
             ';

@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Aqui podras generar un papel de permiso para salida de Aprendices.
         </p>     
     </article>
-    <div class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap">
+    <div class="my-center-gap is-flex-wrap-wrap">
        <div class="cont_generador">
         <form action="" method="post" width='100%'>
             <label for="instructor" class="label is-flex is-justify-content-center" >Lista de instructores:</label>
-            <div class='my-flex-center'  width='100%' >
+            <div class='my-center-gap'  width='100%' >
                 <select name="instructor" class='my-select' required id="instructor" width='100%'>
                     <option value="" disabled selected>Selecciona un instructor</option>
                         <?php
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ?>
                         
                 </select>
-                <div class="box-button">   
+                <div class="my-center-gap">   
                     <button type="submit" name="submit" class='button-icon'>
                         <img src="images/iconos/flecha.svg"  class='icon' alt="">
                     </button>
@@ -181,6 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div>
                     <label for="ambiente" class="label" >Ambiente:</label>
+
                     <input type="text" id="ambiente" required placeholder="Selecciona un instructor." name="ambiente_permiso" require readonly value="<?php echo $ambienteValue; ?>" />
                 </div>
             </div>
@@ -189,7 +190,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="is-flex is-justify-content-center p-3">
                 <div class="py-3">
-                    <button id="botonEnviar" type="submit" class="my-button button-clr-verde">Enviar Permiso</button>
+                    <button id="botonEnviar" type="submit" class="my-button button-clr-verde">
+                    <img src="images/iconos/enviar-icon-b.svg"  class="icon" alt="">Enviar Permiso</button>
                 </div>
             </div>
         </form>
@@ -204,9 +206,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             para agregar datos.
         </p>
         <br>
-        <div class="box-button">    
+        <div class="my-center-gap">    
             <a href="index.php?vista=datos_instructores_aprendices" class="my-button button-clr-azul">
-                <span for="">Ver datos</span>
+                <img src="images/iconos/ojo-icon-b.svg"  class="icon" alt="">Ver datos
             </a>
         </div>    
     </article> 

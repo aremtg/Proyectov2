@@ -40,7 +40,7 @@
     
 </div><!--cerramos contenedor para las targetas del home-->
 <br>
-<div class="box-button">
+<div class="my-center-gap">
     <a href="./views/aplicacionPermisos.php" target="_blank" class="my-button button-clr-morado">
     <img src="images/iconos/permisos-icon-b.svg" alt="">  
     Aplicacion Permisos</a>

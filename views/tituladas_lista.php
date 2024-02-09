@@ -70,7 +70,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <h3 class="modal-card-title">Agregar Titulada</h3>
+            <h3 class="modal-card-title my-center-gap">Agregar Titulada</h3>
             <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
@@ -97,8 +97,8 @@
                     </div>
                 </div>
 
-                <footer class="box-button">
-                    <button type="submit" class="my-button button-clr-azul"><img src="./images/save.png" class="mr-1">Agregar</button>
+                <footer class="my-center-gap">
+                    <button type="submit" class="my-button button-clr-azul"><img src="./images/iconos/save-icon-b.svg" class="icon">Agregar</button>
                 </footer>
 
     

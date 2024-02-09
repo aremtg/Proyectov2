@@ -122,8 +122,8 @@
                 </div>
             </div>
     </div>
-        <div class="box-button">
-            <button class="my-button button-clr-verde" type="submit" value="Registrar"><img src="./images/save.png" alt="" class="mr-2">Registrar</button>
+        <div class="my-center-gap">
+            <button class="my-button button-clr-verde" type="submit" value="Registrar"><img src="./images/iconos/save-icon-b.svg" class="icon">Registrar</button>
         </div>
 
 </form>    
