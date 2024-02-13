@@ -13,10 +13,6 @@ body{
 .contenedor_contenido {
    margin-top: 20px;
 }
-.reversa{
-    display: flex ;
-    flex-direction: column-reverse;
-}
 .permisos_por_fecha{
     display: flex;
     align-items: center;

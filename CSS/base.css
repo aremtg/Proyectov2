@@ -1,6 +1,7 @@
 :root {
     --verde-sena: #39a900;
     --morado-ssaci: #7209b7;
+    --clr-otro:  rgb(255, 123, 0);
     --fondo-tema: rgb(255, 255, 255);
     --gradi-verde: linear-gradient(to top, #39a900, #4db520, #5fc234, #70ce45, #81db56, #90e269, #9fea7a, #aef18c, #bef4a3, #cef7b9, #defacf, #edfde5);
     --bg-transparente: rgba(255, 255, 255, 0.61);
@@ -88,6 +89,15 @@ body {
     border-radius: 10px;
     outline: none;
 }
+
+a img,
+.icon {
+    width: 27px;
+    flex-direction: column;
+}
+.icon-small{
+    width: 18px;
+}
 .button-clr-rojo, .rojo{
     background-color: rgb(241, 60, 60);
 }
@@ -101,7 +111,7 @@ body {
     background-color: var(--morado-ssaci);
 }
 .button-clr-naranja, .naranja{
-    background-color: rgb(255, 123, 0);
+    background-color:var(--clr-otro);
 }
 a:hover, .texto-blanco{
     color: rgb(255, 255, 255);

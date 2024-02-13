@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="fecha-hora px-2">
                     <div class="is-flex ">
+                    <img src="./images/iconos/reloj-icon.svg" class="icon-small mr-1" alt="">
                         <input type="time" class="hora" name="hora_permiso" readonly  />
                     </div>          
                

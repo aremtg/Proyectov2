@@ -29,7 +29,7 @@ require_once('../php/conexion.php');
         </p>     
 
     </article>
-        <div class="reversa">
+        <div class="">
             <?php
              $result = $db->query("SELECT 
              id,
@@ -89,6 +89,7 @@ require_once('../php/conexion.php');
                         echo '<div class="hoja px-2 py-3" id="hoja">
                                 <div class="fecha-hora px-2">
                                     <div class="is-flex ">
+                                    <img src="../images/iconos/reloj-icon.svg" class="icon-small mr-1" alt="">
                                         <input type="time" class="hora" name="hora_permiso" value="'. $hora . '" readonly />
                                     </div>          
                                     <div class="fecha">
@@ -190,7 +191,7 @@ require_once('../php/conexion.php');
         <?php
             }
         } else {
-            echo '<div class="is-flex has-text-primary has-text-centered">
+            echo '<div class="my-center-gap has-text-primary">
                     <h1>No se encontro permisos en la base de datos.</h1>
                 </div>';
         }

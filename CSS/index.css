@@ -126,11 +126,6 @@
     justify-content: center;
 }
 
-a img,
-.icon {
-    width: 27px;
-    flex-direction: column;
-}
 .nav.active a img{
     width: 37px;
 }
@@ -486,6 +481,10 @@ a img,
     }
     .div-info-perfil .info-foto-perfil .img_user {
         width: 150px;
+    }
+    .info-foto-perfil {
+        width: 90%;
+        background: #000;
     }
     .logos-nav {
         gap: .2rem;
