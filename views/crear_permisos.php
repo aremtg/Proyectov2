@@ -87,8 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>          
                
                     <div class="fecha">
-                        <?php echo date('Y-') . ($nombre_mes) . date('-d'); ?>
-                        <input type="hidden" name="fecha_permiso" value="<?php echo date('Y-m-d'); ?>" />
+                        <?php echo date('Y/') . ($nombre_mes) . date('/d'); ?>
+                        <input type="hidden" name="fecha_permiso" value="<?php echo date('Y/m/d'); ?>" />
                     </div>
                 </div>
                 <?php
