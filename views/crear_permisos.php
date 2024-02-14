@@ -199,6 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- termna hoja -->
  
     </div>
+    
     <article class="box" width="100%"> 
         <h3 class="">
         DATOS PARA PERMISOS

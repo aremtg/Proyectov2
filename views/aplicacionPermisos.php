@@ -1,6 +1,7 @@
 <?php
 require_once('../php/main.php');
 require_once('../php/conexion.php');
+
 ?>
 
 <!DOCTYPE html>

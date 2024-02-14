@@ -1,0 +1,7 @@
+{
+    "name": "proyectov2",
+    "description": "Descripción de tu proyecto",
+    "require": {
+        "phpmailer/phpmailer": "^6.5"
+    }
+}
