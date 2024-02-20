@@ -191,13 +191,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="is-flex is-justify-content-center p-3">
                 <div class="py-3">
-                    <button id="botonEnviar" type="submit" class="my-button button-clr-verde">
+                    <button id="botonEnviar" type="submit" class="my-button button-clr-verde" name="botonEnviar">
                     <img src="images/iconos/enviar-icon-b.svg"  class="icon" alt="">Enviar Permiso</button>
                 </div>
             </div>
         </form>
         <!-- termna hoja -->
- 
+       
+
     </div>
     
     <article class="box" width="100%"> 
@@ -215,4 +216,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>    
     </article> 
     </div>
-    
+    <?php
+// Incluye la clase PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Requiere el autoloader de PHPMailer
+
+require 'vendor/autoload.php';
+
+if (isset($_POST['botonEnviar'])) {
+    // Tu código actual para procesar el formulario
+
+    // Código para enviar el correo electrónico
+    $phpmailer = new PHPMailer(true); // Configura la instancia de PHPMailer
+
+    try {
+        $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
+        $phpmailer->Port = 2525; // El puerto correcto según tus credenciales
+        $phpmailer->SMTPAuth = true;
+        $phpmailer->Username = '73efb1cd3e2518';
+        $phpmailer->Password = '6f0076d9fb571a';
+        $phpmailer->SMTPSecure = 'tls';
+        // Configura el correo electrónico
+        $phpmailer->setFrom('tgz57031@gmail.com', 'tataian aguzman desde mailtrap');
+        $phpmailer->addAddress('tatiana0guzman@gmail.com', 'Recipient Name'); // Agrega destinatarios
+        $phpmailer->Subject = 'Subject of Email';
+        $phpmailer->Body = 'This is the HTML message body <b>in bold!</b>';
+
+        // Envía el correo electrónico
+        $phpmailer->send();
+
+    } catch (Exception $e) {
+        echo "Hubo un error al enviar el correo electrónico: {$phpmailer->ErrorInfo}";
+    }
+}
+?>
