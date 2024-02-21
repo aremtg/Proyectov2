@@ -37,26 +37,47 @@ require_once('main.php');
                 ambiente_permiso,
                 motivo_permiso,
                 creado
-            ) VALUES (
-                null,
-                '$usuario',
-                '$nombreUsuario',
-                '$apellidoUsuario',
-                '$hora_permiso',
-                '$fecha_permiso',
-                '$nombre_instructor_permiso',
-                '$nombre_aprendiz_permiso',
-                '$titulada_permiso',
-                '$ficha_permiso',
-                '$ambiente_permiso',
-                '$motivo_permiso',
-                now()
+                ) VALUES (
+                    null,
+                    '$usuario',
+                    '$nombreUsuario',
+                    '$apellidoUsuario',
+                    '$hora_permiso',
+                    '$fecha_permiso',
+                    '$nombre_instructor_permiso',
+                    '$nombre_aprendiz_permiso',
+                    '$titulada_permiso',
+                    '$ficha_permiso',
+                    '$ambiente_permiso',
+                    '$motivo_permiso',
+                    now()
             )";
 
             $guardar = mysqli_query($db, $sql);
+                
+                $para = $_POST['email'];
+                $mensaje = 
+                "Permiso concedido al aprendiz: $nombre_aprendiz_permiso,
+                de la titulada: $titulada_permiso,
+                con ficha: $ficha_permiso,
+                el dia: $fecha_permiso,
+                hora: $hora_permiso. Motivo: $motivo_permiso.";
 
+                $asunto = "¡Permiso de salida: $nombre_instructor_permiso !";
+
+                $cabeceras = "From: ssaci_sena@sena.edu.co\r\n";
+                $cabeceras .= "Reply-To: ssaci_sena@sena.edu.co\r\n";
+                $cabeceras .= "X-Mailer: PHP/" . phpversion();
+
+                // Enviar correo electrónico
+                if(mail($para, $asunto, $mensaje, $cabeceras)) {
+                    echo "Correo electrónico enviado correctamente a $para";
+                } else {
+                    echo "Error al enviar el correo electrónico.";
+                }
             if($guardar){
                 echo "Archivo Subido Correctamente";
+
             } else {
                 mysqli_close($db);
                 header('location:../index.php?vista=crear_permisos');
