@@ -65,16 +65,16 @@ require_once('main.php');
                 a la hora: $hora_permiso. Motivo: $motivo_permiso.";
 
                 $asunto = "¡Permiso de salida: $nombre_instructor_permiso !";
-
                 $cabeceras = "From: $from\r\n";
                 $cabeceras .= "Reply-To: $from\r\n";
                 $cabeceras .= "X-Mailer: PHP/" . phpversion();
-
+               
                 // Enviar correo electrónico
                 if(mail($to, $asunto, $mensaje, $cabeceras)) {
                     echo "Correo electrónico enviado correctamente";
                 } else {
                     echo "Error al enviar el correo electrónico.";
+                   
                 }
             if($guardar){
                 echo "Archivo Subido Correctamente";
@@ -86,5 +86,8 @@ require_once('main.php');
             mysqli_close($db);
             header('location:../index.php?vista=crear_permisos');
         }
-
+       
+        
 ?>
+<!--  echo "Error al enviar el correo electrónico: " . error_get_last()['message']; // Muestra el error
+                    exit(); // Detiene la ejecución del script -->
