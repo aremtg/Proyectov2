@@ -55,34 +55,33 @@ require_once('main.php');
 
             $guardar = mysqli_query($db, $sql);
                 
-                $para = $_POST['email'];
+                $from = $_POST['emailUsuario'];
+                $to = 'ssacisena@gmail.com';
                 $mensaje = 
-                "Permiso concedido al aprendiz: $nombre_aprendiz_permiso,
-                de la titulada: $titulada_permiso,
-                con ficha: $ficha_permiso,
+                "Permiso para el aprendiz: $nombre_aprendiz_permiso,
+                titulada: $titulada_permiso,
+                ficha: $ficha_permiso,
                 el dia: $fecha_permiso,
-                hora: $hora_permiso. Motivo: $motivo_permiso.";
+                a la hora: $hora_permiso. Motivo: $motivo_permiso.";
 
                 $asunto = "¡Permiso de salida: $nombre_instructor_permiso !";
 
-                $cabeceras = "From: ssaci_sena@sena.edu.co\r\n";
-                $cabeceras .= "Reply-To: ssaci_sena@sena.edu.co\r\n";
+                $cabeceras = "From: $from\r\n";
+                $cabeceras .= "Reply-To: $from\r\n";
                 $cabeceras .= "X-Mailer: PHP/" . phpversion();
 
                 // Enviar correo electrónico
-                if(mail($para, $asunto, $mensaje, $cabeceras)) {
-                    echo "Correo electrónico enviado correctamente a $para";
+                if(mail($to, $asunto, $mensaje, $cabeceras)) {
+                    echo "Correo electrónico enviado correctamente";
                 } else {
                     echo "Error al enviar el correo electrónico.";
                 }
             if($guardar){
                 echo "Archivo Subido Correctamente";
-
-            } else {
-                mysqli_close($db);
-                header('location:../index.php?vista=crear_permisos');
-                echo "<h1>olrfeg</h1>" . mysqli_error($db);
-            } 
+                } else {
+                    mysqli_close($db);
+                    header('location:../index.php?vista=crear_permisos');
+                } 
 
             mysqli_close($db);
             header('location:../index.php?vista=crear_permisos');

@@ -186,13 +186,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" id="ambiente" required placeholder="Selecciona un instructor." name="ambiente_permiso" require readonly value="<?php echo $ambienteValue; ?>" />
                 </div>
             </div>
-                <label for="motivo" class="label" >Motivo de la salida:</label>
-                <textarea id="motivo" rows="3" cols="8" placeholder="" maxlength="40" name="motivo_permiso" required></textarea>
+            <label for="motivo" class="label" >Motivo de la salida:</label>
+            <textarea id="motivo" rows="3" cols="8" placeholder="" maxlength="40" name="motivo_permiso" required></textarea>
 
-                <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="mensaje">Mensaje:</label><br>
-        <div name="mensaje"></div><br>
+            <input type="hidden" id="email" name="emailUsuario" value="<?= $_SESSION['usuario']['correo_usuario']?>">
+            <input type="hidden" name="mensaje">
 
             <div class="is-flex is-justify-content-center p-3">
                 <div class="py-3">
