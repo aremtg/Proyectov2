@@ -5,6 +5,7 @@ $mes = date('n'); // Obtener el número del mes (sin ceros a la izquierda)
 
 $nombre_mes = strftime('%B', mktime(0, 0, 0, $mes, 1, date('Y')));
 $nombre_mes = utf8_encode(ucfirst($nombre_mes));
+
 $instructorSeleccionado = null;
 // Verificar si el formulario se ha enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,22 +13,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $instructorSeleccionado = isset($_POST['instructor']) ? limpiar_cadena($_POST['instructor']) : null;
 }
 ?>
-
     <article class="panel-heading"> 
         <h3 class="">
-        
-        PERMISOS
+            PERMISOS
         </h3>
         <p class="">
             Aqui podras generar un papel de permiso para salida de Aprendices.
         </p>     
     </article>
+    <?php if (isset($_SESSION['guardar'])) : ?>
+
+    <div class='message is-success'>
+        <?= $_SESSION['guardar']; ?>
+    </div>
+
+    <?php elseif (isset($_SESSION['envioDatos'])) : ?>
+    <div class='message is-danger '>
+        <?= $_SESSION['envioDatos']; ?>
+    </div>
+
+    <?php elseif (isset($_SESSION['envioPermiso'])) : ?>
+    <div class='message is-danger '>
+        <?= $_SESSION['envioPermiso']; ?>
+    </div>
+    <?php endif; ?>
+
+    <div class="mb-3">
+    <?= isset($_SESSION['errores']) ? mostrarAlerta($_SESSION['errores'], 'envioPermiso') : ""; ?>
+    <?= isset($_SESSION['errores']) ? mostrarAlerta($_SESSION['errores'], 'envioDatos') : ""; ?>
+    </div>
+
     <div class="my-center-gap is-flex-wrap-wrap">
        <div class="cont_generador">
-        <form action="" method="post" width='100%'>
+        <form action="" method="post">
             <label for="instructor" class="label is-flex is-justify-content-center" >Lista de instructores:</label>
-            <div class='my-center-gap'  width='100%' >
-                <select name="instructor" class='my-select' required id="instructor" width='100%'>
+            <div class='my-center-gap'>
+                <select name="instructor" class='my-select' required id="instructor">
                     <option value="" disabled selected>Selecciona un instructor</option>
                         <?php
                             // Obtener la lista de instructores
@@ -37,10 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             while ($filaInstructores = $resultadoInstructores->fetch_assoc()) {
                                 $idInstructor = $filaInstructores['id_instructor'];
                                 $nombreInstructor = $filaInstructores['nombre'];
-
                                 // se marca la opción seleccionada si coincide con el valor en $instructorSeleccionado
                                 $selected = ($instructorSeleccionado == $idInstructor) ? 'selected' : '';
-
                                 echo '
                                 <option value="' . $idInstructor . '" ' . $selected . '>' . $nombreInstructor . '</option>';
                             }
@@ -73,19 +92,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
         ?>
-        <br>
         <form method="POST" action="./php/cargar_permiso.php" class="hoja" id='hoja'>
-                <div class="control">
                     <input type="hidden" name="usuario" value="<?= $_SESSION['usuario']['usuario_usuario']?>">
                     <input type="hidden" name="nombreUsuario" value="<?= $_SESSION['usuario']['nombre_usuario']?>">
                     <input type="hidden" name="apellidoUsuario" value="<?= $_SESSION['usuario']['apellido_usuario']?>">
-                </div>
                 <div class="fecha-hora px-2">
                     <div class="is-flex ">
-                    <img src="./images/iconos/reloj-icon.svg" class="icon-small mr-1" alt="">
+                        <img src="./images/iconos/reloj-icon.svg" class="icon-small mr-1" alt="">
                         <input type="time" class="hora" name="hora_permiso" readonly  />
                     </div>          
-               
                     <div class="fecha">
                         <?php echo date('Y/') . ($nombre_mes) . date('/d'); ?>
                         <input type="hidden" name="fecha_permiso" value="<?php echo date('Y/m/d'); ?>" />
@@ -200,10 +215,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
         <!-- termna hoja -->
-       
+        <?php BorrarErrores(); ?>
 
     </div>
-    
     <article class="box" width="100%"> 
         <h3 class="">
         DATOS PARA PERMISOS

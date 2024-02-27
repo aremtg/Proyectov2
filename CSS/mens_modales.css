@@ -5,7 +5,8 @@
 }
 
 .message-body {
-    max-width: 300px; 
+    width: auto;
+    min-width: 300px; 
     word-wrap: break-word;
   }
 /* Estilos de la tarjeta del modal */

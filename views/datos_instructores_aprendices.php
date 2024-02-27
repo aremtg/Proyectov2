@@ -55,6 +55,22 @@
             </div>
         </form>
         <br>
+        <?php if (isset($_SESSION['guardar'])) : ?>
+
+        <div class='message is-success'>
+            <?= $_SESSION['guardar']; ?>
+        </div>
+
+        <?php elseif (isset($_SESSION['aprendizYaExiste'])) : ?>
+        <div class='message is-danger '>
+            <?= $_SESSION['aprendizYaExiste']; ?>
+        </div>
+        <?php endif; ?>
+
+        <div class="mb-3">
+        <?= isset($_SESSION['errores']) ? mostrarAlerta($_SESSION['errores'], 'aprendizYaExiste') : ""; ?>
+        </div>
+
         <h1 class='panel-heading'>Agregar aprendiz a un instructor</h1>
             <form action="./php/guardar_datos_instructores_aprendices.php" method="POST" class='box'>
                 <?php
@@ -80,9 +96,7 @@
                 </div>
             </form> 
 </div>
-
-
-
+<?php BorrarErrores(); ?>
 
 <!-- ### SECCION PARA BUSCAR TITULADAS ### -->
 <div class="modal" id="modal_titu">
