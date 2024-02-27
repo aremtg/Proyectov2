@@ -99,3 +99,29 @@
  
 <!--  echo "Error al enviar el correo electrónico: " . error_get_last()['message']; // Muestra el error
                     exit(); // Detiene la ejecución del script -->
+
+                    <!-- if ($guardar && !mail($to, $asunto, $mensaje, $cabeceras)) {
+                    $_SESSION['guardar'] = "
+                    <div class='message-header title is-5 m-0'>
+                        <p>Permiso enviado a la aplicacion!</p>
+                    </div>
+                    <div class='message-body is-size-6'>
+                        El permiso se ha enviado <strong>CORRECTAMENTE</strong>.
+                    </div>";
+                    if (mail($to, $asunto, $mensaje, $cabeceras)) {
+                        // Si el envío de correo electrónico es exitoso, mostrar un mensaje de éxito
+                        $_SESSION['guardar'] = "
+                            <div class='message-header title is-5 m-0'>
+                                <p>Permiso enviado!</p>
+                            </div>
+                            <div class='message-body is-size-6'>
+                                El permiso se ha enviado <strong>CORRECTAMENTE</strong>.
+                            </div>";
+                    } else {
+                        // Si hay un error al enviar el correo electrónico, mostrar un mensaje de error
+                        $mensaje_error = $ultimo_error['message'];
+                        // Aquí puedes hacer lo que desees con el mensaje de error
+                        $errores["envioPermiso"] = $mensaje_error;
+                 
+                       
+                    } -->
