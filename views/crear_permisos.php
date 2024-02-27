@@ -102,9 +102,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="time" class="hora" name="hora_permiso" readonly  />
                     </div>          
                     <div class="fecha">
+                        <div class="is-flex">
+                         <img src="images/iconos/calendario-icon.svg" alt="" class="icon-small mr-1"> 
                         <?php echo date('Y/') . ($nombre_mes) . date('/d'); ?>
                         <input type="hidden" name="fecha_permiso" value="<?php echo date('Y/m/d'); ?>" />
-                    </div>
+                    </div>   
+                        </div>
+                        
                 </div>
                 <?php
                     $nombreInstructor = '';

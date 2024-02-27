@@ -45,6 +45,6 @@
     <img src="images/iconos/permisos-icon-b.svg" alt="">  
     Aplicacion Permisos</a>
     <a href="./views/aplicacion.php" target="_blank" class="my-button button-clr-verde">
-        
+    <img src="images/iconos/ingreso-icon-b.svg" alt="">     
     Aplicacion Ingresos</a>
 </div>
