@@ -63,16 +63,32 @@
                 $cabeceras .= "Reply-To: $from\r\n";
                 $cabeceras .= "X-Mailer: PHP/" . phpversion();
 
-                if (mail($to, $asunto, $mensaje, $cabeceras) && $guardar) {
+                if ($guardar) {
                     $_SESSION['guardar'] = "
                     <div class='message-header title is-5 m-0'>
-                        <p>Permiso enviado!</p>
+                        <p>Permiso enviado a la aplicacion!</p>
                     </div>
                     <div class='message-body is-size-6'>
                         El permiso se ha enviado <strong>CORRECTAMENTE</strong>.
                     </div>";
-                }else{
-                    $errores["envioPermiso"] = "Hubo un error al enviar el permiso.";
+                    if (mail($to, $asunto, $mensaje, $cabeceras)) {
+                        // Si el envío de correo electrónico es exitoso, mostrar un mensaje de éxito
+                        $_SESSION['guardar'] = "
+                            <div class='message-header title is-5 m-0'>
+                                <p>Permiso enviado!</p>
+                            </div>
+                            <div class='message-body is-size-6'>
+                                El permiso se ha enviado <strong>CORRECTAMENTE</strong>.
+                            </div>";
+                    } else {
+                        // Si hay un error al enviar el correo electrónico, mostrar un mensaje de error
+                        $errores["envioPermiso"] = "Error al enviar el permiso por correo electrónico.";
+                    }
+                } else {
+                    // Si hay un error al guardar en la base de datos, mostrar un mensaje de error y redirigir al usuario
+                    $errores["envioPermiso"] = "Hubo un error al guardar el permiso en la base de datos.";
+                    mysqli_close($db);
+                    header('location:../index.php?vista=crear_permisos');
                 }
                 
             }
