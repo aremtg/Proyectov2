@@ -5,6 +5,15 @@
             </p>     
     </article>
     <br>
+    <div class="my-center-gap">
+        <a href="./views/aplicacionPermisos.php" target="_blank" class="my-button button-clr-morado">
+        <img src="images/iconos/permisos-icon-b.svg" alt="">  
+        Aplicacion Permisos</a>
+        <a href="./views/aplicacion.php" target="_blank" class="my-button button-clr-verde">
+        <img src="images/iconos/ingreso-icon-b.svg" alt="">     
+        Aplicacion Ingresos</a>
+    </div>
+    <br>
         <?php
             $totalAprendiz = obtenerRegistros($db,'aprendices','id_aprendiz',null);
             $totalUsuarios = obtenerRegistros($db,'usuarios','id_usuario',$_SESSION['usuario']['id_usuario']);
@@ -40,11 +49,4 @@
     
 </div><!--cerramos contenedor para las targetas del home-->
 <br>
-<div class="my-center-gap">
-    <a href="./views/aplicacionPermisos.php" target="_blank" class="my-button button-clr-morado">
-    <img src="images/iconos/permisos-icon-b.svg" alt="">  
-    Aplicacion Permisos</a>
-    <a href="./views/aplicacion.php" target="_blank" class="my-button button-clr-verde">
-    <img src="images/iconos/ingreso-icon-b.svg" alt="">     
-    Aplicacion Ingresos</a>
-</div>
+<img src="images/imageprueba.jpg" class="" alt="">  

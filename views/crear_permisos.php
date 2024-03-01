@@ -238,3 +238,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>    
     </article> 
     </div>
+    <script src="./js/crear_permisos.js"></script>

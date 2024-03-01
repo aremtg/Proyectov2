@@ -94,6 +94,7 @@ require_once('../php/conexion.php');
                                         <input type="time" class="hora" name="hora_permiso" value="'. $hora . '" readonly />
                                     </div>          
                                     <div class="fecha">
+                                    <img src="../images/iconos/calendario-icon-m.svg" alt="" class="icon-small mr-1"> 
                                     '. $fecha . '
                                     </div>
                                 </div>
@@ -150,8 +151,8 @@ require_once('../php/conexion.php');
                                         <!-- Contenido del modal -->
                                         <div class="is-flex is-flex-direction-column">
                                             <label for="buscar_titulada" class="label mr-4">Fecha y hora de envio del permiso:</label>
-                                            <div class="">' . $fechaCreado . '</div>
-                                            <label for="buscar_titulada" class="label mr-4">Quien solicito el permiso:</label>
+                                            <div class="">' . $fechaCreado . "s" .'</div>
+                                            <label for="buscar_titulada" class="label mr-4">Usuario quien envio el permiso:</label>
                                             <div class="">' . $usuario . '</div>
                                             <label for="buscar_titulada" class="label mr-4">nombre completo:</label>
                                             <div class="">' . $nombreUsuario ." ". $apellidoUsuario .'</div>
