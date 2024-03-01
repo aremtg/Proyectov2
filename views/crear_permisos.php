@@ -1,10 +1,11 @@
 <?php 
 date_default_timezone_set("America/Bogota");
-setlocale(LC_TIME, 'ES');
-$mes = date('n'); // Obtener el número del mes (sin ceros a la izquierda)
+setlocale(LC_TIME, 'es_ES.UTF-8');
 
-$nombre_mes = strftime('%B', mktime(0, 0, 0, $mes, 1, date('Y')));
-$nombre_mes = utf8_encode(ucfirst($nombre_mes));
+$mes = date('n'); // mes (sin ceros a la izquierda)
+
+$nombre_mes_completo = strftime('%B', mktime(0, 0, 0, $mes, 1, date('Y')));
+$nombre_mes = substr($nombre_mes_completo, 0, 3);
 
 $instructorSeleccionado = null;
 // Verificar si el formulario se ha enviado
@@ -103,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>          
                     <div class="fecha">
                         <div class="is-flex">
-                         <img src="images/iconos/calendario-icon.svg" alt="" class="icon-small mr-1"> 
+                         <img src="images/iconos/calendario-icon-m.svg" alt="" class="icon-small mr-1"> 
                         <?php echo date('Y/') . ($nombre_mes) . date('/d'); ?>
                         <input type="hidden" name="fecha_permiso" value="<?php echo date('Y/m/d'); ?>" />
                     </div>   

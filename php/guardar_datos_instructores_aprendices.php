@@ -10,7 +10,6 @@ if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_P
     $ficha = limpiar_cadena($_POST['ficha']);
     $ambiente = limpiar_cadena($_POST['ambiente']);
 
-    // Verificar que los datos no estén vacíos
     if (!empty($nombreInstructor) && !empty($contactoInstructor) && !empty($titulada) && !empty($ficha) && !empty($ambiente)) {
         // Realizar la inserción del instructor en la tabla de instructores
         $sql = "INSERT INTO instructores (nombre, contacto, titulada, ficha,  ambiente) VALUES ('$nombreInstructor', '$contactoInstructor', '$titulada', '$ficha', '$ambiente')";
@@ -27,8 +26,7 @@ if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_P
     if (isset($_POST['instructor']) && isset($_POST['aprendiz']) && $_POST['aprendiz'] !== '') {
         $idInstructor = limpiar_cadena($_POST['instructor']);
         $aprendizNombre = limpiar_cadena($_POST['aprendiz']);
-    
-        // Verificar que los datos no estén vacíos
+
         if (!empty($idInstructor) && !empty($aprendizNombre)) {
             // Verificar si ya existe un aprendiz con el mismo nombre para el instructor seleccionado
             $sql_verificar = "SELECT COUNT(*) as count FROM relacion_instructor_aprendiz WHERE id_instructor = '$idInstructor' AND nombre_aprendiz = '$aprendizNombre'";
@@ -45,7 +43,7 @@ if (isset($_POST['nombre_instructor']) && isset($_POST['contacto']) && isset($_P
                                  FROM instructores 
                                  WHERE id_instructor = '$idInstructor'";
                 $guardar = mysqli_query($db, $sql);
-                // Ejecutar la consulta
+                
                 if ($guardar) {
                     $_SESSION['guardar'] = "
                     <div class='message-header title is-5 m-0'>

@@ -5,7 +5,7 @@
     $usuario = $_POST['usuario']; $nombreUsuario = $_POST['nombreUsuario'];
     $apellidoUsuario = $_POST['apellidoUsuario'];
     $hora_permiso = $_POST['hora_permiso'];
-    $fecha_permiso = $_POST['fecha_permiso'];  
+    $fecha_permiso = $_POST['fecha_permiso'];
     $nombre_instructor_permiso = limpiar_cadena($_POST['nombre_instructor_permiso']);
     $nombre_aprendiz_permiso = limpiar_cadena($_POST['nombre_aprendiz_permiso']);
     $titulada_permiso = limpiar_cadena($_POST['titulada_permiso']);
@@ -82,7 +82,9 @@
                             </div>";
                     } else {
                         // Si hay un error al enviar el correo electrónico, mostrar un mensaje de error
-                        $errores["envioPermiso"] = "Error al enviar el permiso por correo electrónico.";
+                        $errores["envioPermiso"] =  "Error al enviar el correo electrónico: " . error_get_last()['message']; // Muestra el error
+                   
+                    
                     }
                 } else {
                     // Si hay un error al guardar en la base de datos, mostrar un mensaje de error y redirigir al usuario
