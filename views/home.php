@@ -49,4 +49,7 @@
     
 </div><!--cerramos contenedor para las targetas del home-->
 <br>
-<img src="images/imageprueba.jpg" class="" alt="">  
+<div class="contenedor-imagen">
+  <img src="images/imageprueba.jpg" class="imagen" alt="">
+  <div class="degradado"></div>
+</div>

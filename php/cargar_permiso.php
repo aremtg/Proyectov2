@@ -71,6 +71,7 @@
                     <div class='message-body is-size-6'>
                         El permiso se ha enviado <strong>CORRECTAMENTE</strong>.
                     </div>";
+                
                     if (mail($to, $asunto, $mensaje, $cabeceras)) {
                         // Si el envío de correo electrónico es exitoso, mostrar un mensaje de éxito
                         $_SESSION['guardar'] = "
