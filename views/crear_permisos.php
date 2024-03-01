@@ -52,17 +52,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <select name="instructor" class='my-select' required id="instructor">
                     <option value="" disabled selected>Selecciona un instructor</option>
                         <?php
-                            // Obtener la lista de instructores
                             $sqlInstructores = "SELECT DISTINCT id_instructor, nombre FROM instructores";
                             $resultadoInstructores = $db->query($sqlInstructores);
-
-                            while ($filaInstructores = $resultadoInstructores->fetch_assoc()) {
-                                $idInstructor = $filaInstructores['id_instructor'];
-                                $nombreInstructor = $filaInstructores['nombre'];
-                                // se marca la opción seleccionada si coincide con el valor en $instructorSeleccionado
+                            // Crear un array para almacenar los instructores
+                            $instructores = array();
+                            // Verificar si la consulta fue exitosa
+                            if ($resultadoInstructores) {
+                                // Iterar sobre los resultados y almacenarlos en el array de instructores
+                                while ($filaInstructores = $resultadoInstructores->fetch_assoc()) {
+                                    $instructores[$filaInstructores['id_instructor']] = $filaInstructores['nombre'];
+                                }
+                            }
+                            // Luego, en tu formulario, puedes usar el array de instructores para generar las opciones del select
+                            foreach ($instructores as $idInstructor => $nombreInstructor) {
                                 $selected = ($instructorSeleccionado == $idInstructor) ? 'selected' : '';
-                                echo '
-                                <option value="' . $idInstructor . '" ' . $selected . '>' . $nombreInstructor . '</option>';
+                                echo '<option value="' . $idInstructor . '" ' . $selected . '>' . $nombreInstructor . '</option>';
                             }
                         ?>
                         
@@ -75,8 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
         <?php
-            // Obtener el id_instructor seleccionado del formulario
-            $instructorSeleccionado = isset($_POST['instructor']) ? limpiar_cadena($_POST['instructor']) : null;
+       
             //var para almacenar los nombres de aprendices relacionados
             $nombresAprendices = array();
             // Verificar si se ha seleccionado un instructor

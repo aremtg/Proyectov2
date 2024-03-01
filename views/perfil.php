@@ -2,7 +2,6 @@
 if (!empty($datos_user)) :
     while ($datos = mysqli_fetch_assoc($datos_user)) :
 ?>
-
         <article class="panel-heading mb-5">
             <h3 class="">
                 INFORMACION PERSONAL
@@ -193,9 +192,6 @@ if (!empty($datos_user)) :
             <!-- se acaba el contenido del modal -->
         </div>
         <!-- SE ACABA LA SECCION DEL MODAL -->
-
-
-
 
         <!-- ####### ESTE ES EL MODAL PARA ELIMINAR EL PERFIL VA UNIDO AL BOTON ELIMINAR ####### -->
         <div class="modal" id="modal_del_perfil">
