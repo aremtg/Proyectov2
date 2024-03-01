@@ -1,13 +1,15 @@
 @import "base.css";
 footer{
-    display: flex;
-    justify-content: center;
     width: 100%;
     background-color: var(--clr-gris);
     padding: 10px;
+    bottom: 0;
+}
+.footer-content{
+    display: flex;
+    justify-content: center;
     text-align: center;
     align-self: flex-end;
-    bottom: 0;
 }
 .ssaci-cont{
     color: var(--verde-sena);
