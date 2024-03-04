@@ -14,6 +14,9 @@ if (is_file('./views/'.$_GET['vista'].'.php') && $_GET['vista'] != 'login') {
     include('./views/navbar.php');
     include('./views/'.$_GET['vista'].'.php');
     include('./includes/script.php');
+    include('./includes/spiner.php');
+
+
 } else {
     if ($_GET['vista'] == 'login') {
         include('views/login.php');

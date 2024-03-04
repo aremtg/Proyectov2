@@ -217,13 +217,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="is-flex is-justify-content-center p-3">
                 <div class="py-3">
-                    <button id="botonEnviar" type="submit" class="my-button button-clr-verde" name="botonEnviar">
+                    <button id="botonEnviar" type="submit" class="my-button button-clr-verde js-modal-trigger" data-target="modal_spiner" name="botonEnviar">
                     <img src="images/iconos/enviar-icon-b.svg"  class="icon" alt="">Enviar Permiso</button>
+
                 </div>
             </div>
         </form>
         <!-- termna hoja -->
         <?php BorrarErrores(); ?>
+        <div class="modal"  id="modal_spiner"> <!-- Utiliza un identificador único para cada modal -->
+    <div class="modal-background"></div>
+        <section class="modal-card-body">
+        <div class="custom-loader"></div> 
+
+        </section>
+    </div>
+</div>
 
     </div>
     <article class="box" width="100%"> 
@@ -242,3 +251,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </article> 
     </div>
     <script src="./js/crear_permisos.js"></script>
+    <script src="../js/modal.js"></script>
