@@ -11,10 +11,11 @@ require_once('../php/conexion.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permisos</title>
-     <link rel="stylesheet" href="../css/mens_modales.css">
-     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/bulma.min.css">
+     <link rel="stylesheet" href="../css/mens_modales.css">
     <link rel="stylesheet" href="../css/crear_permisos.css">
+    <link rel="stylesheet" href="../css/aplicacion.css">
+
     <link rel="stylesheet" href="../css/aplicacionPermiso.css">
   
 

@@ -226,13 +226,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- termna hoja -->
         <?php BorrarErrores(); ?>
         <div class="modal"  id="modal_spiner"> <!-- Utiliza un identificador único para cada modal -->
-    <div class="modal-background"></div>
-        <section class="modal-card-body">
-        <div class="custom-loader"></div> 
-
-        </section>
-    </div>
-</div>
+            <div class="modal-background"></div>
+                <section class="modal-card-body body-spiner">
+                <div class="custom-loader"></div>
+                </section>
+        </div>
 
     </div>
     <article class="box" width="100%"> 
@@ -251,4 +249,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </article> 
     </div>
     <script src="./js/crear_permisos.js"></script>
-    <script src="../js/modal.js"></script>
+    <script src="./js/modal.js"></script>

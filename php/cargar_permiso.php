@@ -14,8 +14,12 @@
     $motivo_permiso = limpiar_cadena($_POST['motivo_permiso']);
     $errores = array();
     if (empty($usuario) || empty($nombreUsuario) || empty($apellidoUsuario) || empty($hora_permiso) || empty($fecha_permiso) || empty($nombre_instructor_permiso) || empty($nombre_aprendiz_permiso) || empty($titulada_permiso) || empty($ficha_permiso) || empty($ambiente_permiso) || empty($motivo_permiso)) {
-        $errores["envioDatos"] = "Hubo un error al recibir datos, intetalo de nuevo.";
+        $errores["envioDatos"] = "
+        
+        Hubo un error al recibir datos, intetalo de nuevo.";
         } else {
+
+            
             $sql = "INSERT INTO permisosdata (
                 id,
                 usuario,
@@ -45,6 +49,8 @@
                     '$motivo_permiso',
                     now()
                 )";
+
+
                 $guardar = mysqli_query($db, $sql);
                 
                 $from = $_POST['emailUsuario'];
@@ -62,7 +68,7 @@
                 $cabeceras = "From: $from\r\n";
                 $cabeceras .= "Reply-To: $from\r\n";
                 $cabeceras .= "X-Mailer: PHP/" . phpversion();
-
+                    
                 if ($guardar) {
                     $_SESSION['guardar'] = "
                     <div class='message-header title is-5 m-0'>

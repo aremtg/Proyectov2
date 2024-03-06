@@ -1,18 +1,5 @@
 @import "base.css";
-body{
-    width: 100%;
-    padding-top: 0;
-    background-image: var(--gradi-verde);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.contenedor_contenido {
-   margin-top: 20px;
-}
+
 .permisos_por_fecha{
     display: flex;
     align-items: center;
