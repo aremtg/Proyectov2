@@ -3,7 +3,7 @@ window.addEventListener("scroll", function(){
   containerNav.classList.toggle("abajo", this.window.scrollY>0);
 })
 
-const menuIcon = document.querySelector(".menu-icon");
+const menuIcon = document.querySelector(".menuIcon");
 const navMenu = document.querySelector("#nav-menu");
 
 menuIcon.addEventListener("click", function () {

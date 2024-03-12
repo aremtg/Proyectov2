@@ -47,11 +47,11 @@
                     <span class="tiptext">Perfil</span>
                 </a>
             </div>
-            <a href="./php/logout.php" class="btn-cerrar-sesion salir_a">
+            <a href="./php/logout.php" class="salir_a">
                 <img src="images/iconos/salir-icon.svg" class="salir-icon" alt="">
                 <span class="tiptext">Salir</span>
             </a>
-            <div class="menu-icon">
+            <div class="menuIcon">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>

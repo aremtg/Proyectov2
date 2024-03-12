@@ -25,7 +25,7 @@
     margin-right: 0;
     transition: all 1s;
 }
-.menu-icon {
+.menuIcon {
     cursor: pointer;
     display: none; 
 }
@@ -36,13 +36,13 @@
     margin: 4px 0;
     transition: 0.4s;
 }
-.menu-icon.active .bar:nth-child(1) {
+.menuIcon.active .bar:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 5px);
 }
-.menu-icon.active .bar:nth-child(2) {
+.menuIcon.active .bar:nth-child(2) {
     opacity: 0;
 }
-.menu-icon.active .bar:nth-child(3) {
+.menuIcon.active .bar:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -5px);
 }
 
@@ -483,7 +483,7 @@
     .column {
         width: 100%;
     }
-    .menu-icon{
+    .menuIcon{
         display: block;
     }
     .nav{
