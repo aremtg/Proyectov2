@@ -233,7 +233,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
     </div>
-    <article class="box" width="100%"> 
+    <article class="box"> 
         <h3 class="">
         DATOS PARA PERMISOS
         </h3>

@@ -78,10 +78,8 @@
     align-items:center ;
     overflow-x: hidden;
     overflow-y: hidden;
+    background: #ffffff00;
 }
 .modal-card{
  background-color: rgba(255, 255, 255, 0);   
-}
-.modal-card-body{
-    background-color: rgba(255, 255, 255, 0);
 }

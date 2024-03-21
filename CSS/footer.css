@@ -1,6 +1,7 @@
 @import "base.css";
 footer{
     width: 100%;
+    line-height:normal;
     background-color: var(--clr-gris);
     padding: 10px;
     bottom: 0;

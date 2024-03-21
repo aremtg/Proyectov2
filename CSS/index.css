@@ -193,8 +193,7 @@
 /* termina navegador*/
 .contenedor_contenido {
     width: 90%;
-    margin: 90px auto 0;
-    margin-bottom: 20px;
+    margin: 90px auto 20px auto;
     padding: 10px;
     border-radius: 10px;
     background: var(--fondo-tema);
