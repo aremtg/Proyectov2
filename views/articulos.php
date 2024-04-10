@@ -24,7 +24,7 @@
 <!-- SECCION PARA EL BUSCADOR CON PHP -->
 <div class="box_buscador">
     <form action="" method="POST" autocomplete="off">
-            <label for="search" class="label">Buscar articulo con PHP</label>
+            <label for="search" class="label">Buscar articulo</label>
             <input class="input" type="search" name="busqueda"> 
             <button class="my-button is-link" type="submit" name="enviar">Buscar</button>
     </form>
@@ -39,14 +39,6 @@
     } ?>
     <!-- TERMINA LA SECCION DEL BUSCADOR -->
 
-    <!-- SECCION PARA EL BUSCADOR CON js -->
-    <form>
-        <label for="search" class="label">Buscar articulo con JS</label>
-        <input class="light-table-filter input" data-table="table_id" type="text">
-        <button class="my-button is-link" type="submit" name="enviar">Buscar</button>
-    </form>
-</div> 
-<!-- TERMINA LA SECCION DEL BUSCADOR -->
 <hr>
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth table_id">
     <thead>
